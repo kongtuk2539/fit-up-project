@@ -21,6 +21,20 @@ export default {
         'gray-op90': 'rgba(28, 28, 30, 0.9)',
         'gray-400': '#9f9f9f',
       },
+      width: {
+        204: '204px',
+        343: '343px',
+      },
+      height: {
+        204: '204px',
+        537: '537px',
+      },
+      padding: {
+        26: '26px',
+      },
+      margin: {
+        54: '54px',
+      },
     },
   },
   plugins: [require('daisyui')],
