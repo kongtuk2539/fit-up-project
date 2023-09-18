@@ -35,6 +35,9 @@ export default {
       margin: {
         54: '54px',
       },
+      strokeWidth: {
+        25: '25px',
+      },
     },
   },
   plugins: [require('daisyui')],

@@ -1,10 +1,4 @@
 circle {
-  stroke-width: 25px;
   stroke-dasharray: 551;
   stroke-dashoffset: 551;
-  animation: anim 2s linear forwards;
-}
-
-svg {
-  transform: rotate(-90deg);
 }

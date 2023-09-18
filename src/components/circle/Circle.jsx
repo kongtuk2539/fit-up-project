@@ -33,15 +33,15 @@ const Circle = () => {
             <div className="circle w-full h-full relative ml-54">
                 <div className="outer w-204 h-204 p-26 rounded-full bg-black-light">
                     <div className="inner w-full h-full bg-black-medium rounded-full flex items-center justify-center">
-                        <div className="info-circle flex flex-col justify-start">
+                        <div className="info-circle flex flex-col justify-start gap-1">
                             <h3 className="text-blue font-orbitron font-bold text-2xl">
                                 +50
                             </h3>
                             <p className='text-black-light font-roboto-mono text-sm'>FitCoin</p>
                         </div>
                     </div>
-                    <svg className='absolute top-0 left-0 w-204 h-204' xmlns="http://www.w3.org/2000/svg" version="1.1">
-                        <circle className="fill-none stroke-blue w-full h-full" cx="102" cy="102" r="89" stroke-linecap="round" ref={circleRef} id="circle" />
+                    <svg className='absolute top-0 left-0 w-204 h-204 -rotate-90' xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <circle className="fill-none stroke-blue w-full h-full stroke-25" cx="102" cy="102" r="89" stroke-linecap="round" ref={circleRef} id="circle" />
                     </svg>
                 </div>
                 <div className="footer-circle w-full h-auto m-3 text-white font-roboto-mono text-sm ml-0
