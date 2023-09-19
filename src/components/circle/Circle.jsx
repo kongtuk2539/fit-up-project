@@ -6,7 +6,7 @@ const Circle = () => {
 
     useEffect(() => {
         const circle = circleRef.current;
-        let coin = 60;
+        let coin = 95;
         const coinPercent = coin / 100;
         const valueStroke = 551 - 551 * coinPercent;
 
@@ -35,7 +35,7 @@ const Circle = () => {
                     <div className="inner w-full h-full bg-black-medium rounded-full flex items-center justify-center">
                         <div className="info-circle flex flex-col justify-start gap-1">
                             <h3 className="text-blue font-orbitron font-bold text-2xl">
-                                +50
+                                +60
                             </h3>
                             <p className='text-black-light font-roboto-mono text-sm'>FitCoin</p>
                         </div>
