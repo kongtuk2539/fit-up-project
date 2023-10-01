@@ -1,9 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Datepicker from "react-tailwindcss-datepicker";
 
 const ActivityDialog = () => {
     const [desc, setDesc] = useState('');
+    const [name, setName] = useState('');
     const maxCharacters = 72;
+
+    const [selectedOption, setSelectedOption] = useState(null);
+
+    const handleOptionClick = (option) => {
+        setSelectedOption(option);
+        setName(option)
+    };
+
+    const optionClassName = (option) => {
+        if (option === 'Gym workout' || option === 'Road Cycling') {
+            return `
+            h-[70px] w-[167.5px] rounded-md border-solid border-2 
+            flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
+            ${selectedOption === option ? '' : 'border-white'}
+            ${selectedOption === option ? 'bg-pink-op10 text-pink border-pink' : ''}
+          `;
+        }
+        // Apply the original class and additional styles for the selected option
+        return `
+          h-[70px] w-[109px] rounded-md border-solid border-2 
+          flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
+          ${selectedOption === option ? '' : 'border-white'}
+          ${selectedOption === option ? 'bg-pink-op10 text-pink border-pink' : ''}
+        `;
+    };
+
+    useEffect(() => {
+        handleOptionClick('')
+    }, [])
+
+
+    const handleNameChange = (e) => {
+        const newName = e.target.value;
+        setName(newName)
+    };
+
 
     const handleDescChange = (e) => {
         const newDesc = e.target.value;
@@ -23,7 +60,7 @@ const ActivityDialog = () => {
         <div className='h-768 w-375 bg-black-medium'>
             <div className='h-14 w-375 bg-black-dark flex items-center justify-center text-white'>
                 <div className='absolute left-6 top-4'>
-                    <span class="material-symbols-outlined hover:cursor-pointer">
+                    <span className="material-symbols-outlined hover:cursor-pointer">
                         close
                     </span>
                 </div>
@@ -39,9 +76,10 @@ const ActivityDialog = () => {
                 </div>
                 <div className='text-white font-roboto-mono text-xs
                 flex justify-between'>
-                    <div className='h-[70px] w-[109px] rounded-md border-solid border-2 border-white
-                    flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink'>
-                        <span class="material-symbols-outlined mb-1 ">
+                    {/* <div className={`h-[70px] w-[109px] rounded-md border-solid border-2 border-white
+                    flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
+                    `}>
+                        <span class="material-symbols-outlined mb-1">
                             directions_run
                         </span>
                         Run
@@ -59,11 +97,33 @@ const ActivityDialog = () => {
                             pool
                         </span>
                         Swim
+                    </div> */}
+
+                    <div
+                        className={optionClassName('Run')}
+                        onClick={() => handleOptionClick('Run')}
+                    >
+                        <span className="material-symbols-outlined mb-1">directions_run</span>
+                        Run
+                    </div>
+                    <div
+                        className={optionClassName('Walk')}
+                        onClick={() => handleOptionClick('Walk')}
+                    >
+                        <span className="material-symbols-outlined mb-1">hiking</span>
+                        Walk
+                    </div>
+                    <div
+                        className={optionClassName('Swim')}
+                        onClick={() => handleOptionClick('Swim')}
+                    >
+                        <span className="material-symbols-outlined mb-1">pool</span>
+                        Swim
                     </div>
                 </div>
                 <div className='text-white font-roboto-mono text-xs
                 flex justify-between mt-1'>
-                    <div className='h-[70px] w-[167.5px] rounded-md border-solid border-2 border-white
+                    {/* <div className='h-[70px] w-[167.5px] rounded-md border-solid border-2 border-white
                     flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pinks'>
                         <span class="material-symbols-outlined mb-1">
                             fitness_center
@@ -76,7 +136,23 @@ const ActivityDialog = () => {
                             directions_bike
                         </span>
                         Road Cycling
+                    </div> */}
+
+                    <div
+                        className={optionClassName('Gym workout')}
+                        onClick={() => handleOptionClick('Gym workout')}
+                    >
+                        <span className="material-symbols-outlined mb-1">fitness_center</span>
+                        Gym workout
                     </div>
+                    <div
+                        className={optionClassName('Road Cycling')}
+                        onClick={() => handleOptionClick('Road Cycling')}
+                    >
+                        <span className="material-symbols-outlined mb-1">directions_bike</span>
+                        Road Cycling
+                    </div>
+
                 </div>
             </div>
 
@@ -86,7 +162,7 @@ const ActivityDialog = () => {
                     Name
                 </p>
                 <div className=''>
-                    <input type="text" className='h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2' />
+                    <input type="text" value={name} onChange={handleNameChange} className='h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2' />
                 </div>
             </div>
 
@@ -102,7 +178,7 @@ const ActivityDialog = () => {
                 </div>
                 <div className=''>
                     <textarea id="message" rows="4" className="block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
-                        placeholder="How was your run?"
+                        placeholder={selectedOption ? `How was your ${selectedOption} ?` : `How was your ... ?`}
                         value={desc}
                         onChange={handleDescChange}>
                     </textarea>
@@ -136,7 +212,7 @@ const ActivityDialog = () => {
 
             </div>
 
-        </div>
+        </div >
     )
 }
 
