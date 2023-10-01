@@ -11,14 +11,11 @@ const ActivityDialog = () => {
     };
 
     // Date
-    const [value, setValue] = useState({
-        startDate: new Date(),
-        endDate: new Date().setMonth(11)
-    });
+    const [dateValue, setDateValue] = useState(null);
 
-    const handleValueChange = (newValue) => {
-        console.log("newValue:", newValue);
-        setValue(newValue);
+    const handleDateValueChange = (newDateValue) => {
+        console.log("newValue:", newDateValue);
+        setDateValue(newDateValue);
     }
 
 
@@ -126,8 +123,8 @@ const ActivityDialog = () => {
                         inputClassName="h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs 
                     bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
                         toggleClassName="absolute rounded-r-lg text-white left-[115px] h-full px-3 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
-                        value={value}
-                        onChange={handleValueChange}
+                        value={dateValue}
+                        onChange={handleDateValueChange}
                         // showShortcuts={true}
                         calendarClassName={"bg-black-dark"}
                         useRange={false}
