@@ -1,5 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/react-tailwindcss-datepicker/dist/index.esm.js',
+  ],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -68,6 +73,7 @@ export default {
         240: '240px',
         721: '721px',
         343: '343px',
+        375: '375px',
         311: '311px',
         228: '228px',
         254: '254px',
@@ -75,6 +81,9 @@ export default {
         204: '204px',
         415: '415px',
         419: '419px',
+        240: '240px',
+        1200: '1200px',
+        1440: '1440px',
         30: '30px',
       },
       height: {
@@ -85,7 +94,18 @@ export default {
         30: '30px',
         204: '204px',
         537: '537px',
+        768: '768px',
         15: '15px',
+        343: '343px',
+        508: '508px',
+        856: '856px',
+        104: '104px',
+        174: '174px',
+        127: '127px',
+        1024: '1024px',
+      },
+      screens: {
+        galaxy: '350px',
       },
       fontSize: {
         32: "32px",
