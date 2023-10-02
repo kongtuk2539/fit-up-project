@@ -1,4 +1,5 @@
 import Circle from './components/circle/Circle.jsx'
+import HorizonBar from './components/circle/HorizonBar.jsx'
 import React from "react";
 import Rightsection from "./components/activitycard/Rightsection";
 import Sideham from './components/sidebar-ham/Sideham.jsx';
