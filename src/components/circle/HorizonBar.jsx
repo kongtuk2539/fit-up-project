@@ -27,7 +27,7 @@ const HorizonBar = () => {
     return (
         <div className="box-bar">
             <div className="font-roboto-mono text-white mb-6 md:mb-14 font-bold">Monthly Challenge</div>
-            <p className="title-bar font-orbitron text-2xl font-bold text-white mb-2">Octobar Move</p>
+            <p className="title-bar font-orbitron font-bold text-xl text-white mb-2">Octobar Move</p>
             <div className="bar-container
             relative bg-black-dark w-311 md:w-419 h-15 rounded-full">
                 <div id='fitcoin-bar' className="fitcoin-bar w-0 h-full 
