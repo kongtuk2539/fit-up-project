@@ -3,13 +3,15 @@ import ActivityDialog from './components/activityDialog/ActivityDialog.jsx'
 import HorizonBar from './components/circle/HorizonBar.jsx'
 import React from "react";
 import Rightsection from "./components/activitycard/Rightsection";
-// import Dashboard from './viewpage/Dashboard'
+import Dashboard from './viewpage/Dashboard'
 
 function App() {
   return (
     <div>
       {/* <h1 className="font-orbitron font-bold text-6xl">Fit-up</h1> */}
-      <ActivityDialog />
+      {/* <ActivityDialog /> */}
+      < Dashboard />
+      {/* <Circle /> */}
       {/* <h1 className="font-orbitron font-bold text-6xl">Fit-up</h1> */}
 
       {/* this is my content */}

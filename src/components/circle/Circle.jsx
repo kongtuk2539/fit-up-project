@@ -9,7 +9,7 @@ const Circle = () => {
     useEffect(() => {
         const circle = circleRef.current;
         let counter = 0;
-        let coin = 30;
+        let coin = 80;
         const coinPercent = coin / 100;
         const valueStroke = 551 - 551 * coinPercent;
 
