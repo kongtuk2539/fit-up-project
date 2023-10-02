@@ -1,7 +1,9 @@
 import Circle from './components/circle/Circle.jsx'
+import HorizonBar from './components/circle/HorizonBar.jsx'
 import React from "react";
 import Rightsection from "./components/activitycard/Rightsection";
-
+import Sideham from './components/sidebar-ham/Sideham.jsx';
+import Sidebar from './components/sidebar-ham/Sidebar.jsx';
 function App() {
   return (
     <div>
@@ -19,14 +21,4 @@ function App() {
 export default App
 
 
-// route
-/* function App(props) {
 
-  return (
-    <div>
-      {props.children}
-    </div >
-  )
-}
-
-export default App */
