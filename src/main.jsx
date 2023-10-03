@@ -10,6 +10,7 @@ import Card from './components/activitycard/Card';
 import Circle from './components/circle/Circle';
 import Rightsection from './components/activitycard/Rightsection';
 import ActivityDialog from './components/activityDialog/ActivityDialog';
+import Chart from './components/bar-chart/Chart';
 
 const router = createBrowserRouter([
   {
@@ -38,13 +39,18 @@ const router = createBrowserRouter([
     exact: true
   },
   {
+    path: '/activitydialog',
+    element: <ActivityDialog />,
+    exact: true
+  },
+  {
     path: '/rightsection',
     element: <Rightsection />,
     exact: true
   },
   {
-    path: '/activitydialog',
-    element: <ActivityDialog />,
+    path: '/chart',
+    element: <Chart />,
     exact: true
   },
 ])

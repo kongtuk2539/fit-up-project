@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import circleStyle from './circls-style.css'
+import './circls-style.css'
 import HorizonBar from './HorizonBar.jsx'
 
 const Circle = () => {
@@ -9,7 +9,7 @@ const Circle = () => {
     useEffect(() => {
         const circle = circleRef.current;
         let counter = 0;
-        let coin = 80;
+        let coin = 50;
         const coinPercent = coin / 100;
         const valueStroke = 551 - 551 * coinPercent;
 
