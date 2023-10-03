@@ -39,6 +39,7 @@ const Circle = () => {
 
     return (
         <div className="w-343 md:w-721 h-537 md:h-324 rounded-lg bg-black-medium py-6 px-4 md:px-0 md:flex">
+            {/* md:w-721 */}
             <div className="title-circle font-roboto-mono font-bold text-white mb-3 md:hidden">
                 <p>Today Earn</p>
             </div>
@@ -46,7 +47,7 @@ const Circle = () => {
                 <div className="title-circle font-roboto-mono font-bold text-white mb-3 hidden md:inline-block">
                     <p>Today Earn</p>
                 </div>
-                <div className="outer w-204 h-204 p-26 rounded-full bg-black-light">
+                <div className="outer w-204 h-204 p-26 rounded-full bg-white-op40">
                     <div className="inner w-full h-full bg-black-medium rounded-full flex items-center justify-center">
                         <div className="info-circle flex flex-col justify-start gap-1">
                             <h3 className="text-blue font-orbitron font-bold text-2xl">

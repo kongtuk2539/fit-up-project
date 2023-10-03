@@ -37,11 +37,11 @@ const Sidebar = () => {
               : "fixed top-0 left-[-100%] w-[300px] h-screen bg-black-medium z-10 duration-300 text-white"
           }
         >
-          
+
           <div
             onClick={() => setNav(!nav)}
             className="absolute right-3 mt-10 pt-3 cursor-pointer h-0 "
-            // className="fixed inset-0 h-full w-full z-10"
+          // className="fixed inset-0 h-full w-full z-10"
           >
             <span class="material-symbols-outlined">close</span>
           </div>
@@ -135,11 +135,11 @@ const Sidebar = () => {
               : "fixed top-0 left-[-100%] w-[300px] h-screen bg-black-medium z-10 duration-300 text-white"
           }
         >
-          
+
           <div
             onClick={() => setNav(!nav)}
             className="absolute right-3 mt-10 pt-3 cursor-pointer h-0 "
-            // className="fixed inset-0 h-full w-full z-10"
+          // className="fixed inset-0 h-full w-full z-10"
           >
             <span class="material-symbols-outlined">close</span>
           </div>
@@ -202,7 +202,8 @@ const Sidebar = () => {
       </div>
 
       {/* Desktop */}
-      <div className="w-240  m-0 p-0 absolute top-0 left-0 h-full border-solid border-2 border-pink hidden md:inline">
+      {/* w-240 */}
+      <div className="w-240 m-0 p-0 absolute top-0 left-0 h-full border-solid border-2 border-pink hidden md:inline">
         <div className=" bg-black-medium top-0 left-0 h-full text-white pt-10">
           <div className="flex justify-center text-center pb-10">
             <img
