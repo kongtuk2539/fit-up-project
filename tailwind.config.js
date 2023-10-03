@@ -85,6 +85,8 @@ export default {
         1200: '1200px',
         1440: '1440px',
         30: '30px',
+        512: '512px',
+        156: '156px',
       },
       height: {
         324: '324px',
@@ -102,7 +104,10 @@ export default {
         104: '104px',
         174: '174px',
         127: '127px',
-        1024: '1024px',
+        1024:'1024px',
+        430: '430px',
+        41:  '41px',
+        373: '373px',
       },
       screens: {
         galaxy: '350px',
@@ -124,6 +129,9 @@ export default {
       },
       margin: {
         54: "54px",
+        56: "56px",
+        40: "40px",
+        81: "81px",
       },
       strokeWidth: {
         25: "25px",
