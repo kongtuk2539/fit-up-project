@@ -52,25 +52,26 @@ const data = [
 const Chart = () => {
   return (
     <>
-      <container className="bg-[#2C2C2E] inline-block w-721 h-508 mt-24 mr-24 ml-56 mb-40">
+      <container className="bg-[#2C2C2E] flex justify-center w-721 h-508 mt-24 mr-24 ml-56 mb-40 font-roboto-mono rounded-lg ">
 
-        <div className="flex flex-col mt-24 ml-24 w-512 h-430">
-          <heading className="w-156 h-41 mt-0 ml-0">
-            <p className="text-white">Weekly Performance</p>
+        <div className="flex flex-col mt-[24px] w-512 h-430">
+          <heading className="w-156 h-41 mt-0 ml-0 absolute pl-[16px]">
+            <p className="text-white ">Weekly Performance</p>
+            <p className="text-black-light ">(20 Sun - 26 Sat)</p>
           </heading>
-          <chart className="h-373 mt-16 ml-0">
+          <chart className="h-373 mt-[118px] ml-0">
             <BarChart
-              width={512}
+              width={580}
               height={300}
               data={data}
               margin={{
                 top: 5,
                 right: 30,
-                left: 20,
+                left: 0,
                 bottom: 5,
               }}
             >
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid strokeDasharray="5 5" vertical={false} strokeOpacity='20%'/>
               <XAxis dataKey="name" />
               <YAxis domain={[0, 1000]} />
               <Tooltip cursor={{ fill: 'transparent' }} content={<CustomTooltip />} />
@@ -81,13 +82,19 @@ const Chart = () => {
           </chart>
         </div>
 
-        <calculation>
-          <p>
-            total
-          </p>
-          <p>
-            Duration
-          </p>
+        <calculation className="text-white flex flex-col items-start justify-center gap-8 ">
+          <div>
+            <p>
+              Total
+            </p>
+            <p className="text-blue font-orbitron font-bold text-xl">4200 cal</p>
+          </div>
+          <div>
+            <p>
+              Duration
+            </p>
+            <p className="text-blue font-orbitron font-bold text-xl">12 hours <br/>40 minutes</p>
+          </div>
         </calculation>
       </container>
     </>
