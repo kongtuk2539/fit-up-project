@@ -36,14 +36,14 @@ const HorizonBar = () => {
             </div>
             <div className="notation flex mt-5 gap-1">
                 <div className="coin flex mr-5">
-                    <p className="notation-coin w-30 h-1 mr-4 bg-blue rounded-full relative top-2"></p>
+                    <p className="notation-coin w-[30px] h-1 mr-4 bg-blue rounded-full relative top-2"></p>
                     <div className='flex flex-col'>
                         <p className='font-roboto-mono text-sm font-bold text-black-light'>Fitcoin</p>
                         <p className='font-roboto-mono text-sm font-bold text-white'>27,000</p>
                     </div>
                 </div>
                 <div className="remaining flex mr-5">
-                    <p className="notation-remaining w-30 h-1 mr-4 bg-black-dark rounded-full relative top-2"></p>
+                    <p className="notation-remaining w-[30px] h-1 mr-4 bg-black-dark rounded-full relative top-2"></p>
                     <div className='flex flex-col'>
                         <p className='font-roboto-mono text-sm font-bold text-black-light'>Remaining</p>
                         <p className='font-roboto-mono text-sm font-bold text-white'>3,000</p>
