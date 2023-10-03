@@ -11,6 +11,7 @@ import Circle from './components/circle/Circle';
 import Rightsection from './components/activitycard/Rightsection';
 import ActivityDialog from './components/activityDialog/ActivityDialog';
 import Chart from './components/bar-chart/Chart';
+import Login from './viewpage/Login';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
   {
     path: '/chart',
     element: <Chart />,
+    exact: true
+  },
+  {
+    path: '/login',
+    element: <Login />,
     exact: true
   },
 ])
