@@ -9,6 +9,8 @@ import Sideham from './components/sidebar-ham/Sideham';
 import Card from './components/activitycard/Card';
 import Circle from './components/circle/Circle';
 import Rightsection from './components/activitycard/Rightsection';
+import ActivityDialog from './components/activityDialog/ActivityDialog';
+
 const router = createBrowserRouter([
   {
     path: '/sidebar',
@@ -38,6 +40,11 @@ const router = createBrowserRouter([
   {
     path: '/rightsection',
     element: <Rightsection />,
+    exact: true
+  },
+  {
+    path: '/activitydialog',
+    element: <ActivityDialog />,
     exact: true
   },
 ])
