@@ -12,7 +12,7 @@ const Deletedialog = ({ toggleDialogdel }) => {
   };
 
   return (
-    <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50">
+    <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
       <div className="relative w-343 h-488 bg-black-medium rounded-lg my-6 flex flex-col items-center px-10 pt-55 lg:w-396 lg:justify-center">
         <img
           src="./src/assets/image/Activity/bgdelete.png"

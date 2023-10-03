@@ -52,7 +52,8 @@ const data = [
 const Chart = () => {
   return (
     <>
-      <container className="bg-[#2C2C2E] flex justify-center w-721 h-508 mt-24 mr-24 ml-56 mb-40 font-roboto-mono rounded-lg ">
+      {/* mt-24 mr-24 ml-56 mb-40 */}
+      <container className="bg-[#2C2C2E] flex justify-center w-721 h-508 font-roboto-mono rounded-lg ">
 
         <div className="flex flex-col mt-[24px] w-512 h-430">
           <heading className="w-156 h-41 mt-0 ml-0 absolute pl-[16px]">
@@ -71,7 +72,7 @@ const Chart = () => {
                 bottom: 5,
               }}
             >
-              <CartesianGrid strokeDasharray="5 5" vertical={false} strokeOpacity='20%'/>
+              <CartesianGrid strokeDasharray="5 5" vertical={false} strokeOpacity='20%' />
               <XAxis dataKey="name" />
               <YAxis domain={[0, 1000]} />
               <Tooltip cursor={{ fill: 'transparent' }} content={<CustomTooltip />} />
@@ -93,7 +94,7 @@ const Chart = () => {
             <p>
               Duration
             </p>
-            <p className="text-blue font-orbitron font-bold text-xl">12 hours <br/>40 minutes</p>
+            <p className="text-blue font-orbitron font-bold text-xl">12 hours <br />40 minutes</p>
           </div>
         </calculation>
       </container>

@@ -8,8 +8,8 @@ const Rightsection = () => {
   const haveCard = true;
   return (
     <>
-      <div className="py-6 px-4 bg-black-dark text-white">
-        <Header />
+      <div className=" bg-black-dark text-white">
+        {/* <Header /> */}
         {haveCard ? (
           <>
             <Card />
