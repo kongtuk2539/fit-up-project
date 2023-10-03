@@ -47,6 +47,11 @@ const router = createBrowserRouter([
     element: <Rightsection />,
     exact: true
   },
+  {
+    path: '/activitydialog',
+    element: <ActivityDialog />,
+    exact: true
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
