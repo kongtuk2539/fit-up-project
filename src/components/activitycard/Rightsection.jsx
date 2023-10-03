@@ -3,7 +3,7 @@ import Header from "./Header";
 import Card from "./Card";
 import Createmobile from "./Createmobile";
 import Default from "./Default";
-import Form from "../form/Form";
+// import Form from "../form/Form";
 
 const Rightsection = () => {
   const haveCard = true;
