@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Deletedialog from "./Deletedialog";
+import Successdialog from "./Successdialog";
 
 const Actionbutton = () => {
   const [dropdownOpen, setDropdownOpen] = useState(!true);
@@ -17,7 +18,7 @@ const Actionbutton = () => {
       <div className="relative m-4" data-x-data="{ dropdownOpen: true }">
         <button
           onClick={toggleDropdown}
-          className="clickbutton relative z-10 w-11 h-11 rounded bg-pink flex justify-center items-center"
+          className="primary-contained-button clickbutton relative z-10 w-11 h-11 rounded flex justify-center items-center"
         >
           {/* <span class="material-symbols-outlined text-black-dark">more_horiz</span> */}
           <svg
@@ -46,13 +47,13 @@ const Actionbutton = () => {
 
             <div className="animate-in zoom-in absolute border border-white w-32 h-24 flex flex-col justify-center right-0 mt-2 bg-black-medium rounded shadow-box z-20">
               {/* <div className="absolute border border-white w-32 h-24 px-2 right-0 mt-2 bg-black-medium rounded shadow-xl z-20"> */}
-              <button className="clickbutton w-full flex items-center rounded px-4 py-2 text-white font-roboto-mono hover:bg-white hover:text-black-dark">
+              <button className="clickbutton w-full flex items-center rounded px-4 py-2 text-white font-roboto-mono">
                 <span className="material-symbols-outlined pr-2">edit</span>
                 Edit
               </button>
               <button
                 onClick={toggleDialogdel}
-                className="clickbutton w-full flex items-center rounded px-4 py-2 text-red font-roboto-mono hover:bg-white hover:text-black-Red"
+                className="clickbutton w-full flex items-center rounded px-4 py-2 text-red font-roboto-mono"
               >
                 <span class="material-symbols-outlined pr-2">delete</span>
                 Delete
@@ -61,6 +62,7 @@ const Actionbutton = () => {
                 <div className="fixed inset-0 h-full w-full z-10">
                   <div onClick={toggleDialogdel} className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"></div>
                   <Deletedialog toggleDialogdel={toggleDialogdel} />
+                  {/* <Successdialog toggleDialogdel={toggleDialogdel} /> */}
                 </div>
               )}
             </div>
