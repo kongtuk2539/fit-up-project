@@ -24,6 +24,7 @@ export default {
         'black-light': '#B4B5B7',
         white: '#FFFFFF',
         'white-op70': 'rgba(255, 255, 255, 0.7)',
+        'white-op40': 'rgba(255, 255, 255, 0.4)',
         red: '#F80866',
         green: '#D6FE5C',
         'gray-900': '#020202',
@@ -105,12 +106,9 @@ export default {
         32: '32px',
       },
       backgroundImage: {
-        // 'dashedborder': "url('data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e')",
         run: "url('/src/assets/image/Activity/Run.png')",
         weight: "url('/src/assets/Weight-Training.png')",
         delete: "url('/src/assets/bgdelete.png')",
-        bgpink:
-          "url('data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%23FD00FEFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e')",
       },
       padding: {
         26: '26px',
