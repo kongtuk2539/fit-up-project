@@ -4,7 +4,7 @@ import Actionbutton from "./Actionbutton";
 const Card = () => {
   return (
     <>
-      <div className="bg-run bg-cover w-343 h-324 rounded-lg my-6 text-white relative">
+      <div className="bg-run bg-cover w-343 h-324 rounded-lg mb-6 text-white relative">
         <div className="flex justify-end h-screen">
           {/* menu */}
           <Actionbutton />
