@@ -35,7 +35,7 @@ const Deletedialog = ({ toggleDialogdel }) => {
         <div className="z-50 flex gap-4">
           <button
             onClick={toggleDialogdel}
-            className="clickbutton flex justify-center items-center bg-white w-150 p-3 rounded text-gray-op90 font-roboto-mono font-bold"
+            className="secondary-contained-button clickbutton flex justify-center items-center bg-white w-150 p-3 rounded text-gray-op90 font-roboto-mono font-bold"
           >
             Cancel
           </button>
@@ -43,7 +43,7 @@ const Deletedialog = ({ toggleDialogdel }) => {
             onClick={() => {
               deleteData(id);
             }}
-            className="clickbutton flex justify-center items-center bg-pink w-150 p-3 rounded text-black-dark font-roboto-mono font-bold"
+            className="primary-contained-button clickbutton flex justify-center items-center w-150 p-3 rounded font-roboto-mono font-bold"
           >
             Delete
           </button>
