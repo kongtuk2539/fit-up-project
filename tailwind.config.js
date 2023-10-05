@@ -25,6 +25,7 @@ export default {
         white: '#FFFFFF',
         'white-op70': 'rgba(255, 255, 255, 0.7)',
         'white-op40': 'rgba(255, 255, 255, 0.4)',
+        'white-op20': 'rgba(255, 255, 255, 0.2)',
         red: '#F80866',
         green: '#D6FE5C',
         'gray-900': '#020202',
