@@ -6,10 +6,10 @@ import Sidebar from '../components/sidebar-ham/Sidebar'
 
 function Dashboard() {
     return (
-        <div className='flex bg-black-dark h-screen'>
+        <div className='flex bg-black-dark h-auto'>
             {/* Sidebar */}
             {/* <Sidebar setStatus={setStatus} /> */}
-            <div className='w-[240px] h-full'>
+            <div className='w-[240px] h-full bg-red'>
                 <Sidebar />
             </div>
 
