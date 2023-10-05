@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const CustomBar = ({ x, y, width, height, fill }) => {
     const [hovered, setHovered] = useState(false);
-    const borderRadius = 8; // Adjust the radius for the rounded top corners
+    const borderRadius = 4; // Adjust the radius for the rounded top corners
     
     return (
         <g>

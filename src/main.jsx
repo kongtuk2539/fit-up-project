@@ -13,6 +13,8 @@ import ActivityDialog from './components/activityDialog/ActivityDialog';
 import Chart from './components/bar-chart/Chart';
 import Login from './viewpage/Login';
 import Dashboard from './viewpage/Dashboard';
+import Dashboardpages from './Pages/Dashboardpages';
+
 
 const router = createBrowserRouter([
   {
@@ -63,6 +65,10 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <Dashboard />,
+    exact: true
+  }, {
+    path: '/bank',
+    element: <Dashboardpages />,
     exact: true
   },
 ])
