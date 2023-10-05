@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 const Hamber = () => {
   const [ham, setHam] = useState(false);
   return (
-    <>
+    <div className=''>
       {/* Moblie */}
-      <div className='inline sm:hidden text-white'>
-        <div className="flex flex-row-reverse items-center top-0 right-0 mt-0 mr-14">
-          <div onClick={() => setHam(!ham)} className="cursor-pointer pt-3 bg-pink border-solid border-2 border-pink ">
+      <div className='inline sm:hidden text-white '>
+        <div className="top-0  mt-4 pr-4 w-full h-[56px]">
+          <div onClick={() => setHam(!ham)} className="cursor-pointer flex items-center justify-center w-[40px] h-[40px] bg-pink rounded-full text-black-dark">
           <span class="material-symbols-outlined">account_circle</span>
           </div>
         </div>
@@ -63,15 +63,14 @@ const Hamber = () => {
       </div>
 
       
-
       {/* Desktop */}
       <div className='hidden sm:inline '>
-        <div className="flex absolute top-0 right-0 mt-10 mr-14 border-solid border border-pink">
+        <div className="flex  border-solid ">
           <div className="mr-6 m-1 mt-4">
-            <button className="h-10 w-10 mr-6 rounded-full p-0 hover:bg-black-dark hover:text-white border-solid border border-pink">
+            <button className="h-10 w-10 mr-6 rounded-full p-0 hover:bg-black-dark text-white clickbutton">
               <span class="material-symbols-outlined">sms</span>
             </button>
-            <button className="h-10 w-10 rounded-full p-0 hover:bg-black-dark hover:text-white">
+            <button className="h-10 w-10 rounded-full p-0 hover:bg-black-dark text-white clickbutton">
             <span class="material-symbols-outlined">notifications</span>
             </button>
           </div>
@@ -82,7 +81,7 @@ const Hamber = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow text-base rounded-box w-52 bg-black-medium text-white "
+                className=" dropdown-content z-[20] menu p-2 shadow text-base w-52 bg-black-medium text-white rounded border border-white"
               >
                 <li>
                   <a> <span class="material-symbols-outlined">account_circle</span> Proflie</a>
@@ -95,7 +94,7 @@ const Hamber = () => {
                 </li>
                 <div className="border-b-2 border-black-light"></div>
                 <li>
-                  <a> <span class="material-symbols-outlined">logout</span> Sign Out</a>
+                  <a className='text-red'> <span class="material-symbols-outlined ">logout</span> Sign Out</a>
                 </li>
               </ul>
             </div>
@@ -103,7 +102,7 @@ const Hamber = () => {
         </div>
 
       </div>
-    </>
+    </div>
   )
 }
 

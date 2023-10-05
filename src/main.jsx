@@ -15,6 +15,8 @@ import Login from './viewpage/Login';
 import Dashboard from './viewpage/Dashboard';
 import Signup1 from './components/signup/Signup1';
 import Signup2 from './components/signup/Signup2';
+import Dashboardpages from './Pages/Dashboardpages';
+
 
 const router = createBrowserRouter([
   {
@@ -70,6 +72,10 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <Dashboard />,
+    exact: true
+  }, {
+    path: '/bank',
+    element: <Dashboardpages />,
     exact: true
   },
 ])
