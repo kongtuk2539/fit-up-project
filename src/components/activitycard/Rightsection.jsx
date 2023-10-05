@@ -5,7 +5,7 @@ import Createmobile from "./Createmobile";
 import Default from "./Default";
 
 const Rightsection = () => {
-  const haveCard = true;
+  const haveCard = false;
   return (
     <>
       <div className=" bg-black-dark text-white">

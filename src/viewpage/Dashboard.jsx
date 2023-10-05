@@ -19,9 +19,9 @@ function Dashboard() {
         <Hamber /> */}
       </div>
       {/* Main Content */}
-      <div className={`grid grid-cols-6 gap-6 px-10  mx-auto w-full`}>
-        <div className="w-full col-start-1 col-end-13">
-          <div className="flex justify-between py-10">
+      <div className={`grid grid-cols-6 md:grid-cols-12 gap-6 px-10  mx-auto w-full`}>
+        <div className="w-full col-start-1 col-end-13 border border-red">
+          <div className="flex justify-between pt-10">
             <div className="text-white ">
               <Header />
             </div>
@@ -30,7 +30,12 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="w-full h-856  col-start-1 col-end-9">
+        <div className="w-auto h-auto col-start-1 col-end-6 rounded-lg inline md:hidden">
+          <div className="h-auto">
+            <Rightsection />
+          </div>
+        </div>
+        <div className="w-full h-856  col-start-1 col-end-7 md:col-end-9 border border-red">
           <div className="flex flex-col gap-6">
             <div className="w-721">
               <Circle />
@@ -40,7 +45,8 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="w-auto h-856 col-start-1 col-end-6 rounded-lg ">
+
+        <div className="w-auto h-856 col-start-9 col-end-13 rounded-lg hidden md:inline">
           <div className="h-856">
             <Rightsection />
           </div>
