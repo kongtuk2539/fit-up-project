@@ -6,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
 } from "recharts";
 import CustomTooltip from "./CustomTooltip";
 import CustomBar from "./CustomBar";
@@ -52,17 +51,43 @@ const data = [
 const Chart = () => {
   return (
     <>
+
+      {/* destop */}
       {/* mt-24 mr-24 ml-56 mb-40 */}
-      <container className="bg-[#2C2C2E] flex justify-center w-721 h-508 font-roboto-mono rounded-lg ">
+      <container className="bg-[#2C2C2E] flex md:flex-row flex-col justify-center w-[343px] md:w-721 h-[589px] md:h-508 font-roboto-mono rounded-lg ">
 
         <div className="flex flex-col mt-[24px] w-512 h-430">
           <heading className="w-156 h-41 mt-0 ml-0 absolute pl-[16px]">
             <p className="text-white ">Weekly Performance</p>
             <p className="text-black-light ">(20 Sun - 26 Sat)</p>
           </heading>
-          <chart className="h-373 mt-[118px] ml-0">
+          <chart className="h-373 mt-[118px] ml-0 md:block hidden">
+            
+              <BarChart
+                width={580}
+                height={300}
+                data={data}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 0,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="5 5" vertical={false} strokeOpacity='20%' />
+                <XAxis dataKey="name" />
+                <YAxis domain={[0, 1000]} />
+                <Tooltip cursor={{ fill: 'transparent' }} content={<CustomTooltip />} />
+
+                <Bar dataKey="cal" fill={'#54D2FF'} shape={<CustomBar />} barSize={40} />
+
+              </BarChart>
+          </chart>
+
+          {/* mobile */}
+          <chart className="h-373 mt-[118px] ml-0 md:hidden">
             <BarChart
-              width={580}
+              width={311}
               height={300}
               data={data}
               margin={{
@@ -77,13 +102,13 @@ const Chart = () => {
               <YAxis domain={[0, 1000]} />
               <Tooltip cursor={{ fill: 'transparent' }} content={<CustomTooltip />} />
 
-              <Bar dataKey="cal" fill={'#54D2FF'} shape={<CustomBar />} barSize={40} />
+              <Bar dataKey="cal" fill={'#54D2FF'} shape={<CustomBar />} barSize={20} />
 
             </BarChart>
           </chart>
         </div>
 
-        <calculation className="text-white flex flex-col items-start justify-center gap-8 ">
+        <calculation className="text-white flex flex-row md:flex-col items-start justify-center gap-8 ">
           <div>
             <p>
               Total
