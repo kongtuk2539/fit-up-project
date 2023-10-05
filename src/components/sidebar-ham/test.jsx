@@ -56,3 +56,11 @@
     </nav>
   </div>
 </div>;
+
+
+<div className='hidden sm:inline absolute right-0'>
+        <div className="flex mr-14 border-solid border border-pink">
+          <div className="mr-6 m-1 mt-4">
+            <button className="h-10 w-10 mr-6 rounded-full p-0 hover:bg-black-dark hover:text-white border-solid border border-pink">
+              <span class="material-symbols-outlined">sms</span>
+            </button>

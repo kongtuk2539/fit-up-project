@@ -5,7 +5,7 @@ const Card = () => {
   return (
     <>
       <div className="bg-run bg-cover w-343 h-324 rounded-lg mb-6 text-white relative">
-        <div className="flex justify-end h-screen">
+        <div className="flex justify-end ">
           {/* menu */}
           <Actionbutton />
 

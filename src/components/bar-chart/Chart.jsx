@@ -63,7 +63,7 @@ const Chart = () => {
           {/* destop */}
           <chart className="h-373 mt-[118px] ml-2 md:block hidden">
               <BarChart
-                width={580}
+                width={555}
                 height={300}
                 data={data}
                 margin={{
@@ -112,7 +112,7 @@ const Chart = () => {
           </chart>
         </div>
 
-        <calculation className="text-white flex flex-row md:flex-col items-start justify-center gap-8 ">
+        <calculation className="text-white flex flex-row md:flex-col items-start justify-center gap-8 pr-2">
           <div>
             <p>
               Total
