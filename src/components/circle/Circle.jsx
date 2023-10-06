@@ -38,13 +38,13 @@ const Circle = () => {
     }, []);
 
     return (
-        <div className="w-343 md:w-721 h-537 md:h-324 rounded-lg bg-black-medium py-6 px-4 md:px-0 md:flex">
+        <div className="w-343 lg:w-721 h-537 lg:h-324 rounded-lg bg-black-medium py-6 px-4 lg:px-0 lg:flex">
             {/* md:w-721 */}
-            <div className="title-circle font-roboto-mono font-bold text-white mb-3 md:hidden">
+            <div className="title-circle font-roboto-mono font-bold text-white mb-3 lg:hidden">
                 <p>Today Earn</p>
             </div>
-            <div className="circle w-full md:w-254 h-136 md:h-full relative ml-54 md:ml-6">
-                <div className="title-circle font-roboto-mono font-bold text-white mb-3 hidden md:inline-block">
+            <div className="circle w-full lg:w-254 h-136 lg:h-full relative ml-54 lg:ml-6">
+                <div className="title-circle font-roboto-mono font-bold text-white mb-3 hidden lg:inline-block">
                     <p>Today Earn</p>
                 </div>
                 <div className="outer w-204 h-204 p-26 rounded-full bg-white-op40">
@@ -56,19 +56,19 @@ const Circle = () => {
                             <p className='text-black-light font-roboto-mono text-sm'>FitCoin</p>
                         </div>
                     </div>
-                    <svg className='absolute top-0 md:top-9 left-0 w-204 h-204 -rotate-90' xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <svg className='absolute top-0 lg:top-9 left-0 w-204 h-204 -rotate-90' xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <circle className="fill-none stroke-blue w-full h-full stroke-25" cx="102" cy="102" r="89" stroke-linecap="round" ref={circleRef} id="circle" />
                     </svg>
                 </div>
-                <div className="footer-circle w-full h-auto m-3 md:m-0 md:mt-2 text-white font-roboto-mono text-sm ml-0
+                <div className="footer-circle w-full h-auto m-3 lg:m-0 lg:mt-2 text-white font-roboto-mono text-sm ml-0
                 "><p className='flex items-center gap-1'><span className='material-symbols-outlined text-2xl'> monetization_on </span>Total Balance: 10,500</p>
                 </div>
             </div>
-            <div className='relative top-0 hidden md:inline-block'>
+            <div className='relative top-0 hidden lg:inline-block'>
                 < HorizonBar />
             </div>
 
-            <div className='relative top-[140px] inline-block md:hidden'>
+            <div className='relative top-[140px] inline-block lg:hidden'>
                 < HorizonBar />
             </div>
         </div>
