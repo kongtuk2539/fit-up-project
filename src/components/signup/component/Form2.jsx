@@ -73,11 +73,11 @@ const Form2 = () => {
             value={gender}
             onChange={handleGenderChange}
             placeholder="Select gender"
-            className="select w-full px-4 py-3 mb-4 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+            className="select text-gray-400 text-base w-full px-4 py-3 mb-4 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
           >
             <option className="disabled selected">Select gender</option>
-            <option>Male</option>
-            <option>Female</option>
+            <option className="text-white">Male</option>
+            <option className="text-white">Female</option>
           </select>
         </div>
       </div>
