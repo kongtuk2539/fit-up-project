@@ -7,7 +7,7 @@ const Sidebar = () => {
   return (
     <div className="">
       {/* Mobile */}
-      <div className=" px-4 w-full  items-center z-40 fixed left-0  md:hidden bg-black-dark sm:pt-5 ">
+      <div className=" px-4 w-full  items-center z-40 fixed left-0  lg:hidden bg-black-dark sm:pt-5 ">
         
         <div className="w-full md:bg-transparent">
           
@@ -23,7 +23,7 @@ const Sidebar = () => {
             />
           </div>
           </div>
-          <div className="md:hidden">
+          <div className="lg:hidden">
           <Hamber/>
           </div>
 
@@ -121,7 +121,7 @@ const Sidebar = () => {
       {/* Desktop */}
       {/* w-240 */}
       <div className="md:border md:border-pink md:h-full">
-      <div className="w-240 m-0 p-0  top-0 left-0 hidden md:inline bg-white">
+      <div className="w-240 m-0 p-0  top-0 left-0 hidden lg:inline bg-white">
         
         <div className=" bg-black-medium top-0 left-0 h-full text-white pt-10">
           <div className="flex justify-center text-center pb-10">
