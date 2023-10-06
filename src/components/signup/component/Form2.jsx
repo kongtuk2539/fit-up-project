@@ -4,11 +4,19 @@ import InputPassword from "./password";
 
 const Form2 = () => {
   const [username, setUsername] = useState("");
+  const [dob, setDob] = useState("");
+  const [gender, setGender] = useState("");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
+  };
+  const handleDobChange = (e) => {
+    setDob(e.target.value);
+  };
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
   };
   const handleWeightChange = (e) => {
     setWeight(e.target.value);
@@ -47,13 +55,40 @@ const Form2 = () => {
           type="text"
           id="dateOfBirth"
           name="dateOfBirth"
-          value={username}
-          onChange={handleUsernameChange}
+          value={dob}
+          onChange={handleDobChange}
           placeholder="Select date of birth"
           className="w-full px-4 py-3 mb-4 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
         />
       </div>
-      <div className="w-full flex flex-col gap-2 text-white">
+
+      <div>
+        <label htmlFor="gender" className="text-white block font-roboto-mono text-sm pb-2">
+          Gender
+        </label>
+        <div>
+          <select
+            id="gender"
+            name="gender"
+            value={gender}
+            onChange={handleGenderChange}
+            placeholder="Select gender"
+            className="select w-full px-4 py-3 mb-4 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+          >
+            <option className="disabled selected">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+      </div>
+
+      {/* <select className="select w-full px-4 py-3 mb-4 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color">
+        <option disabled selected className="text-gray-400">Select gender</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select> */}
+
+      {/* <div className="w-full flex flex-col gap-2 text-white">
         <label htmlFor="gender" className="block font-roboto-mono text-sm pb-2">
           Gender
         </label>
@@ -61,18 +96,18 @@ const Form2 = () => {
           type="text"
           id="gender"
           name="gender"
-          value={username}
-          onChange={handleUsernameChange}
+          value={gender}
+          onChange={handleGenderChange}
           placeholder="Select gender"
           className="w-full px-4 py-3 mb-4 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
         />
-      </div>
+      </div> */}
       <div className="w-full flex flex-col gap-2 text-white">
         <label htmlFor="weight" className="block font-roboto-mono text-sm pb-2">
           Weight (kg)
         </label>
         <input
-          type="number"
+          type="text"
           id="weight"
           name="weight"
           value={weight}
@@ -83,10 +118,10 @@ const Form2 = () => {
       </div>
       <div className="w-full flex flex-col gap-2 text-white">
         <label htmlFor="height" className="block font-roboto-mono text-sm pb-2">
-          Height (kg)
+          Height (cm)
         </label>
         <input
-          type="number"
+          type="text"
           id="height"
           name="height"
           value={height}
@@ -96,7 +131,22 @@ const Form2 = () => {
         />
       </div>
       <div className="mb-4 font-roboto-mono text-xs text-gray-400">
-        <p>By creating an account, you agree to Fit2E <a href="#" className="hover:underline hover:underline-offset-2 decoration-gray-400">Privacy Policy</a> and <a href="#" className="hover:underline hover:underline-offset-2 decoration-gray-400">Terms and Conditions</a></p>
+        <p>
+          By creating an account, you agree to Fit2E{" "}
+          <a
+            href="#"
+            className="hover:underline hover:underline-offset-2 decoration-gray-400"
+          >
+            Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a
+            href="#"
+            className="hover:underline hover:underline-offset-2 decoration-gray-400"
+          >
+            Terms and Conditions
+          </a>
+        </p>
       </div>
     </>
   );
