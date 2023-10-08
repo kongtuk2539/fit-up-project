@@ -3,12 +3,18 @@ import React, { useState } from "react";
 import InputPassword from "./password";
 
 const Form2 = () => {
+  const [image, setImage] = useState("");
+  const [imgUploaded, setImgUploaded] = useState(false);
   const [username, setUsername] = useState("");
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
 
+  const handleImageChange = (e) => {
+    setImage(e.target.value);
+    setImgUploaded(e.target.files.length > 0); 
+  };
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -27,6 +33,33 @@ const Form2 = () => {
 
   return (
     <>
+      {!imgUploaded ? ( 
+        <div className="avatar my-6 flex justify-center">
+          <label
+            htmlFor="image-upload"
+            className="w-[123.33px] h-[123.33px] relative cursor-pointer rounded-md"
+          >
+            <span class="clickbutton material-symbols-outlined border-[3px] border-pink rounded-full bg-pink-op10 text-white text-[32px] p-[43px]">
+              photo_camera
+            </span>
+            <input
+              id="image-upload"
+              name="image-upload"
+              type="file"
+              value={image}
+              onChange={handleImageChange}
+              className="sr-only"
+            />
+          </label>
+        </div>
+      ) : (
+        <div className="avatar my-6 flex justify-center">
+          <div className="w-[123.33px] h-[123.33px] border-[3px] border-pink rounded-full">
+            {/* <img src={image} alt="profile picture"></img> */}
+            <img src="/src/assets/image/Activity/Run.png" alt="profile picture" />
+          </div>
+        </div>
+      )}
       <div className="w-full flex flex-col gap-2 text-white">
         <label
           htmlFor="username"
@@ -63,7 +96,10 @@ const Form2 = () => {
       </div>
 
       <div>
-        <label htmlFor="gender" className="text-white block font-roboto-mono text-sm pb-2">
+        <label
+          htmlFor="gender"
+          className="text-white block font-roboto-mono text-sm pb-2"
+        >
           Gender
         </label>
         <div>
@@ -73,9 +109,9 @@ const Form2 = () => {
             value={gender}
             onChange={handleGenderChange}
             placeholder="Select gender"
-            className="select text-gray-400 text-base w-full px-4 py-3 mb-4 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+            className="select text-gray-400 text-base w-[343px] px-4 py-3 mb-4 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
           >
-            <option className="disabled selected">Select gender</option>
+            <option className="disabled defaultSelected">Select gender</option>
             <option className="text-white">Male</option>
             <option className="text-white">Female</option>
           </select>
