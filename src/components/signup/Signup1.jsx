@@ -18,7 +18,7 @@ const Signup1 = () => {
         </div>
         <Divider/>
         <Form1/>
-        <NextButton/>
+        {/* <NextButton/> */}
       </div>
     </div>
   );
