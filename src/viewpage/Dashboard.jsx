@@ -62,10 +62,12 @@ function Dashboard() {
         <div className="w-auto h-auto col-start-9 col-end-13 rounded-lg hidden lg:inline border border-red">
           <div className="">
             <Rightsection />
-            <div />
-            <div />
-            <div />
-            );
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
 }
 
-            export default Dashboard;
+export default Dashboard;
