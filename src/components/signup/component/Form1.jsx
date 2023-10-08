@@ -35,8 +35,6 @@ const Form1 = () => {
   const validateForm = () => {
     let errors = {};
     let isValid = true;
-    // const passwordRegex = new RegExp("^[A-Za-z0-9_]+$");
-    // const passwordRegex = /^[A-Za-z0-9_]+$/;
 
     if (!formData.firstname.trim()) {
       errors.firstname = "Please enter your first name";
@@ -56,7 +54,11 @@ const Form1 = () => {
       isValid = false;
     }
 
-    if (formData.password.length < 8 || !/[A-Z]/.test(formData.password) || !/[0-9]/.test(formData.password)) {
+    if (
+      formData.password.length < 8 ||
+      !/[A-Z]/.test(formData.password) ||
+      !/[0-9]/.test(formData.password)
+    ) {
       errors.password = "Please enter valid password";
       isValid = false;
     }
@@ -65,7 +67,11 @@ const Form1 = () => {
       isValid = false;
     }
 
-    if (formData.repassword.length < 8 || !/[A-Z]/.test(formData.repassword) || !/[0-9]/.test(formData.repassword)) {
+    if (
+      formData.repassword.length < 8 ||
+      !/[A-Z]/.test(formData.repassword) ||
+      !/[0-9]/.test(formData.repassword)
+    ) {
       errors.repassword = "Please enter valid password";
       isValid = false;
     }
@@ -160,7 +166,8 @@ const Form1 = () => {
             onChange={handleInputChange}
             placeholder="Enter your email"
             className={`${
-              formErrors.email === "Please enter your email" || formErrors.email === "Please enter a valid email"
+              formErrors.email === "Please enter your email" ||
+              formErrors.email === "Please enter a valid email"
                 ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                 : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
             }`}
@@ -188,7 +195,8 @@ const Form1 = () => {
               onChange={handleInputChange}
               placeholder="Enter your password"
               className={`${
-                formErrors.password === "Please enter your password" || formErrors.password === "Please enter valid password"
+                formErrors.password === "Please enter your password" ||
+                formErrors.password === "Please enter valid password"
                   ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
               }`}
@@ -223,14 +231,15 @@ const Form1 = () => {
           <div className="relative">
             <input
               type={showRePassword ? "text" : "password"}
-              // type="text"
               id="repassword"
               name="repassword"
               value={formData.repassword}
               onChange={handleInputChange}
               placeholder="Re-enter your password"
               className={`${
-                formErrors.repassword === "Please re-enter your password" || formErrors.repassword === "Please enter valid password" || formErrors.repassword === "Password do not match. Try again"
+                formErrors.repassword === "Please re-enter your password" ||
+                formErrors.repassword === "Please enter valid password" ||
+                formErrors.repassword === "Password do not match. Try again"
                   ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
               }`}
@@ -283,12 +292,14 @@ const Form1 = () => {
             <p>1 uppercase letter</p>
           </div>
 
-          <div className={`${
+          <div
+            className={`${
               !/[0-9]/.test(formData.password)
                 ? "flex items-center gap-2"
                 : "text-pink flex items-center gap-2"
-            }`}>
-          {/* <div className="flex items-center gap-2"> */}
+            }`}
+          >
+            {/* <div className="flex items-center gap-2"> */}
             <span className="text-base material-symbols-outlined">
               task_alt
             </span>

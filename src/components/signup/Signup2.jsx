@@ -22,7 +22,7 @@ const Signup2 = () => {
         </div>
         <div>
           <Form2 />
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             <button
               type="button"
               className="h-12 w-12 flex justify-center items-center pl-[8px] secondary-contained-button text-black-dark"
@@ -35,15 +35,14 @@ const Signup2 = () => {
               className="clickbutton h-12 w-[279px] primary-contained-button font-roboto-mono text-black-dark font-bold rounded"
             >
               Sign up
-            </button>
-            {dialogSuccess && (
+            </button> */}
+            {/* {dialogSuccess && (
               <div className="fixed inset-0 h-full w-full z-10">
                 <div onClick={toggleDialogSuccess} className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"></div>
                 <Successdialog toggleDialogSuccess={toggleDialogSuccess} />
-                {/* <Successdialog toggleDialogdel={toggleDialogdel} /> */}
               </div>
-            )}
-          </div>
+            )} */}
+          {/* </div> */}
         </div>
       </div>
     </div>
