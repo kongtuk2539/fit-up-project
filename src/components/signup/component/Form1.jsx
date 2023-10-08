@@ -71,6 +71,10 @@ const Form1 = () => {
       errors.repassword = "Please enter valid password";
       isValid = false;
     }
+    if (formData.repassword !== formData.password) {
+      errors.repassword = "Password do not match. Try again";
+      isValid = false;
+    }
     if (!formData.repassword.trim()) {
       errors.repassword = "Please re-enter your password";
       isValid = false;
@@ -90,26 +94,6 @@ const Form1 = () => {
       console.log("Form submission failed due to validation errors.");
     }
   };
-
-  // password validation
-  // const [password, setPassword] = useState("");
-  // const handlePasswordChange = (e) => {
-  //   setPassword(e.target.value);
-  // };
-
-  // const [firstname, setFirstname] = useState("");
-  // const [lastname, setLastname] = useState("");
-  // const [email, setEmail] = useState("");
-
-  // const handleFirstnameChange = (e) => {
-  //   setFirstname(e.target.value);
-  // };
-  // const handleLastnameChange = (e) => {
-  //   setLastname(e.target.value);
-  // };
-  // const handleEmailChange = (e) => {
-  //   setEmail(e.target.value);
-  // };
 
   return (
     <>
@@ -179,7 +163,7 @@ const Form1 = () => {
             onChange={handleInputChange}
             placeholder="Enter your email"
             className={`${
-              formErrors.firstname === "Please enter your first name"
+              formErrors.email === "Please enter your email" || formErrors.email === "Please enter a valid email"
                 ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                 : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
             }`}
@@ -250,7 +234,7 @@ const Form1 = () => {
               onChange={handleInputChange}
               placeholder="Re-enter your password"
               className={`${
-                formErrors.repassword === "Please re-enter your password" || formErrors.repassword === "Please enter valid password"
+                formErrors.repassword === "Please re-enter your password" || formErrors.repassword === "Please enter valid password" || formErrors.repassword === "Password do not match. Try again"
                   ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
               }`}
