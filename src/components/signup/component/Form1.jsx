@@ -58,23 +58,19 @@ const Form1 = () => {
       isValid = false;
     }
 
-    if (formData.password.length < 8) {
+    if (formData.password.length < 8 || !/[A-Z]/.test(formData.password) || !/[0-9]/.test(formData.password)) {
       errors.password = "Please enter valid password";
       isValid = false;
     }
-    if (!/[A-Z]/.test(formData.password)) {
-      errors.password = "Please enter valid password";
-      isValid = false;
-    }
-    // if (formData.password.passwordRegex.test(value)) {
-    //   errors.password = "Please enter valid password";
-    //   isValid = false;
-    // }
     if (!formData.password.trim()) {
       errors.password = "Please enter your password";
       isValid = false;
     }
 
+    if (formData.repassword.length < 8 || !/[A-Z]/.test(formData.repassword) || !/[0-9]/.test(formData.repassword)) {
+      errors.repassword = "Please enter valid password";
+      isValid = false;
+    }
     if (!formData.repassword.trim()) {
       errors.repassword = "Please re-enter your password";
       isValid = false;
@@ -212,7 +208,7 @@ const Form1 = () => {
               onChange={handleInputChange}
               placeholder="Enter your password"
               className={`${
-                formErrors.password === "Please enter your password"
+                formErrors.password === "Please enter your password" || formErrors.password === "Please enter valid password"
                   ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
               }`}
@@ -254,7 +250,7 @@ const Form1 = () => {
               onChange={handleInputChange}
               placeholder="Re-enter your password"
               className={`${
-                formErrors.repassword === "Please re-enter your password"
+                formErrors.repassword === "Please re-enter your password" || formErrors.repassword === "Please enter valid password"
                   ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
               }`}
@@ -288,7 +284,6 @@ const Form1 = () => {
                 : "text-pink flex items-center gap-2"
             }`}
           >
-            {/* <div className="flex items-center gap-2"> */}
             <span className="text-base material-symbols-outlined">
               task_alt
             </span>
@@ -302,14 +297,18 @@ const Form1 = () => {
                 : "text-pink flex items-center gap-2"
             }`}
           >
-            {/* <div className="flex items-center gap-2"> */}
             <span className="text-base material-symbols-outlined">
               task_alt
             </span>
             <p>1 uppercase letter</p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className={`${
+              !/[0-9]/.test(formData.password)
+                ? "flex items-center gap-2"
+                : "text-pink flex items-center gap-2"
+            }`}>
+          {/* <div className="flex items-center gap-2"> */}
             <span className="text-base material-symbols-outlined">
               task_alt
             </span>
