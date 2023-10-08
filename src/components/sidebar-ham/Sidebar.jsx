@@ -120,7 +120,7 @@ const Sidebar = () => {
 
       {/* Desktop */}
       {/* w-240 */}
-      <div className="md:border md:border-pink md:h-full">
+      <div className="lg:border lg:border-pink lg:h-full">
       <div className="w-240 m-0 p-0  top-0 left-0 hidden lg:inline bg-white">
         
         <div className=" bg-black-medium top-0 left-0 h-full text-white pt-10">
@@ -171,7 +171,7 @@ const Sidebar = () => {
               </button>
             </li>
             <li>
-              <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-black-medium hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-l clickbutton">
+              <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-black-medium hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg clickbutton">
                 <span class="material-symbols-outlined">emoji_events</span>
                 Leaderboard
               </button>

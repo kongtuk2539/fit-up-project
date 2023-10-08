@@ -7,7 +7,7 @@ const Header = () => {
   const currentMonth = currentDate.toLocaleString("default", {month: "short",});
   return (
     <div>
-      <h1 className="text-32 font-bold font-orbitron mt-10 sm:mt-14  md:mt-0">Dashboard</h1>
+      <h1 className="text-32 font-bold font-orbitron mt-10 sm:mt-14  md:mt-12 lg:mt-0">Dashboard</h1>
       <p className="font-roboto-mono">
         {currentWeekday}, {currentDay} {currentMonth}
       </p>
