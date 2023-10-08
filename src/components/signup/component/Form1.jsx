@@ -37,30 +37,44 @@ const Form1 = () => {
   const validateForm = () => {
     let errors = {};
     let isValid = true;
+    // const passwordRegex = new RegExp("^[A-Za-z0-9_]+$");
+    // const passwordRegex = /^[A-Za-z0-9_]+$/;
 
     if (!formData.firstname.trim()) {
       errors.firstname = "Please enter your first name";
       isValid = false;
     }
-
     if (!formData.lastname.trim()) {
       errors.lastname = "Please enter your last name";
       isValid = false;
     }
 
     if (!validator.isEmail(formData.email)) {
-      errors.email = "Invalid email format";
+      errors.email = "Please enter a valid email";
       isValid = false;
     }
-
     if (!formData.email.trim()) {
       errors.email = "Please enter your email";
       isValid = false;
     }
+
+    if (formData.password.length < 8) {
+      errors.password = "Please enter valid password";
+      isValid = false;
+    }
+    if (!/[A-Z]/.test(formData.password)) {
+      errors.password = "Please enter valid password";
+      isValid = false;
+    }
+    // if (formData.password.passwordRegex.test(value)) {
+    //   errors.password = "Please enter valid password";
+    //   isValid = false;
+    // }
     if (!formData.password.trim()) {
       errors.password = "Please enter your password";
       isValid = false;
     }
+
     if (!formData.repassword.trim()) {
       errors.repassword = "Please re-enter your password";
       isValid = false;
@@ -219,8 +233,8 @@ const Form1 = () => {
             </span>
           </div>
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
-              {formErrors.password}
-            </span>
+            {formErrors.password}
+          </span>
         </div>
 
         <div className="w-full flex flex-col gap-2 text-white">
@@ -261,26 +275,40 @@ const Form1 = () => {
             </span>
           </div>
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
-              {formErrors.repassword}
-            </span>
+            {formErrors.repassword}
+          </span>
         </div>
 
-
-
-        {/* validate */}
+        {/* validate password */}
         <div className="mb-6 font-roboto-mono text-xs text-black-light">
-          <div className="flex items-center gap-2">
+          <div
+            className={`${
+              formData.password.length < 8
+                ? "flex items-center gap-2"
+                : "text-pink flex items-center gap-2"
+            }`}
+          >
+            {/* <div className="flex items-center gap-2"> */}
             <span className="text-base material-symbols-outlined">
               task_alt
             </span>
             <p>8 characters minimum</p>
           </div>
-          <div className="flex items-center gap-2">
+
+          <div
+            className={`${
+              !/[A-Z]/.test(formData.password)
+                ? "flex items-center gap-2"
+                : "text-pink flex items-center gap-2"
+            }`}
+          >
+            {/* <div className="flex items-center gap-2"> */}
             <span className="text-base material-symbols-outlined">
               task_alt
             </span>
             <p>1 uppercase letter</p>
           </div>
+
           <div className="flex items-center gap-2">
             <span className="text-base material-symbols-outlined">
               task_alt
@@ -288,6 +316,7 @@ const Form1 = () => {
             <p>1 number</p>
           </div>
         </div>
+
         <button
           type="submit"
           className="h-12 w-full bg-pink hover:bg-pink-medium active:bg-pink-light font-roboto-mono text-black-dark font-bold rounded"
