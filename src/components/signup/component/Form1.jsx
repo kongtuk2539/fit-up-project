@@ -4,16 +4,29 @@ import InputPassword from "./password";
 import validator from "validator";
 
 const Form1 = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRePassword, setShowRePassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleRePasswordVisibility = () => {
+    setShowRePassword(!showRePassword);
+  };
+
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
     email: "",
+    password: "",
+    repassword: "",
   });
 
   const [formErrors, setFormErrors] = useState({
     firstname: "",
     lastname: "",
     email: "",
+    password: "",
+    repassword: "",
   });
 
   const handleInputChange = (e) => {
@@ -44,10 +57,16 @@ const Form1 = () => {
       errors.email = "Please enter your email";
       isValid = false;
     }
+    if (!formData.password.trim()) {
+      errors.password = "Please enter your password";
+      isValid = false;
+    }
+    if (!formData.repassword.trim()) {
+      errors.repassword = "Please re-enter your password";
+      isValid = false;
+    }
 
     setFormErrors(errors);
-    console.log(errors);
-    console.log(formErrors.firstname);
     return isValid;
   };
 
@@ -61,6 +80,12 @@ const Form1 = () => {
       console.log("Form submission failed due to validation errors.");
     }
   };
+
+  // password validation
+  // const [password, setPassword] = useState("");
+  // const handlePasswordChange = (e) => {
+  //   setPassword(e.target.value);
+  // };
 
   // const [firstname, setFirstname] = useState("");
   // const [lastname, setLastname] = useState("");
@@ -138,7 +163,6 @@ const Form1 = () => {
           </label>
           <input
             type="text"
-            // type="email"
             id="email"
             name="email"
             value={formData.email}
@@ -155,7 +179,95 @@ const Form1 = () => {
           </span>
         </div>
 
-        <InputPassword />
+        {/* password */}
+        {/* <InputPassword /> */}
+        <div className="w-full flex flex-col gap-2 text-white">
+          <label
+            htmlFor="password"
+            className="block font-roboto-mono text-sm pb-2"
+          >
+            Password
+          </label>
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              // type="text"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="Enter your password"
+              className={`${
+                formErrors.password === "Please enter your password"
+                  ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                  : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
+            />
+            <span
+              onClick={togglePasswordVisibility}
+              className="h-[48px] absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer"
+            >
+              {showPassword ? (
+                <i className="material-symbols-outlined text-gray-400">
+                  visibility_off
+                </i>
+              ) : (
+                <i className="material-symbols-outlined text-gray-400">
+                  visibility
+                </i>
+              )}
+            </span>
+          </div>
+          <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
+              {formErrors.password}
+            </span>
+        </div>
+
+        <div className="w-full flex flex-col gap-2 text-white">
+          <label
+            htmlFor="repassword"
+            className="block font-roboto-mono text-sm pb-2"
+          >
+            Re-enter Password
+          </label>
+          <div className="relative">
+            <input
+              type={showRePassword ? "text" : "password"}
+              // type="text"
+              id="repassword"
+              name="repassword"
+              value={formData.repassword}
+              onChange={handleInputChange}
+              placeholder="Re-enter your password"
+              className={`${
+                formErrors.repassword === "Please re-enter your password"
+                  ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                  : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
+            />
+            <span
+              onClick={toggleRePasswordVisibility}
+              className="h-[48px] absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer"
+            >
+              {showRePassword ? (
+                <i className="material-symbols-outlined text-gray-400">
+                  visibility_off
+                </i>
+              ) : (
+                <i className="material-symbols-outlined text-gray-400">
+                  visibility
+                </i>
+              )}
+            </span>
+          </div>
+          <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
+              {formErrors.repassword}
+            </span>
+        </div>
+
+
+
+        {/* validate */}
         <div className="mb-6 font-roboto-mono text-xs text-black-light">
           <div className="flex items-center gap-2">
             <span className="text-base material-symbols-outlined">

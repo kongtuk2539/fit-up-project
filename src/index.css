@@ -3,14 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.rr {
-  border: 1px solid white;
-}
-.xx {
-  border: 1px solid yellow;
-
-}
-
 /* Contained button */
 .primary-contained-button {
   background-color: #FD00FE;
