@@ -41,7 +41,7 @@ function Dashboard() {
             <div className="w-343 lg:w-full h-537 lg:h-324 rounded-lg bg-black-medium py-6 px-4 lg:px-0 lg:flex">
               <Circle />
             </div>
-            <div className=" w-721 h-508">
+            <div className="w-721 h-508">
               <Chart />
             </div>
           </div>

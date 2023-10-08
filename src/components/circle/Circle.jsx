@@ -65,7 +65,7 @@ const Circle = () => {
                 "><p className='flex items-center gap-1'><span className='material-symbols-outlined text-2xl'> monetization_on </span>Total Balance: 10,500</p>
                 </div>
             </div>
-            <div className='relative top-0 hidden lg:inline-block'>
+            <div className='relative w-311 lg:w-419 md:w-311 top-0 hidden lg:inline-block'>
                 < HorizonBar />
             </div>
 

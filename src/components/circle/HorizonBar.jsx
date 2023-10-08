@@ -25,11 +25,11 @@ const HorizonBar = () => {
 
 
     return (
-        <div className="box-bar">
+        <div className="box-barw-full">
             <div className="font-roboto-mono text-white mb-6 lg:mb-14 md:mb-6 font-bold">Monthly Challenge</div>
             <p className="title-bar font-orbitron font-bold text-xl text-white mb-2">Octobar Move</p>
             <div className="bar-container
-            relative bg-black-dark w-311 md:w-419 h-15 rounded-full">
+            relative bg-black-dark w-311 lg:w-full md:w-311 h-15 rounded-full">
                 {/* relative bg-black-dark w-311 md:w-419 h-15 rounded-full */}
                 {/* relative bg-black-dark w-311 lg:w-419 md:w-311 h-15 rounded-full */}
                 <div id='fitcoin-bar' className="fitcoin-bar w-0 h-full 
@@ -38,7 +38,7 @@ const HorizonBar = () => {
                 bg-blue absolute rounded-full" ref={barRef}> */}
                 </div>
             </div>
-            <div className="notation flex mt-5 gap-1">
+            <div className="notation flex mt-5 gap-1 flex-wrap">
                 <div className="coin flex mr-5">
                     <p className="notation-coin w-[30px] h-1 mr-4 bg-blue rounded-full relative top-2"></p>
                     <div className='flex flex-col'>
