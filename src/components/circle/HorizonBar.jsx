@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import circleStyle from './circls-style.css'
 
 const HorizonBar = () => {
-    const [fitcoinBar, setFitCoinBar] = useState(60);
+    const [fitcoinBar, setFitCoinBar] = useState(50);
     const barRef = useRef(null)
 
     useEffect(() => {
@@ -26,12 +26,16 @@ const HorizonBar = () => {
 
     return (
         <div className="box-bar">
-            <div className="font-roboto-mono text-white mb-6 md:mb-14 font-bold">Monthly Challenge</div>
+            <div className="font-roboto-mono text-white mb-6 lg:mb-14 md:mb-6 font-bold">Monthly Challenge</div>
             <p className="title-bar font-orbitron font-bold text-xl text-white mb-2">Octobar Move</p>
             <div className="bar-container
             relative bg-black-dark w-311 md:w-419 h-15 rounded-full">
+                {/* relative bg-black-dark w-311 md:w-419 h-15 rounded-full */}
+                {/* relative bg-black-dark w-311 lg:w-419 md:w-311 h-15 rounded-full */}
                 <div id='fitcoin-bar' className="fitcoin-bar w-0 h-full 
                 bg-blue absolute rounded-full" ref={barRef}>
+                    {/* fitcoin-bar w-0 h-full 
+                bg-blue absolute rounded-full" ref={barRef}> */}
                 </div>
             </div>
             <div className="notation flex mt-5 gap-1">
