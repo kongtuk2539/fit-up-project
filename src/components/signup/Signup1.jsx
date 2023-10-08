@@ -4,7 +4,6 @@ import Header from "./component/header";
 import Topsection from "./component/topsection";
 import Divider from "./component/Divider";
 import Form1 from "./component/Form1";
-import NextButton from "./component/nextbutton";
 import GoogleButton from "../signincomponents/GoogleButton";
 
 const Signup1 = () => {
@@ -18,7 +17,6 @@ const Signup1 = () => {
         </div>
         <Divider/>
         <Form1/>
-        {/* <NextButton/> */}
       </div>
     </div>
   );

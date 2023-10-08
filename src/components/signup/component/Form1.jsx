@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-// import InputPassword from './Password';
-import InputPassword from "./password";
 import validator from "validator";
 
 const Form1 = () => {
@@ -88,7 +86,6 @@ const Form1 = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Submit the form data
       console.log("Form data submitted:", formData);
     } else {
       console.log("Form submission failed due to validation errors.");
@@ -174,7 +171,6 @@ const Form1 = () => {
         </div>
 
         {/* password */}
-        {/* <InputPassword /> */}
         <div className="w-full flex flex-col gap-2 text-white">
           <label
             htmlFor="password"
