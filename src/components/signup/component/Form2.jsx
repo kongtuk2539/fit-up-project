@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import InputPassword from './Password';
 import InputPassword from "./password";
 import Successdialog from "../Successdialog";
+import Datepicker from "react-tailwindcss-datepicker";
 
 const Form2 = ({ createUser }) => {
   const [dialogSuccess, setDialogSuccess] = useState(false);
@@ -25,6 +26,10 @@ const Form2 = ({ createUser }) => {
     height: "",
   });
 
+  const handleDateChange = (date) => {
+    setFormData({ ...formData, dob: date });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -38,16 +43,24 @@ const Form2 = ({ createUser }) => {
       errors.username = "Please enter your username";
       isValid = false;
     }
-    // if (!formData.dob.trim()) {
-    //   errors.dob = "Please select date of birth";
-    //   isValid = false;
-    // }
-    if (!formData.gender.trim()) {
+    if (!formData.dob.trim()) {
+      errors.dob = "Please select date of birth";
+      isValid = false;
+    }
+    if (!["Male", "Female"].includes(formData.gender.trim())) {
       errors.gender = "Please select gender";
+      isValid = false;
+    }
+    if (isNaN(formData.weight.trim())) {
+      errors.weight = "Please enter valid weight";
       isValid = false;
     }
     if (!formData.weight.trim()) {
       errors.weight = "Please enter your weight";
+      isValid = false;
+    }
+    if (isNaN(formData.height.trim())) {
+      errors.height = "Please enter valid height";
       isValid = false;
     }
     if (!formData.height.trim()) {
@@ -65,19 +78,19 @@ const Form2 = ({ createUser }) => {
     e.preventDefault();
 
     if (validateForm()) {
-      setIsLoading(true)
+      setIsLoading(true);
       try {
         let isSuccess = await createUser(formData);
         // setIsLoading(isSuccess)
-        console.log('return create => ', isSuccess);
+        console.log("return create => ", isSuccess);
         if (isSuccess) {
           setDialogSuccess(true);
-          setIsLoading(false)
+          setIsLoading(false);
         }
       } catch (error) {
         // Handle the error here
-        console.error('Error creating user:', error);
-        setIsLoading(false)
+        console.error("Error creating user:", error);
+        setIsLoading(false);
       }
 
       console.log("Form data2 submitted:", formData);
@@ -154,24 +167,45 @@ const Form2 = ({ createUser }) => {
             value={formData.username}
             onChange={handleInputChange}
             placeholder="Enter your username"
-            className={`${formErrors.username === "Please enter your username"
-              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              }`}
+            className={`${
+              formErrors.username === "Please enter your username"
+                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+            }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.username}
           </span>
         </div>
 
-        {/* <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col gap-2 text-white">
           <label
             htmlFor="dateOfBirth"
             className="block font-roboto-mono text-sm pb-2"
           >
             Date of birth
           </label>
-          <input
+          <Datepicker
+            primaryColor={"fuchsia"}
+            placeholder={"Select date of birth"}
+            popoverDirection="down"
+            // containerClassName="relative h-12 w-343"
+            inputClassName={`${
+              formErrors.dob === "Please select date of birth"
+                ? "text-gray-400 ring-1 ring-red w-full h-[48px] px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                : "text-gray-400 w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+            }`}
+            toggleClassName="text-gray-400 absolute rounded-r-lg text-white right-[10px] h-full px-3 
+                        focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
+            value={formData.dob}
+            onChange={handleDateChange}
+            // showShortcuts={true}
+            useRange={false}
+            asSingle={true}
+            maxDate={new Date()}
+            displayFormat={"DD MMM,YYYY"}
+          />
+          {/* <input
             type="text"
             id="dateOfBirth"
             name="dateOfBirth"
@@ -183,11 +217,11 @@ const Form2 = ({ createUser }) => {
                 ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                 : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
             }`}
-          />
+          /> */}
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.dob}
           </span>
-        </div> */}
+        </div>
 
         <div className="w-full flex flex-col gap-2 text-white">
           <label
@@ -202,12 +236,14 @@ const Form2 = ({ createUser }) => {
             value={formData.gender}
             onChange={handleInputChange}
             placeholder="Select gender"
-            className={`${formErrors.gender === "Please select gender"
-              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              }`}
+            style={{ color: '#7D7D7D' }}
+            className={`${
+              formErrors.gender === "Please select gender"
+                ? "ring-1 ring-red w-full h-[48px] px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+            }`}
           >
-            {/* <option className="disabled defaultSelected">Select gender</option> */}
+            <option className="text-gray-400 defaultSelected disabled">Select gender</option>
             <option className="text-white">Male</option>
             <option className="text-white">Female</option>
           </select>
@@ -230,10 +266,12 @@ const Form2 = ({ createUser }) => {
             value={formData.weight}
             onChange={handleInputChange}
             placeholder="Enter your weight"
-            className={`${formErrors.weight === "Please enter your weight"
-              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              }`}
+            className={`${
+              formErrors.weight === "Please enter your weight" ||
+              formErrors.weight === "Please enter valid weight"
+                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+            }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.weight}
@@ -254,10 +292,12 @@ const Form2 = ({ createUser }) => {
             value={formData.height}
             onChange={handleInputChange}
             placeholder="Enter your height"
-            className={`${formErrors.height === "Please enter your height"
-              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              }`}
+            className={`${
+              formErrors.height === "Please enter your height" ||
+              formErrors.height === "Please enter valid height"
+                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+            }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.height}
@@ -309,8 +349,8 @@ const Form2 = ({ createUser }) => {
           )}
         </div>
       </form>
-      {isLoading ?
-        (<div className="fixed inset-0 h-full w-full z-10">
+      {isLoading ? (
+        <div className="fixed inset-0 h-full w-full z-10">
           <div
             onClick={toggleDialogSuccess}
             className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"
@@ -318,7 +358,10 @@ const Form2 = ({ createUser }) => {
           <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
             <span className="bg-red loading loading-dots loading-lg"></span>
           </div>
-        </div>) : ''}
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };
