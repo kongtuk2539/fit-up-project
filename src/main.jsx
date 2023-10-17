@@ -76,10 +76,6 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard />,
-    exact: true
-  }, {
-    path: '/bank',
     element: <Dashboardpages />,
     exact: true
   },

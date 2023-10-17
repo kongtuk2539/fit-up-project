@@ -38,7 +38,8 @@ const Circle = () => {
     }, []);
 
     return (
-        <div className="w-343 lg:w-721 h-537 lg:h-324 rounded-lg bg-black-medium py-6 px-4 lg:px-0 lg:flex">
+        <div className="w-343 lg:w-full h-537 lg:h-324 lg:flex">
+            {/* w-343 lg:w-721 h-537 lg:h-324 rounded-lg bg-black-medium py-6 px-4 lg:px-0 lg:flex*/}
             {/* md:w-721 */}
             <div className="title-circle font-roboto-mono font-bold text-white mb-3 lg:hidden">
                 <p>Today Earn</p>
@@ -64,7 +65,7 @@ const Circle = () => {
                 "><p className='flex items-center gap-1'><span className='material-symbols-outlined text-2xl'> monetization_on </span>Total Balance: 10,500</p>
                 </div>
             </div>
-            <div className='relative top-0 hidden lg:inline-block'>
+            <div className='relative w-311 lg:w-419 md:w-311 top-0 hidden lg:inline-block'>
                 < HorizonBar />
             </div>
 
