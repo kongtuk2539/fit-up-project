@@ -16,14 +16,14 @@ const Card = () => {
   const [activities, setActivities] = useState([]);
   
   useEffect(() => {
-    const getData = async () => {
+    const getDataById = async () => {
       const response = await axios.get(
-        "https://fit-up-project-backend.onrender.com/activities"
+        "https://fit-up-project-backend.onrender.com/activities/651edfb83fcee8250bbe6df1"
       );
       console.log(response.data);
       setActivities(response.data);
     };
-    getData();
+    getDataById();
   }, []);
 
   return (

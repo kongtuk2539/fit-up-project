@@ -73,9 +73,21 @@ const Form2 = () => {
   const [image, setImage] = useState("");
   const [imgUploaded, setImgUploaded] = useState(false);
 
+  // const handleImageChange = (e) => {
+  //   setImage(e.target.value);
+  //   setImgUploaded(e.target.files.length > 0);
+  // };
   const handleImageChange = (e) => {
-    setImage(e.target.value);
-    setImgUploaded(e.target.files.length > 0);
+    const reader = new FileReader();
+    const file = e.target.files[0];
+  
+    if (file) {
+      reader.onloadend = () => {
+        setImage(reader.result);
+        setImgUploaded(true);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -94,7 +106,7 @@ const Form2 = () => {
                 id="image-upload"
                 name="image-upload"
                 type="file"
-                value={image}
+                // value={image}
                 onChange={handleImageChange}
                 className="sr-only"
               />
@@ -103,11 +115,11 @@ const Form2 = () => {
         ) : (
           <div className="avatar my-6 flex justify-center">
             <div className="w-[123.33px] h-[123.33px] border-[3px] border-pink rounded-full">
-              {/* <img src={image} alt="profile picture"></img> */}
-              <img
+              <img src={image} alt="profile picture"></img>
+              {/* <img
                 src="/src/assets/image/Activity/Run.png"
                 alt="profile picture"
-              />
+              /> */}
             </div>
           </div>
         )}
@@ -181,7 +193,7 @@ const Form2 = () => {
                 : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
             }`}
           >
-            <option className="disabled defaultSelected">Select gender</option>
+            {/* <option className="disabled defaultSelected">Select gender</option> */}
             <option className="text-white">Male</option>
             <option className="text-white">Female</option>
           </select>

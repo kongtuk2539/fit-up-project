@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import validator from "validator";
+import { Link } from 'react-router-dom';
 
 const Form1 = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,6 +11,8 @@ const Form1 = () => {
   const toggleRePasswordVisibility = () => {
     setShowRePassword(!showRePassword);
   };
+
+  // const [userData, setUserData] = useState({});
 
   const [formData, setFormData] = useState({
     firstname: "",
@@ -31,6 +34,20 @@ const Form1 = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  // const createUser = () => {
+  //   axios
+  //     .post('https://fit-up-project-backend.onrender.com/users/', formData)
+  //     .then((response) => {
+  //       console.log('API Response:', response.data); // Check the structure of the response
+  //       setUserData(response.data);
+  //       console.log('create => ', userData)
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching user data:', error.response.data.message);
+  //     });
+  // }
+
 
   const validateForm = () => {
     let errors = {};
@@ -93,6 +110,7 @@ const Form1 = () => {
 
     if (validateForm()) {
       console.log("Form data submitted:", formData);
+      window.location.href = "/signup2";
     } else {
       console.log("Form submission failed due to validation errors.");
     }
@@ -313,6 +331,7 @@ const Form1 = () => {
         >
           Next
         </button>
+        
       </form>
     </>
   );

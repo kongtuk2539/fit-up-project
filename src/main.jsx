@@ -65,7 +65,12 @@ const router = createBrowserRouter([
     exact: true
   },
   {
-    path: '/signup',
+    path: '/signup1',
+    element: <Signup1 />,
+    exact: true
+  },
+  {
+    path: '/signup2',
     element: <Signup2 />,
     exact: true
   },
