@@ -4,7 +4,7 @@ import Header from "./component/header";
 import Form2 from "./component/Form2";
 import Successdialog from "./Successdialog";
 
-const Signup2 = () => {
+const Signup2 = ({ createUser }) => {
   const [dialogSuccess, setDialogSuccess] = useState(false);
 
   const toggleDialogSuccess = () => {
@@ -22,7 +22,7 @@ const Signup2 = () => {
             </p>
           </div>
           <div>
-            <Form2 />
+            <Form2 createUser={createUser} />
             {/* <div className="flex gap-4">
               <button
                 type="button"
@@ -37,7 +37,7 @@ const Signup2 = () => {
               >
                 Sign up
               </button> */}
-              {/* {dialogSuccess && (
+            {/* {dialogSuccess && (
                 <div className="fixed inset-0 h-full w-full z-10">
                   <div onClick={toggleDialogSuccess} className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"></div>
                   <Successdialog toggleDialogSuccess={toggleDialogSuccess} />

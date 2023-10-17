@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import validator from "validator";
 import { Link } from 'react-router-dom';
 
-const Form1 = () => {
+const Form1 = ({ setIsNext, setData }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRePassword, setShowRePassword] = useState(false);
   const togglePasswordVisibility = () => {
@@ -110,7 +110,9 @@ const Form1 = () => {
 
     if (validateForm()) {
       console.log("Form data submitted:", formData);
-      window.location.href = "/signup2";
+      // window.location.href = "/signup2";
+      setData({ ...formData })
+      setIsNext(true)
     } else {
       console.log("Form submission failed due to validation errors.");
     }
@@ -133,11 +135,10 @@ const Form1 = () => {
             value={formData.firstname}
             onChange={handleInputChange}
             placeholder="Enter your first name"
-            className={`${
-              formErrors.firstname === "Please enter your first name"
-                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            }`}
+            className={`${formErrors.firstname === "Please enter your first name"
+              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.firstname}
@@ -158,11 +159,10 @@ const Form1 = () => {
             value={formData.lastname}
             onChange={handleInputChange}
             placeholder="Enter your last name"
-            className={`${
-              formErrors.firstname === "Please enter your first name"
-                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            }`}
+            className={`${formErrors.firstname === "Please enter your first name"
+              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.lastname}
@@ -183,12 +183,11 @@ const Form1 = () => {
             value={formData.email}
             onChange={handleInputChange}
             placeholder="Enter your email"
-            className={`${
-              formErrors.email === "Please enter your email" ||
+            className={`${formErrors.email === "Please enter your email" ||
               formErrors.email === "Please enter a valid email"
-                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            }`}
+              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.email}
@@ -212,12 +211,11 @@ const Form1 = () => {
               value={formData.password}
               onChange={handleInputChange}
               placeholder="Enter your password"
-              className={`${
-                formErrors.password === "Please enter your password" ||
+              className={`${formErrors.password === "Please enter your password" ||
                 formErrors.password === "Please enter valid password"
-                  ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                  : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              }`}
+                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                }`}
             />
             <span
               onClick={togglePasswordVisibility}
@@ -254,13 +252,12 @@ const Form1 = () => {
               value={formData.repassword}
               onChange={handleInputChange}
               placeholder="Re-enter your password"
-              className={`${
-                formErrors.repassword === "Please re-enter your password" ||
+              className={`${formErrors.repassword === "Please re-enter your password" ||
                 formErrors.repassword === "Please enter valid password" ||
                 formErrors.repassword === "Password do not match. Try again"
-                  ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                  : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              }`}
+                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                }`}
             />
             <span
               onClick={toggleRePasswordVisibility}
@@ -285,11 +282,10 @@ const Form1 = () => {
         {/* validate password */}
         <div className="mb-6 font-roboto-mono text-xs text-black-light">
           <div
-            className={`${
-              formData.password.length < 8
-                ? "flex items-center gap-2"
-                : "text-pink flex items-center gap-2"
-            }`}
+            className={`${formData.password.length < 8
+              ? "flex items-center gap-2"
+              : "text-pink flex items-center gap-2"
+              }`}
           >
             <span className="text-base material-symbols-outlined">
               task_alt
@@ -298,11 +294,10 @@ const Form1 = () => {
           </div>
 
           <div
-            className={`${
-              !/[A-Z]/.test(formData.password)
-                ? "flex items-center gap-2"
-                : "text-pink flex items-center gap-2"
-            }`}
+            className={`${!/[A-Z]/.test(formData.password)
+              ? "flex items-center gap-2"
+              : "text-pink flex items-center gap-2"
+              }`}
           >
             <span className="text-base material-symbols-outlined">
               task_alt
@@ -311,11 +306,10 @@ const Form1 = () => {
           </div>
 
           <div
-            className={`${
-              !/[0-9]/.test(formData.password)
-                ? "flex items-center gap-2"
-                : "text-pink flex items-center gap-2"
-            }`}
+            className={`${!/[0-9]/.test(formData.password)
+              ? "flex items-center gap-2"
+              : "text-pink flex items-center gap-2"
+              }`}
           >
             {/* <div className="flex items-center gap-2"> */}
             <span className="text-base material-symbols-outlined">
@@ -331,7 +325,7 @@ const Form1 = () => {
         >
           Next
         </button>
-        
+
       </form>
     </>
   );
