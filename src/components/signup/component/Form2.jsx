@@ -38,10 +38,10 @@ const Form2 = () => {
       errors.username = "Please enter your username";
       isValid = false;
     }
-    if (!formData.dob.trim()) {
-      errors.dob = "Please select date of birth";
-      isValid = false;
-    }
+    // if (!formData.dob.trim()) {
+    //   errors.dob = "Please select date of birth";
+    //   isValid = false;
+    // }
     if (!formData.gender.trim()) {
       errors.gender = "Please select gender";
       isValid = false;
@@ -63,6 +63,7 @@ const Form2 = () => {
     e.preventDefault();
 
     if (validateForm()) {
+      setDialogSuccess(true);
       console.log("Form data submitted:", formData);
     } else {
       console.log("Form submission failed due to validation errors.");
@@ -76,21 +77,6 @@ const Form2 = () => {
     setImage(e.target.value);
     setImgUploaded(e.target.files.length > 0);
   };
-  // const handleUsernameChange = (e) => {
-  //   setUsername(e.target.value);
-  // };
-  // const handleDobChange = (e) => {
-  //   setDob(e.target.value);
-  // };
-  // const handleGenderChange = (e) => {
-  //   setGender(e.target.value);
-  // };
-  // const handleWeightChange = (e) => {
-  //   setWeight(e.target.value);
-  // };
-  // const handleHeightChange = (e) => {
-  //   setHeight(e.target.value);
-  // };
 
   return (
     <>
@@ -151,7 +137,7 @@ const Form2 = () => {
           </span>
         </div>
 
-        <div className="w-full flex flex-col gap-2 text-white">
+        {/* <div className="w-full flex flex-col gap-2 text-white">
           <label
             htmlFor="dateOfBirth"
             className="block font-roboto-mono text-sm pb-2"
@@ -174,7 +160,7 @@ const Form2 = () => {
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.dob}
           </span>
-        </div>
+        </div> */}
 
         <div className="w-full flex flex-col gap-2 text-white">
           <label
@@ -284,12 +270,11 @@ const Form2 = () => {
           </button>
           <button
             type="submit"
-            onClick={toggleDialogSuccess}
             className="clickbutton h-12 w-[279px] primary-contained-button font-roboto-mono text-black-dark font-bold rounded"
           >
             Sign up
           </button>
-          {/* {dialogSuccess && (
+          {dialogSuccess && (
             <div className="fixed inset-0 h-full w-full z-10">
               <div
                 onClick={toggleDialogSuccess}
@@ -297,7 +282,7 @@ const Form2 = () => {
               ></div>
               <Successdialog toggleDialogSuccess={toggleDialogSuccess} />
             </div>
-          )} */}
+          )}
         </div>
       </form>
     </>
