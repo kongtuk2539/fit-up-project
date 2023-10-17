@@ -38,10 +38,10 @@ function Dashboard() {
         </div>
         <div className="w-full h-856 col-start-auto col-end-2 sm:col-end-4 border border-red inline lg:hidden">
           <div className="flex flex-col gap-6">
-            <div className="w-721">
+            <div className="w-343 lg:w-full h-537 lg:h-324 rounded-lg bg-black-medium py-6 px-4 lg:px-0 lg:flex">
               <Circle />
             </div>
-            <div className=" w-721 h-508">
+            <div className="w-721 h-508">
               <Chart />
             </div>
           </div>
@@ -50,7 +50,7 @@ function Dashboard() {
         {/* //desktop */}
         <div className="w-full h-856 col-start-1 col-end-7 lg:col-end-9 border border-red hidden lg:inline">
           <div className="flex flex-col gap-6">
-            <div className="w-721">
+            <div className="w-343 lg:w-full h-537 lg:h-324 rounded-lg bg-black-medium py-6 px-4 lg:px-0 lg:flex">
               <Circle />
             </div>
             <div className=" w-721 h-508">
@@ -64,7 +64,7 @@ function Dashboard() {
             <Rightsection />
           </div>
         </div>
-        
+
       </div>
     </div>
   );
