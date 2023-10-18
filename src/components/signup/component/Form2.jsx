@@ -16,6 +16,7 @@ const Form2 = ({ createUser }) => {
     gender: "",
     weight: "",
     height: "",
+    urlimg: "",
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -24,6 +25,7 @@ const Form2 = ({ createUser }) => {
     gender: "",
     weight: "",
     height: "",
+    urlimg: "",
   });
 
   const handleDateChange = (date) => {
@@ -43,7 +45,7 @@ const Form2 = ({ createUser }) => {
       errors.username = "Please enter your username";
       isValid = false;
     }
-    if (!formData.dob.trim()) {
+    if (!formData.dob) {
       errors.dob = "Please select date of birth";
       isValid = false;
     }
@@ -106,16 +108,44 @@ const Form2 = ({ createUser }) => {
   //   setImage(e.target.value);
   //   setImgUploaded(e.target.files.length > 0);
   // };
+
   const handleImageChange = (e) => {
     const reader = new FileReader();
     const file = e.target.files[0];
 
     if (file) {
-      reader.onloadend = () => {
+      reader.onloadend = async () => {
         setImage(reader.result);
         setImgUploaded(true);
+        formData.urlimg = await uploadToCloudinary(reader.result);
+        console.log(formData)
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const uploadToCloudinary = async (dataURL) => {
+    try {
+      const response = await fetch(dataURL);
+      const blob = await response.blob();
+
+      const formData = new FormData();
+      formData.append('file', blob);
+      formData.append('upload_preset', 'mia50bwk'); // Replace 'your_upload_preset' with your actual upload preset
+
+      const url = `https://api.cloudinary.com/v1_1/depnyvk3i/image/upload`;
+
+      const result = await fetch(url, {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await result.json();
+      console.log('Image uploaded to Cloudinary:', data);
+      return data.secure_url;
+      // Handle the response from Cloudinary here
+    } catch (error) {
+      console.error('Error uploading to Cloudinary:', error);
+      return error;
     }
   };
 
@@ -167,11 +197,10 @@ const Form2 = ({ createUser }) => {
             value={formData.username}
             onChange={handleInputChange}
             placeholder="Enter your username"
-            className={`${
-              formErrors.username === "Please enter your username"
-                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            }`}
+            className={`${formErrors.username === "Please enter your username"
+              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.username}
@@ -190,11 +219,10 @@ const Form2 = ({ createUser }) => {
             placeholder={"Select date of birth"}
             popoverDirection="down"
             // containerClassName="relative h-12 w-343"
-            inputClassName={`${
-              formErrors.dob === "Please select date of birth"
-                ? "text-gray-400 ring-1 ring-red w-full h-[48px] px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "text-gray-400 w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            }`}
+            inputClassName={`${formErrors.dob === "Please select date of birth"
+              ? "text-gray-400 ring-1 ring-red w-full h-[48px] px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              : "text-gray-400 w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
             toggleClassName="text-gray-400 absolute rounded-r-lg text-white right-[10px] h-full px-3 
                         focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
             value={formData.dob}
@@ -237,11 +265,10 @@ const Form2 = ({ createUser }) => {
             onChange={handleInputChange}
             placeholder="Select gender"
             style={{ color: '#7D7D7D' }}
-            className={`${
-              formErrors.gender === "Please select gender"
-                ? "ring-1 ring-red w-full h-[48px] px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            }`}
+            className={`${formErrors.gender === "Please select gender"
+              ? "ring-1 ring-red w-full h-[48px] px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
           >
             <option className="text-gray-400 defaultSelected disabled">Select gender</option>
             <option className="text-white">Male</option>
@@ -266,12 +293,11 @@ const Form2 = ({ createUser }) => {
             value={formData.weight}
             onChange={handleInputChange}
             placeholder="Enter your weight"
-            className={`${
-              formErrors.weight === "Please enter your weight" ||
+            className={`${formErrors.weight === "Please enter your weight" ||
               formErrors.weight === "Please enter valid weight"
-                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            }`}
+              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.weight}
@@ -292,12 +318,11 @@ const Form2 = ({ createUser }) => {
             value={formData.height}
             onChange={handleInputChange}
             placeholder="Enter your height"
-            className={`${
-              formErrors.height === "Please enter your height" ||
+            className={`${formErrors.height === "Please enter your height" ||
               formErrors.height === "Please enter valid height"
-                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            }`}
+              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.height}
