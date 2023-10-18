@@ -22,8 +22,8 @@ const Hamber = () => {
         <div
           className={
             ham
-              ? "fixed top-0 right-0 w-[300px] h-screen bg-black-medium z-10 duration-300 text-white"
-              : "fixed top-0 right-[-100%] w-[300px] h-screen bg-black-medium z-10 duration-300 text-white"
+              ? "fixed top-0 right-0 w-[300px] h-screen bg-black-medium bg-opacity-70 bg-blur-xl z-10 duration-300 text-white"
+              : "fixed top-0 right-[-100%] w-[300px] h-screen bg-black-medium bg-opacity-70 bg-blur-xl z-10 duration-300 text-white"
           }
         >
           
@@ -38,22 +38,22 @@ const Hamber = () => {
           <nav>
             <ul className="flex flex-col items-center pl-0 pr-4 mt-10 pt-3 ">
               <li className="">
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-black-medium hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
+                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
                 <span class="material-symbols-outlined">account_circle</span> Proflie
                 </button>
               </li>
               <li>
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-black-medium hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
+                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
                 <span class="material-symbols-outlined">info</span> Help & Support
                 </button>
               </li>
               <li>
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-black-medium hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
+                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
                 <span class="material-symbols-outlined">settings</span> Setting
                 </button>
               </li>
               <li>
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-black-medium hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
+                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
                 <span class="material-symbols-outlined">logout</span> Sign Out
                 </button>
               </li>
