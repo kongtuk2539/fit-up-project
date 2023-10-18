@@ -15,16 +15,27 @@ const Card = () => {
 
   const [activities, setActivities] = useState([]);
   
-  useEffect(() => {
-    const getDataById = async () => {
-      const response = await axios.get(
-        "https://fit-up-project-backend.onrender.com/activities/651edfb83fcee8250bbe6df1"
-      );
-      console.log(response.data);
-      setActivities(response.data);
-    };
-    getDataById();
-  }, []);
+  // useEffect(() => {
+  //   const getTodayDataById = async () => {
+  //     const response = await axios.get(
+  //       "https://fit-up-project-backend.onrender.com/activities/651edfb83fcee8250bbe6df1"
+  //     );
+  //     console.log(response.data);
+  //     setActivities(response.data);
+  //   };
+  //   getDataById();
+  // }, []);
+
+  // useEffect(() => {
+  //   const getDataById = async () => {
+  //     const response = await axios.get(
+  //       "https://fit-up-project-backend.onrender.com/activities/651edfb83fcee8250bbe6df1"
+  //     );
+  //     console.log(response.data);
+  //     setActivities(response.data);
+  //   };
+  //   getDataById();
+  // }, []);
 
   return (
     <>
