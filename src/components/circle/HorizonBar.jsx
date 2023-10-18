@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import circleStyle from './circls-style.css'
+import './circls-style.css'
 
 const HorizonBar = () => {
     const [fitcoinBar, setFitCoinBar] = useState(50);
