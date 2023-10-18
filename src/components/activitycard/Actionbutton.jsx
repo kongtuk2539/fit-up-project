@@ -3,7 +3,7 @@ import Deletedialog from "./Deletedialog";
 import Successdialog from "./Successdialog";
 
 const Actionbutton = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(!true);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dialogdel, setDialogdel] = useState(false);
 
   const toggleDropdown = () => {

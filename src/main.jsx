@@ -13,6 +13,8 @@ import ActivityDialog from './components/activityDialog/ActivityDialog';
 import Chart from './components/bar-chart/Chart';
 import Login from './viewpage/Login';
 import Dashboard from './viewpage/Dashboard';
+import Signup1 from './components/signup/Signup1';
+import Signup2 from './components/signup/Signup2';
 import Dashboardpages from './Pages/Dashboardpages';
 
 
@@ -61,6 +63,16 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />,
+    exact: true
+  },
+  {
+    path: '/signup1',
+    element: <Signup1 />,
+    exact: true
+  },
+  {
+    path: '/signup2',
+    element: <Signup2 />,
     exact: true
   },
   {
