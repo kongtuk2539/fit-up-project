@@ -195,14 +195,14 @@ const ActivityDialog = () => {
                         primaryColor={"fuchsia"}
                         placeholder={"Date"}
                         popoverDirection="up"
-                        containerClassName="relative h-12 w-343 color"
+                        containerClassName="relative h-12 w-343"
                         inputClassName="h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs 
                     bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
-                        toggleClassName="absolute rounded-r-lg text-white left-[115px] h-full px-3 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
+                        toggleClassName="absolute rounded-r-lg text-white left-[115px] h-full px-3 
+                        focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
                         value={dateValue}
                         onChange={handleDateValueChange}
                         // showShortcuts={true}
-                        calendarClassName={"bg-black-dark"}
                         useRange={false}
                         asSingle={true}
                         minDate={new Date()}

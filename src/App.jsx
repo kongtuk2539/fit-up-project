@@ -1,21 +1,17 @@
-import Circle from './components/circle/Circle.jsx'
-import ActivityDialog from './components/activityDialog/ActivityDialog.jsx'
-import HorizonBar from './components/circle/HorizonBar.jsx'
-import React from "react";
-import Rightsection from "./components/activitycard/Rightsection";
-import Sideham from './components/sidebar-ham/Sideham.jsx';
-import Sidebar from './components/sidebar-ham/Sidebar.jsx';
+import Dashboardpages from "./Pages/Dashboardpages"
+import Login from "./viewpage/Login"
+import { AuthProvider } from "./components/auth/AuthContext"
+import { Route, Routes } from "react-router"
+import ProtectedRoute from "./components/auth/ProtectedRoute"
+
 function App() {
   return (
-    <div>
-      {/* <h1 className="font-orbitron font-bold text-6xl">Fit-up</h1> */}
-      {/* <Circle /> */}
-      {/* <h1 className="font-orbitron font-bold text-6xl">Fit-up</h1> */}
-
-      {/* this is my content */}
-      <Rightsection />
-
-    </div>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/dashboard" element={<ProtectedRoute> <Dashboardpages /></ProtectedRoute>}></Route>
+      </Routes>
+    </AuthProvider>
   )
 }
 

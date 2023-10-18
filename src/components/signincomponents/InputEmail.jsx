@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-const InputEmail = () => {
+const InputEmail = ({ setDataLogin }) => {
   const [email, setEmail] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    setDataLogin((e) => ({ ...e, 'user_username': e.target.value }));
   };
 
   return (
