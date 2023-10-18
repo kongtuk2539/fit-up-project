@@ -18,11 +18,11 @@ import Default from "./Default";
 // };
 
 const Rightsection = () => {
-  // const haveCard = false;
-  // const haveCard = checkTodayCardExists(userId); // Assuming you have the userId available
-  // const checkTodayCardExists = () => {
-  //   const today = new Date();
-  // }
+ const haveCard = false;
+  // // const haveCard = checkTodayCardExists(userId); // Assuming you have the userId available
+  // // const checkTodayCardExists = () => {
+  // //   const today = new Date();
+  // // }
   return (
     <>
       <div className="  text-white">
