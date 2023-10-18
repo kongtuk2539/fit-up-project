@@ -39,9 +39,9 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const userlogin = () => {
-    auth.login(formData.email);
-    navigate("/dashboard");
+  const userlogin = async () => {
+    const result = await auth.login(formData.email, formData.password);
+    console.log(result);
   };
 
   const validateForm = () => {
@@ -73,11 +73,12 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('handle');
 
     if (validateForm()) {
-      console.log("Form data submitted:", formData);
       userlogin();
+      if (auth.user) {
+        navigate("/dashboard");
+      }
     } else {
       console.log("Form submission failed due to validation errors.");
     }
