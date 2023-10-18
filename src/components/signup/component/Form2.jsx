@@ -126,6 +126,7 @@ const Form2 = ({ createUser }) => {
 
   const uploadToCloudinary = async (dataURL) => {
     try {
+      setIsLoading(true);
       const response = await fetch(dataURL);
       const blob = await response.blob();
 
@@ -139,12 +140,16 @@ const Form2 = ({ createUser }) => {
         method: 'POST',
         body: formData,
       });
+      if (result) {
+        setIsLoading(false);
+      }
       const data = await result.json();
       console.log('Image uploaded to Cloudinary:', data);
       return data.secure_url;
       // Handle the response from Cloudinary here
     } catch (error) {
       console.error('Error uploading to Cloudinary:', error);
+      setIsLoading(false);
       return error;
     }
   };
