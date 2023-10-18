@@ -3,7 +3,7 @@ import axios from "axios";
 import Deletedialog from "./Deletedialog";
 import Actionbutton from "./Actionbutton";
 
-const Card = () => {
+const Card = ({activities, setActivities}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dialogdel, setDialogdel] = useState(false);
   const toggleDropdown = () => {
@@ -13,29 +13,11 @@ const Card = () => {
     setDialogdel(!dialogdel);
   };
 
-  const [activities, setActivities] = useState([]);
-  
-  // useEffect(() => {
-  //   const getTodayDataById = async () => {
-  //     const response = await axios.get(
-  //       "https://fit-up-project-backend.onrender.com/activities/651edfb83fcee8250bbe6df1"
-  //     );
-  //     console.log(response.data);
-  //     setActivities(response.data);
-  //   };
-  //   getDataById();
-  // }, []);
 
-  // useEffect(() => {
-  //   const getDataById = async () => {
-  //     const response = await axios.get(
-  //       "https://fit-up-project-backend.onrender.com/activities/651edfb83fcee8250bbe6df1"
-  //     );
-  //     console.log(response.data);
-  //     setActivities(response.data);
-  //   };
-  //   getDataById();
-  // }, []);
+  // if (activities.length > 0) {
+  //   setHaveCard(true);
+  //   console.log('length');
+  // }
 
   return (
     <>

@@ -1,41 +1,57 @@
-import React from "react";
-import Header from "./Header";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import Createmobile from "./Createmobile";
 import Default from "./Default";
-
-// useEffect(() => {
-//   const getDataById = async () => {
-//     const response = await axios.get(
-//       "https://fit-up-project-backend.onrender.com/activities/651edfb83fcee8250bbe6df1"
-//     );
-//     console.log(response.data);
-//     setActivities(response.data);
-//   };
-//   getDataById();
-// }, []);
+import axios from "axios";
 
 const Rightsection = () => {
- const haveCard = false;
+  const [haveCard, setHaveCard] = useState(false);
+//  const haveCard = true;
+  const [activities, setActivities] = useState([]);
+  
  
-  // // const haveCard = checkTodayCardExists(userId); // Assuming you have the userId available
-  // // const checkTodayCardExists = () => {
-  // //   const today = new Date();
-  // // }
+    const getTodayDataById = () => {
+      // รอรับค่า id
+      axios
+        .get(
+          "https://fit-up-project-backend.onrender.com/activities/getToday/651edfb83fcee8250bbe6df1"
+        )
+        .then((response) => {
+          console.log(response.data);
+          setActivities(response.data);
+          if (activities.length > 0) {
+            setHaveCard(true);
+            console.log('length');
+          }
+          console.log('set', activities);
+        })
+        .catch((error) => {
+          // Handle any errors from the request
+          console.error("Error fetching data: ", error);
+        })
+        .finally(() => {
+          // Any cleanup or final tasks can be done here
+          // This block will be executed regardless of whether the request was successful or failed
+        });
+    };
+
+    useEffect(()=> {getTodayDataById()},[]);
+
+
   return (
     <>
       <div className="  text-white">
-        {/* <Header /> */}
+        {/* <Card/> */}
         {haveCard ? (
           <>
-            <Card />
+            <Card activities={activities} setActivities={setActivities} />
             <Createmobile />
           </>
         ) : (
           <Default />
         )}
+        {/* {haveCard && <Createmobile />} */}
       </div> 
-      <Card/>
     </>
   );
 };
