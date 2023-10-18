@@ -25,6 +25,7 @@ export default {
         white: '#FFFFFF',
         'white-op70': 'rgba(255, 255, 255, 0.7)',
         'white-op40': 'rgba(255, 255, 255, 0.4)',
+        'white-op20': 'rgba(255, 255, 255, 0.2)',
         red: '#F80866',
         green: '#D6FE5C',
         'gray-900': '#020202',
@@ -109,6 +110,8 @@ export default {
         run: "url('/src/assets/image/Activity/Run.png')",
         weight: "url('/src/assets/Weight-Training.png')",
         delete: "url('/src/assets/bgdelete.png')",
+        bgdesktop: "url('/src/assets/image/BG/Bg-Desktop.png')",
+        bgipad: "url('/src/assets/image/BG/Bg-Ipad.png')"
       },
       padding: {
         26: '26px',

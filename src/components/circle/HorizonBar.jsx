@@ -29,7 +29,7 @@ const HorizonBar = () => {
             <div className="font-roboto-mono text-white mb-6 lg:mb-14 md:mb-6 font-bold">Monthly Challenge</div>
             <p className="title-bar font-orbitron font-bold text-xl text-white mb-2">Octobar Move</p>
             <div className="bar-container
-            relative bg-black-dark w-311 lg:w-full md:w-311 h-15 rounded-full">
+            relative bg-white-op40 w-311 lg:w-full md:w-311 h-15 rounded-full">
                 {/* relative bg-black-dark w-311 md:w-419 h-15 rounded-full */}
                 {/* relative bg-black-dark w-311 lg:w-419 md:w-311 h-15 rounded-full */}
                 <div id='fitcoin-bar' className="fitcoin-bar w-0 h-full 
@@ -47,7 +47,7 @@ const HorizonBar = () => {
                     </div>
                 </div>
                 <div className="remaining flex mr-5">
-                    <p className="notation-remaining w-[30px] h-1 mr-4 bg-black-dark rounded-full relative top-2"></p>
+                    <p className="notation-remaining w-[30px] h-1 mr-4 bg-white-op40 rounded-full relative top-2"></p>
                     <div className='flex flex-col'>
                         <p className='font-roboto-mono text-sm font-bold text-black-light'>Remaining</p>
                         <p className='font-roboto-mono text-sm font-bold text-white'>3,000</p>
