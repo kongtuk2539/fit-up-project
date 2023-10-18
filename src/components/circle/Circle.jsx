@@ -49,7 +49,7 @@ const Circle = () => {
                     <p>Today Earn</p>
                 </div>
                 <div className="outer w-204 h-204 p-26 rounded-full bg-white-op40">
-                    <div className="inner w-full h-full bg-black-medium rounded-full flex items-center justify-center">
+                    <div className="inner w-full h-full bg-[#020005] bg-opacity-70  rounded-full flex items-center justify-center">
                         <div className="info-circle flex flex-col justify-start gap-1">
                             <h3 className="text-blue font-orbitron font-bold text-2xl">
                                 +{coinState}

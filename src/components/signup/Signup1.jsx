@@ -19,10 +19,11 @@ const Signup1 = () => {
       user_email: data.email,
       user_username: formData2.username,
       user_password: data.password,
-      user_birthDate: '1999-09-19',
+      user_birthDate: formData2.dob.startDate,
       user_Gender: formData2.gender,
       user_weight: formData2.weight,
       user_height: formData2.height,
+      user_image: formData2.urlimg || 'https://res.cloudinary.com/depnyvk3i/image/upload/v1697558091/img/gipe5emvoyfgnhvcjg7b.png'
     };
 
     console.log('create => ', formData);

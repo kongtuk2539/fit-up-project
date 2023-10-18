@@ -18,14 +18,15 @@ import Default from "./Default";
 // };
 
 const Rightsection = () => {
-  // const haveCard = false;
-  // const haveCard = checkTodayCardExists(userId); // Assuming you have the userId available
-  // const checkTodayCardExists = () => {
-  //   const today = new Date();
-  // }
+ const haveCard = false;
+  // // const haveCard = checkTodayCardExists(userId); // Assuming you have the userId available
+  // // const checkTodayCardExists = () => {
+  // //   const today = new Date();
+  // // }
   return (
     <>
-      {/* <div className=" bg-black-dark text-white">
+      <div className="  text-white">
+        {/* <Header /> */}
         {haveCard ? (
           <>
             <Card />
@@ -34,7 +35,7 @@ const Rightsection = () => {
         ) : (
           <Default />
         )}
-      </div> */}
+      </div> 
       <Card/>
     </>
   );
