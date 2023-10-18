@@ -80,7 +80,6 @@ const Card = ({ activities, setActivities }) => {
                           className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"
                         ></div>
                         <Deletedialog toggleDialogdel={() => toggleDialogdel(activity._id)} />
-                        {/* <Successdialog toggleDialogdel={toggleDialogdel} /> */}
                       </div>
                     )}
                   </div>

@@ -1,15 +1,32 @@
 import React from "react";
+import axios from "axios";
 
 const Deletedialog = ({ toggleDialogdel }) => {
-  const deleteData = async (id) => {
-    const response = await axios.delete(
-      `https://jsd5-mock-backend.onrender.com/member/${id}`
-    );
-    if (response.status === 200) {
-      setReload(!reload);
+
+  const deleteActivity = async () => {
+    try {
+      const response = await axios.delete(
+        "https://fit-up-project-backend.onrender.com/activities/652ffeb900dab5e0e6c47c89"
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    } finally {
+      // Any cleanup or final tasks can be done here
+      // This block will be executed regardless of whether the request was successful or failed
     }
-    console.log(response);
   };
+
+
+  // const deleteData = async (id) => {
+  //   const response = await axios.delete(
+  //     `https://jsd5-mock-backend.onrender.com/member/${id}`
+  //   );
+  //   if (response.status === 200) {
+  //     setReload(!reload);
+  //   }
+  //   console.log(response);
+  // };
 
   return (
     <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
@@ -34,15 +51,16 @@ const Deletedialog = ({ toggleDialogdel }) => {
         </div>
         <div className="z-50 flex gap-4">
           <button
-            onClick={toggleDialogdel}
+            onClick={() => toggleDialogdel(activity._id)}
             className="secondary-contained-button clickbutton flex justify-center items-center bg-white w-150 p-3 rounded text-gray-op90 font-roboto-mono font-bold"
           >
             Cancel
           </button>
           <button
-            onClick={() => {
-              deleteData(id);
-            }}
+            // onClick={() => {
+            //   deleteData(id);
+            // }}
+            onClick={()=>{deleteActivity()}}
             className="primary-contained-button clickbutton flex justify-center items-center w-150 p-3 rounded font-roboto-mono font-bold"
           >
             Delete
