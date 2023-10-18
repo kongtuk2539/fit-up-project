@@ -3,7 +3,7 @@ import axios from "axios";
 import Deletedialog from "./Deletedialog";
 import Actionbutton from "./Actionbutton";
 
-const Card = ({ activities, setActivities }) => {
+const Card = ({ activities, setActivities, reload, setReload }) => {
   const [dropdownOpen, setDropdownOpen] = useState({});
   const [dialogdel, setDialogdel] = useState({});
 
@@ -79,7 +79,7 @@ const Card = ({ activities, setActivities }) => {
                           onClick={() => toggleDialogdel(activity._id)}
                           className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"
                         ></div>
-                        <Deletedialog toggleDialogdel={() => toggleDialogdel(activity._id)} />
+                        <Deletedialog reload={reload} setReload={setReload} toggleDialogdel={() => toggleDialogdel(activity._id)} />
                       </div>
                     )}
                   </div>

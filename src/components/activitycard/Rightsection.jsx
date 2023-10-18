@@ -6,8 +6,8 @@ import axios from "axios";
 
 const Rightsection = () => {
   const [haveCard, setHaveCard] = useState(false);
-  //  const haveCard = true;
   const [activities, setActivities] = useState([]);
+  const [reload, setReload] = useState(false);
 
   const getTodayDataById = async () => {
     try {
@@ -29,7 +29,7 @@ const Rightsection = () => {
 
   useEffect(() => {
     getTodayDataById();
-  }, []);
+  }, [reload]);
 
   return (
     <>
@@ -37,7 +37,7 @@ const Rightsection = () => {
         {/* <Card/> */}
         {haveCard ? (
           <>
-            <Card activities={activities} setActivities={setActivities} />
+            <Card activities={activities} setActivities={setActivities} reload={reload} setReload={setReload} />
             <Createmobile />
           </>
         ) : (

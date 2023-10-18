@@ -1,14 +1,15 @@
 import React from "react";
 import axios from "axios";
 
-const Deletedialog = ({ toggleDialogdel }) => {
+const Deletedialog = ({ toggleDialogdel, reload, setReload }) => {
 
   const deleteActivity = async () => {
     try {
       const response = await axios.delete(
-        "https://fit-up-project-backend.onrender.com/activities/652ffeb900dab5e0e6c47c89"
+        "https://fit-up-project-backend.onrender.com/activities/653001ce00dab5e0e6c47cb3"
       );
       console.log(response.data);
+      setReload(!reload);
     } catch (error) {
       console.error("Error fetching data: ", error);
     } finally {
@@ -16,17 +17,6 @@ const Deletedialog = ({ toggleDialogdel }) => {
       // This block will be executed regardless of whether the request was successful or failed
     }
   };
-
-
-  // const deleteData = async (id) => {
-  //   const response = await axios.delete(
-  //     `https://jsd5-mock-backend.onrender.com/member/${id}`
-  //   );
-  //   if (response.status === 200) {
-  //     setReload(!reload);
-  //   }
-  //   console.log(response);
-  // };
 
   return (
     <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
