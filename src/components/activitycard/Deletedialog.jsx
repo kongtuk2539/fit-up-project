@@ -6,7 +6,7 @@ const Deletedialog = ({ toggleDialogdel, reload, setReload }) => {
   const deleteActivity = async () => {
     try {
       const response = await axios.delete(
-        "https://fit-up-project-backend.onrender.com/activities/653001ce00dab5e0e6c47cb3"
+        "https://fit-up-project-backend.onrender.com/activities/653003a900dab5e0e6c47cc8"
       );
       console.log(response.data);
       setReload(!reload);

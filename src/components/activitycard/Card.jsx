@@ -21,6 +21,12 @@ const Card = ({ activities, setActivities, reload, setReload }) => {
     }));
   };
 
+  const formatDateForDisplay = (dateString) => {
+    const options = { weekday: 'short', day: 'numeric', month: 'short' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', options);
+  };
+
   return (
     <>
       {activities.map((activity) => (
@@ -94,7 +100,7 @@ const Card = ({ activities, setActivities, reload, setReload }) => {
               </h2>
               <p className="font-roboto-mono">{activity.activity_desc}</p>
               <p className="mt-4 text-sm font-roboto-mono text-white-op70">
-                {activity.activity_date} ({activity.activity_duration})
+              {formatDateForDisplay(activity.activity_date)} ({activity.activity_duration})
               </p>
             </div>
           </div>
