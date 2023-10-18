@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Deletedialog from "./Deletedialog";
-import Actionbutton from "./Actionbutton";
 
 const Card = ({ activities, setActivities, reload, setReload }) => {
   const [dropdownOpen, setDropdownOpen] = useState({});
@@ -33,7 +32,6 @@ const Card = ({ activities, setActivities, reload, setReload }) => {
         <div key={activity._id} className="bg-run bg-cover w-343 h-324 rounded-lg mb-6 text-white relative">
           <div className="flex justify-end ">
             {/* menu */}
-            {/* <Actionbutton /> */}
             <div className="relative m-4 " data-x-data="{ dropdownOpen: true }">
               <button
                 onClick={() => toggleDropdown(activity._id)}
