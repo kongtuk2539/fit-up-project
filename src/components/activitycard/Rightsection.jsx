@@ -25,7 +25,8 @@ const Rightsection = () => {
   // }
   return (
     <>
-      {/* <div className=" bg-black-dark text-white">
+      <div className="  text-white">
+        {/* <Header /> */}
         {haveCard ? (
           <>
             <Card />
@@ -34,7 +35,7 @@ const Rightsection = () => {
         ) : (
           <Default />
         )}
-      </div> */}
+      </div> 
       <Card/>
     </>
   );

@@ -3,7 +3,7 @@ import Layout from '../components/sidebar-ham/Layout'
 import Dashboard from '../viewpage/Dashboard'
 const Dashboardpages = () => {
   return (
-    <div className='bg-black-dark min-h-screen h-full w-full'>
+    <div className='bg-bgdesktop bg-cover bg-center w-full object-fill'>
         <Layout>
             <Dashboard/>
         </Layout>
