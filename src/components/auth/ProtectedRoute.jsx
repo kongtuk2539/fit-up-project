@@ -5,7 +5,7 @@ import { useAuth } from "./AuthContext";
 const ProtectedRoute = ({ children }) => {
     const auth = useAuth()
 
-    if (auth.user !== 'admin') {
+    if (auth.user !== 'admin@123.com') {
         console.log('not auth')
         return <Navigate to='/' />
     }
