@@ -109,6 +109,8 @@ export default {
         run: "url('/src/assets/image/Activity/Run.png')",
         weight: "url('/src/assets/Weight-Training.png')",
         delete: "url('/src/assets/bgdelete.png')",
+        bgdesktop: "url('/src/assets/image/BG/Bg-Desktop.png')",
+        bgipad: "url('/src/assets/image/BG/Bg-Ipad.png')"
       },
       padding: {
         26: '26px',

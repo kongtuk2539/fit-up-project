@@ -8,7 +8,7 @@ const Rightsection = () => {
   const haveCard = true;
   return (
     <>
-      <div className=" bg-black-dark text-white">
+      <div className="  text-white">
         {/* <Header /> */}
         {haveCard ? (
           <>
