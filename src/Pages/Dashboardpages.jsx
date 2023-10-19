@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../components/sidebar-ham/Layout'
 import Dashboard from '../viewpage/Dashboard'
+import { useAuth } from "../components/auth/AuthContext";
 
 const Dashboardpages = () => {
+  const auth = useAuth()
+  useEffect(() => {
+    console.log(auth.user)
+  }, [auth.user]);
+
   return (
     <div className='bg-bgdesktop bg-cover bg-center w-full object-fill'>
       <Layout>

@@ -71,12 +71,14 @@ const Login = () => {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      userlogin();
-      if (auth.user) {
+      await userlogin();
+      console.log('78')
+      console.log(' if =>', auth)
+      if (localStorage.getItem('token')) {
         navigate("/dashboard");
       }
     } else {
