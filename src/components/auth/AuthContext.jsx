@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
                 user_password: password,
             }
             const response = await axios.post(
-                'http://localhost:3000/users/login',
+                'https://fit-up-project-backend.onrender.com/users/login',
                 reqBody
             )
             console.log('55 => ', response)

@@ -18,11 +18,10 @@ import Signup1 from "../components/signup/Signup1";
 import validator from "validator";
 
 const Login = () => {
-  const [dataLogin, setDataLogin] = useState({});
   const [showSignup, setShowSignup] = useState(false);
-  const [user, setUser] = useState("");
   const auth = useAuth();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     email: "",
