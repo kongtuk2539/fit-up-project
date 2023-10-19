@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from "../auth/AuthContext";
+import HamMyLoader from './HamMyLoader';
 
 const Hamber = () => {
   const [ham, setHam] = useState(false);
-  const [user, setUser] = useState('')
   const auth = useAuth()
 
-  useEffect(() => {
-    setUser(auth.user)
-  }, [auth.user])
 
 
   const logout = () => auth.logout()
@@ -75,7 +72,7 @@ const Hamber = () => {
 
 
       {/* Desktop */}
-      <div className='hidden sm:inline '>
+      {auth.user ? (<div className='hidden sm:inline '>
         <div className="flex  border-solid ">
           <div className="mr-6 m-1 mt-4">
             <button className="h-10 w-10 mr-6 rounded-full p-0 hover:bg-black-dark text-white clickbutton">
@@ -88,7 +85,7 @@ const Hamber = () => {
           <div className='rounded-lg'>
             <div className="dropdown dropdown-end ">
               <label tabIndex={0} className="btn m-1 bg-pink font-bold text-base">
-                NAME
+                {auth.user.username}
               </label>
               <ul
                 tabIndex={0}
@@ -111,8 +108,8 @@ const Hamber = () => {
             </div>
           </div>
         </div>
+      </div>) : <HamMyLoader />}
 
-      </div>
     </div>
   )
 }

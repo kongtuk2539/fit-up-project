@@ -1,16 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './circls-style.css'
 import HorizonBar from './HorizonBar.jsx'
+import CircleMyLoader from './CircleMyLoader';
 
-const Circle = () => {
+const Circle = ({ coinPercentState, coinUser, balance }) => {
     const circleRef = useRef(null);
     const [coinState, setCoinState] = useState(0)
 
     useEffect(() => {
+
+        if (!coinPercentState && !coinUser && !balance) {
+            return
+        }
+
+        console.log('coinPercentState => ', coinPercentState)
+        // (100 * x) / 30000 
         const circle = circleRef.current;
-        let counter = 0;
-        let coin = 50;
-        const coinPercent = coin / 100;
+
+        const coinPercent = coinPercentState / 100;
         const valueStroke = 551 - 551 * coinPercent;
 
         if (circle) {
@@ -27,18 +34,30 @@ const Circle = () => {
             );
         }
 
-        setInterval(() => {
-            if (counter === coin) {
-                clearInterval();
-            } else {
-                counter += 1;
-                setCoinState(counter)
-            }
-        }, 20);
+        console.log(coinPercent);
+
+        // over re-render
+        // setInterval(() => {
+        //     // console.log('in setInterval => ', counter, coin)
+        //     if (counter === coin) {
+        //         clearInterval();
+        //     } else {
+        //         counter += 1;
+        //         setCoinState(counter)
+        //         // console.log('in setInterval and if => ', counter, coin)
+        //     }
+        // }, 20);
+
     }, []);
 
+
+
+
+    // (100 * x) / 30000  
+
     return (
-        <div className="w-343 lg:w-full h-537 lg:h-324 lg:flex">
+        <div className="w-343 lg:w-full h-537 lg:h-324 lg:flex " >
+            {/* w-343 lg:w-full h-537 lg:h-324 lg:flex */}
             {/* w-343 lg:w-721 h-537 lg:h-324 rounded-lg bg-black-medium py-6 px-4 lg:px-0 lg:flex*/}
             {/* md:w-721 */}
             <div className="title-circle font-roboto-mono font-bold text-white mb-3 lg:hidden">
@@ -52,9 +71,9 @@ const Circle = () => {
                     <div className="inner w-full h-full bg-[#020005] bg-opacity-70  rounded-full flex items-center justify-center">
                         <div className="info-circle flex flex-col justify-start gap-1">
                             <h3 className="text-blue font-orbitron font-bold text-2xl">
-                                +{coinState}
+                                +{coinUser}
                             </h3>
-                            <p className='text-black-light font-roboto-mono text-sm'>FitCoin</p>
+                            <p className='text-black-light font-roboto-mono text-sm text-center'>FitCoin</p>
                         </div>
                     </div>
                     <svg className='absolute top-0 lg:top-9 left-0 w-204 h-204 -rotate-90' xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -62,17 +81,17 @@ const Circle = () => {
                     </svg>
                 </div>
                 <div className="footer-circle w-full h-auto m-3 lg:m-0 lg:mt-2 text-white font-roboto-mono text-sm ml-0
-                "><p className='flex items-center gap-1'><span className='material-symbols-outlined text-2xl'> monetization_on </span>Total Balance: 10,500</p>
+                "><p className='flex items-center gap-1'><span className='material-symbols-outlined text-2xl'> monetization_on </span>Total Balance: {coinUser}</p>
                 </div>
             </div>
             <div className='relative w-311 lg:w-419 md:w-311 top-0 hidden lg:inline-block'>
-                < HorizonBar />
+                < HorizonBar coinPercentState={coinPercentState} coinUser={coinUser} balance={balance} />
             </div>
 
             <div className='relative top-[140px] inline-block lg:hidden'>
-                < HorizonBar />
+                < HorizonBar coinPercentState={coinPercentState} coinUser={coinUser} balance={balance} />
             </div>
-        </div>
+        </div >
     )
 }
 
