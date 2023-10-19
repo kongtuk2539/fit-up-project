@@ -50,7 +50,7 @@ const Signup1 = () => {
 
   return (
     <div className="dialog-container z-50 flex justify-center items-center h-full animate-in zoom-in-50 bg-gray-op90">
-      <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:p-10 lg:pt-3">
+      <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:p-10 lg:pt-1">
         {
           isNext ? (<Page2 createUser={createUser} />) :
             <div>
