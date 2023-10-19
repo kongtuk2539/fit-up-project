@@ -107,72 +107,76 @@ const Login = () => {
         </div>
         <WelcomeWord />
         <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-full gap-4">
-          <div className="w-full flex flex-col gap-2 text-white">
-            <label htmlFor="email" className="block font-roboto-mono text-sm">
-              Email
-            </label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="Enter your email"
-              className={`${formErrors.email === "Please enter your email" ||
-                formErrors.email === "Please enter a valid email" ||
-                formErrors.password === "Incorrect email or password. Try again"
-                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                }`}
-            // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            />
-            <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
-              {formErrors.email}
-            </span>
-          </div>
-          <div className="flex flex-col justify-center items-center w-full gap-4">
+          <div className="flex flex-col justify-center items-center w-full gap-1">
             <div className="w-full flex flex-col gap-2 text-white">
-              <label
-                htmlFor="password"
-                className="block font-roboto-mono text-sm"
-              >
-                Password
+              <label htmlFor="email" className="block font-roboto-mono text-sm">
+                Email
               </label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  placeholder="Enter your password"
-                  className={`${formErrors.password === "Please enter your password" ||
-                    formErrors.password ===
-                    "Incorrect email or password. Try again"
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Enter your email"
+                className={`${
+                  formErrors.email === "Please enter your email" ||
+                  formErrors.email === "Please enter a valid email" ||
+                  formErrors.password === "Incorrect email or password. Try again"
                     ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                     : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                    }`}
+                }`}
                 // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                />
-                <span
-                  onClick={togglePasswordVisibility}
-                  className="absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer"
-                >
-                  {showPassword ? (
-                    <i className="material-symbols-outlined text-gray-400">
-                      visibility_off
-                    </i>
-                  ) : (
-                    <i className="material-symbols-outlined text-gray-400">
-                      visibility
-                    </i>
-                  )}
-                </span>
-              </div>
-              <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
-                {formErrors.password}
+              />
+              <span className="my-2 text-red text-xs font-roboto-mono font-bold">
+                {formErrors.email}
               </span>
             </div>
+            <div className="flex flex-col justify-center items-center w-full gap-4">
+              <div className="w-full flex flex-col gap-2 text-white">
+                <label
+                  htmlFor="password"
+                  className="block font-roboto-mono text-sm"
+                >
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    placeholder="Enter your password"
+                    className={`${
+                      formErrors.password === "Please enter your password" ||
+                      formErrors.password ===
+                        "Incorrect email or password. Try again"
+                        ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                        : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                    }`}
+                    // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                  />
+                  <span
+                    onClick={togglePasswordVisibility}
+                    className="absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer"
+                  >
+                    {showPassword ? (
+                      <i className="material-symbols-outlined text-gray-400">
+                        visibility_off
+                      </i>
+                    ) : (
+                      <i className="material-symbols-outlined text-gray-400">
+                        visibility
+                      </i>
+                    )}
+                  </span>
+                </div>
+                <span className="my-2 text-red text-xs font-roboto-mono font-bold">
+                  {formErrors.password}
+                </span>
+              </div>
+            </div>  
             <div className="flex justify-between items-center w-full">
               <RememberMeCheckbox />
               <ForgotPassword />

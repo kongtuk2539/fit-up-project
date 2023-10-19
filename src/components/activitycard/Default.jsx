@@ -15,7 +15,7 @@ const Default = () => {
         </p>
       </div>
       <div className="z-50 clickbutton">
-        <button className="flex justify-center items-center bg-pink w-263 h-12 text-black-dark font-roboto-mono font-bold">
+        <button className="flex justify-center items-center bg-pink w-263 h-12 text-black-dark font-roboto-mono font-bold rounded">
           <span class="material-symbols-outlined pr-2.5 ">add_circle</span>
           Create new activity
         </button>

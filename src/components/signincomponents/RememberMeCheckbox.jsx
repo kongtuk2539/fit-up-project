@@ -4,12 +4,12 @@ const RememberMeCheckbox = ({ rememberMe, onToggle }) => {
   return (
     <div className="flex items-center">
       <input
-        type="checkbox"
+        type="checkbox" 
         id="rememberMe"
         name="rememberMe"
         checked={rememberMe}
         onChange={onToggle}
-        className="mr-2 w-5 h-5 cursor-pointer bg-pink text-pink focus:bg-pink"
+        className="mr-2 w-5 h-5 cursor-pointer accent-pink"
       />
       <label
         htmlFor="rememberMe"
