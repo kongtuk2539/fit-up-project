@@ -58,6 +58,7 @@ export const AuthProvider = ({ children }) => {
                 throw new Error('Login failed')
 
             const authorization = response.headers.get('Authorization')
+            localStorage.setItem('token', authorization)
 
             if (!authorization) {
                 throw new Error('Login failed')
