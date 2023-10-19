@@ -56,22 +56,18 @@ export const AuthProvider = ({ children }) => {
             console.log('55 => ', response)
             if (response.status !== 200)
                 throw new Error('Login failed')
-            const authorization = response.headers.get('Authorization')
-            localStorage.setItem('token', authorization)
-            const authorizationWithoutBearer = authorization.split(' ')
-            const token = authorizationWithoutBearer[1]
-            const payloadBase64 = token.split('.')[1]
-            const decodedPayload = atob(payloadBase64)
-            const payload = JSON.parse(decodedPayload)
-            console.log('Payload:', payload)
-            if (payload && Object.keys(payload).length !== 0) {
-                setUser(payload)
-            }
-            console.log(authorization)
 
-            console.log(user)
-            console.log(response)
+            const authorization = response.headers.get('Authorization')
+
+            if (!authorization) {
+                throw new Error('Login failed')
+            }
+
+            const payload = readPayload(authorization)
+            setUser(payload)
+
             return response
+
         } catch (error) {
             console.error('login auth context error :: ', error)
         }
@@ -81,17 +77,19 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const tokenWithBearer = localStorage.getItem('token')
         if (tokenWithBearer) {
-            const authorizationWithoutBearer = tokenWithBearer.split(' ')
-            const token = authorizationWithoutBearer[1]
-            const payloadBase64 = token.split('.')[1]
-            const decodedPayload = atob(payloadBase64)
-            const payload = JSON.parse(decodedPayload)
-            console.log('Payload:', payload)
-            if (payload && Object.keys(payload).length !== 0) {
-                setUser(payload)
-            }
+            const payload = readPayload(tokenWithBearer)
+            setUser(payload)
         }
     }, []);
+
+    const readPayload = (jwt) => {
+        const authorizationWithoutBearer = jwt.split(' ')
+        const token = authorizationWithoutBearer[1]
+        const payloadBase64 = token.split('.')[1]
+        const decodedPayload = atob(payloadBase64)
+        const payload = JSON.parse(decodedPayload)
+        return payload;
+    }
 
     const logout = () => {
         localStorage.removeItem('token');
