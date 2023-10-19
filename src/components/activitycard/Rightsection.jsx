@@ -3,11 +3,18 @@ import Card from "./Card";
 import Createmobile from "./Createmobile";
 import Default from "./Default";
 import axiosService from "../../service/axiosService";
+import { useAuth } from "../auth/AuthContext";
+import MyLoader from "./MyLoader";
 
 const Rightsection = () => {
   const [haveCard, setHaveCard] = useState(false);
   const [activities, setActivities] = useState([]);
   const [reload, setReload] = useState(false);
+  const auth = useAuth();
+
+  //https://fit-up-project-backend.onrender.com/activities/getWithDate/651edfb83fcee8250bbe6df1
+
+  //
 
   const getTodayDataById = async () => {
     try {
@@ -70,7 +77,9 @@ const Rightsection = () => {
 
   useEffect(() => {
     getTodayDataById();
-  }, [reload]);
+  }, [reload, auth.user]);
+
+  console.log(haveCard)
 
   return (
     <>
@@ -81,10 +90,10 @@ const Rightsection = () => {
             <Createmobile activities={activities} />
             <Card activities={activities} setActivities={setActivities} reload={reload} setReload={setReload} />
           </>
-        ) : (
+        ) :
           <Default />
-        )}
-      </div>
+        }
+      </div >
     </>
   );
 };

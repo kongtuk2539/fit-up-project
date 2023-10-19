@@ -1,17 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './circls-style.css'
 
-const HorizonBar = () => {
+const HorizonBar = ({ coinPercentState, coinUser, balance }) => {
     const [fitcoinBar, setFitCoinBar] = useState(50);
     const barRef = useRef(null)
 
     useEffect(() => {
         const barEnergy = barRef.current;
 
+        // if (!coinPercentState && !balance && !coinUser) {
+        //     return
+        // }
+
+
+        // (100 * x) / 30000 
         if (barEnergy) {
             const animation = barEnergy.animate(
                 [
-                    { width: `${fitcoinBar}%` }
+                    { width: `${coinPercentState}%` }
                 ],
                 {
                     duration: 2000, // 2 seconds
@@ -21,8 +27,9 @@ const HorizonBar = () => {
             );
         }
 
-    }, [fitcoinBar])
+    }, [])
 
+    console.log(fitcoinBar)
 
     return (
         <div className="box-barw-full">
@@ -43,14 +50,14 @@ const HorizonBar = () => {
                     <p className="notation-coin w-[30px] h-1 mr-4 bg-blue rounded-full relative top-2"></p>
                     <div className='flex flex-col'>
                         <p className='font-roboto-mono text-sm font-bold text-black-light'>Fitcoin</p>
-                        <p className='font-roboto-mono text-sm font-bold text-white'>27,000</p>
+                        <p className='font-roboto-mono text-sm font-bold text-white'>{balance}</p>
                     </div>
                 </div>
                 <div className="remaining flex mr-5">
                     <p className="notation-remaining w-[30px] h-1 mr-4 bg-white-op40 rounded-full relative top-2"></p>
                     <div className='flex flex-col'>
                         <p className='font-roboto-mono text-sm font-bold text-black-light'>Remaining</p>
-                        <p className='font-roboto-mono text-sm font-bold text-white'>3,000</p>
+                        <p className='font-roboto-mono text-sm font-bold text-white'>{coinUser}</p>
                     </div>
 
                 </div>
