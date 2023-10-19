@@ -18,11 +18,10 @@ import Signup1 from "../components/signup/Signup1";
 import validator from "validator";
 
 const Login = () => {
-  const [dataLogin, setDataLogin] = useState({});
   const [showSignup, setShowSignup] = useState(false);
-  const [user, setUser] = useState("");
   const auth = useAuth();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     email: "",
@@ -39,9 +38,10 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const userlogin = () => {
-    auth.login(formData.email);
-    navigate("/dashboard");
+  const userlogin = async () => {
+    setIsLoading(true)
+    const result = await auth.login(formData.email, formData.password);
+    console.log(result);
   };
 
   const validateForm = () => {
@@ -71,13 +71,15 @@ const Login = () => {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('handle');
 
     if (validateForm()) {
-      console.log("Form data submitted:", formData);
-      userlogin();
+      await userlogin();
+      setIsLoading(false)
+      if (localStorage.getItem('token')) {
+        navigate("/dashboard");
+      }
     } else {
       console.log("Form submission failed due to validation errors.");
     }
@@ -110,20 +112,19 @@ const Login = () => {
               Email
             </label>
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
-              className={`${
-                formErrors.email === "Please enter your email" ||
+              className={`${formErrors.email === "Please enter your email" ||
                 formErrors.email === "Please enter a valid email" ||
                 formErrors.password === "Incorrect email or password. Try again"
-                  ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                  : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-              }`}
-              // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                }`}
+            // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
             />
             <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
               {formErrors.email}
@@ -145,14 +146,13 @@ const Login = () => {
                   value={formData.password}
                   onChange={handleInputChange}
                   placeholder="Enter your password"
-                  className={`${
-                    formErrors.password === "Please enter your password" ||
+                  className={`${formErrors.password === "Please enter your password" ||
                     formErrors.password ===
-                      "Incorrect email or password. Try again"
-                      ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                      : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                  }`}
-                  // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                    "Incorrect email or password. Try again"
+                    ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                    : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                    }`}
+                // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                 />
                 <span
                   onClick={togglePasswordVisibility}
@@ -181,7 +181,7 @@ const Login = () => {
           <button
             type="submit"
             className="h-12 w-full bg-pink hover:bg-pink-medium active:bg-pink-light font-roboto-mono text-black-dark font-bold rounded"
-            // onClick={userlogin}
+          // onClick={userlogin}
           >
             Log in
           </button>
@@ -201,6 +201,15 @@ const Login = () => {
               Sign up
             </a>
           </button>
+          {isLoading ? (
+            <div className="fixed inset-0 h-full w-full z-10">
+              <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
+                <span className="bg-red loading loading-dots loading-lg"></span>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

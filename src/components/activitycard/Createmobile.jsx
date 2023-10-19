@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import ActivityDialog from "../activityDialog/ActivityDialog";
 
-const Createmobile = () => {
+const Createmobile = ({ activities }) => {
+  const [dialogAct, setDialogAct] = useState(false);
+
+  const toggleDialogAct = () => {
+    setDialogAct(!dialogAct);
+  };
+
   return (
     <>
-      <div className="clickbutton bordercreate w-343 h-108 flex justify-center items-center gap-2.5">
+      <button
+        onClick={() => toggleDialogAct()}
+        className="mb-4 clickbutton bordercreate w-343 h-108 flex justify-center items-center gap-2.5"
+      >
         <div className="relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +38,7 @@ const Createmobile = () => {
           </svg>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             {/* <span class="material-symbols-outlined">add</span> */}
-            
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -47,7 +57,8 @@ const Createmobile = () => {
           </div>
         </div>
         <div className="font-semibold font-roboto-mono">Add new activity</div>
-      </div>
+      </button>
+      {dialogAct && <ActivityDialog toggleDialogAct={toggleDialogAct} />}
     </>
   );
 };

@@ -202,11 +202,10 @@ const Form2 = ({ createUser }) => {
             value={formData.username}
             onChange={handleInputChange}
             placeholder="Enter your username"
-            className={`${
-              formErrors.username === "Please enter your username"
-                ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-            }`}
+            className={`${formErrors.username === "Please enter your username"
+              ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+              }`}
           />
           <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
             {formErrors.username}

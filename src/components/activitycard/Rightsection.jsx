@@ -1,41 +1,90 @@
-import React from "react";
-import Header from "./Header";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import Createmobile from "./Createmobile";
 import Default from "./Default";
-
-// useEffect(() => {
-//   const getDataById = async () => {
-//     const response = await axios.get(
-//       "https://fit-up-project-backend.onrender.com/activities/651edfb83fcee8250bbe6df1"
-//     );
-//     console.log(response.data);
-//     setActivities(response.data);
-//   };
-//   getDataById();
-// }, []);
+import axiosService from "../../service/axiosService";
 
 const Rightsection = () => {
- const haveCard = false;
- 
-  // // const haveCard = checkTodayCardExists(userId); // Assuming you have the userId available
-  // // const checkTodayCardExists = () => {
-  // //   const today = new Date();
-  // // }
+  const [haveCard, setHaveCard] = useState(false);
+  const [activities, setActivities] = useState([]);
+  const [reload, setReload] = useState(false);
+
+  const getTodayDataById = async () => {
+    try {
+      const method = 'GET';
+      const url = `https://fit-up-project-backend.onrender.com/activities/getToday/651edfb83fcee8250bbe6df1`;
+      const body = {}
+
+      const response = await axiosService(method, url, body);
+      setActivities(response);
+
+      if (response.length > 0) {
+        setHaveCard(true);
+      }
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  // const getTodayDataById = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://fit-up-project-backend.onrender.com/activities/getToday/651edfb83fcee8250bbe6df1",
+  //       {
+  //         headers: {
+  //           Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTJlYjE0NjYwYzQ0MGY4MzFkYTJhNTAiLCJmaXJzdG5hbWUiOiJpc0xvYWRpbmdfMTEiLCJsYXN0bmFtZSI6ImlzTG9hZGluZ18xMSIsInVzZXJuYW1lIjoiaXNMb2FkaW5nXzExIiwiZW1haWwiOiJpc0xvYWRpbmdfMTFAMTIzNC5jb20iLCJpYXQiOjE2OTc2ODUwMDUsImV4cCI6MTY5NzY4ODYwNX0.1WCrUqU_9JDZqGocW_fnXOiRYci_Ov6dATHHyOT-Y2k'
+  //         }
+  //       }
+  //     );
+  //     console.log(response.data);
+  //     setActivities(response.data);
+  //     if (response.data.length > 0) {
+  //       setHaveCard(true);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching data: ", error);
+  //   } finally {
+  //     // Any cleanup or final tasks can be done here
+  //     // This block will be executed regardless of whether the request was successful or failed
+  //   }
+  // };
+
+  // const getTodayDataById = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://fit-up-project-backend.onrender.com/activities/getToday/651edfb83fcee8250bbe6df1"
+  //     );
+  //     console.log(response.data);
+  //     setActivities(response.data);
+  //     if (response.data.length > 0) {
+  //       setHaveCard(true);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching data: ", error);
+  //   } finally {
+  //     // Any cleanup or final tasks can be done here
+  //     // This block will be executed regardless of whether the request was successful or failed
+  //   }
+  // };
+
+  useEffect(() => {
+    getTodayDataById();
+  }, [reload]);
+
   return (
     <>
       <div className="  text-white">
-        {/* <Header /> */}
+        {/* <Card/> */}
         {haveCard ? (
           <>
-            <Card />
-            <Createmobile />
+            <Createmobile activities={activities} />
+            <Card activities={activities} setActivities={setActivities} reload={reload} setReload={setReload} />
           </>
         ) : (
           <Default />
         )}
-      </div> 
-      <Card/>
+      </div>
     </>
   );
 };
