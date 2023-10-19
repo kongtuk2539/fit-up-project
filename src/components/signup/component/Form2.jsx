@@ -191,7 +191,7 @@ const Form2 = ({ createUser }) => {
           </div>
         )}
 
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="username"
             className="block font-roboto-mono text-sm pb-2"
@@ -215,7 +215,7 @@ const Form2 = ({ createUser }) => {
           </span>
         </div>
 
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="dateOfBirth"
             className="block font-roboto-mono text-sm pb-2"
@@ -259,7 +259,7 @@ const Form2 = ({ createUser }) => {
           </span>
         </div>
 
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="gender"
             className="text-white block font-roboto-mono text-sm pb-2"
@@ -287,7 +287,7 @@ const Form2 = ({ createUser }) => {
           </span>
         </div>
 
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="weight"
             className="block font-roboto-mono text-sm pb-2"
@@ -312,7 +312,7 @@ const Form2 = ({ createUser }) => {
           </span>
         </div>
 
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="height"
             className="block font-roboto-mono text-sm pb-2"
