@@ -58,7 +58,7 @@ const Createmobile = ({ activities }) => {
         </div>
         <div className="font-semibold font-roboto-mono">Add new activity</div>
       </button>
-      {dialogAct && <ActivityDialog />}
+      {dialogAct && <ActivityDialog toggleDialogAct={toggleDialogAct} />}
     </>
   );
 };
