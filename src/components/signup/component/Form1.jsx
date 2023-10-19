@@ -121,7 +121,7 @@ const Form1 = ({ setIsNext, setData }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="firstname"
             className="block font-roboto-mono text-sm pb-2"
@@ -145,7 +145,7 @@ const Form1 = ({ setIsNext, setData }) => {
           </span>
         </div>
 
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="lastname"
             className="block font-roboto-mono text-sm pb-2"
@@ -169,7 +169,7 @@ const Form1 = ({ setIsNext, setData }) => {
           </span>
         </div>
 
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="email"
             className="block font-roboto-mono text-sm pb-2"
@@ -195,7 +195,7 @@ const Form1 = ({ setIsNext, setData }) => {
         </div>
 
         {/* password */}
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="password"
             className="block font-roboto-mono text-sm pb-2"
@@ -237,7 +237,7 @@ const Form1 = ({ setIsNext, setData }) => {
           </span>
         </div>
 
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col text-white">
           <label
             htmlFor="repassword"
             className="block font-roboto-mono text-sm pb-2"
