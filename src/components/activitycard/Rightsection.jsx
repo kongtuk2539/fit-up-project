@@ -78,8 +78,8 @@ const Rightsection = () => {
         {/* <Card/> */}
         {haveCard ? (
           <>
+            <Createmobile activities={activities} />
             <Card activities={activities} setActivities={setActivities} reload={reload} setReload={setReload} />
-            <Createmobile />
           </>
         ) : (
           <Default />
