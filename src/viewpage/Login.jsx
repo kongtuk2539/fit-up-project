@@ -39,6 +39,7 @@ const Login = () => {
   };
 
   const userlogin = async () => {
+    setIsLoading(true)
     const result = await auth.login(formData.email, formData.password);
     console.log(result);
   };
@@ -75,8 +76,7 @@ const Login = () => {
 
     if (validateForm()) {
       await userlogin();
-      console.log('78')
-      console.log(' if =>', auth)
+      setIsLoading(false)
       if (localStorage.getItem('token')) {
         navigate("/dashboard");
       }
@@ -201,6 +201,15 @@ const Login = () => {
               Sign up
             </a>
           </button>
+          {isLoading ? (
+            <div className="fixed inset-0 h-full w-full z-10">
+              <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
+                <span className="bg-red loading loading-dots loading-lg"></span>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
