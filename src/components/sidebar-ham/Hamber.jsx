@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuth } from "../auth/AuthContext";
 
 const Hamber = () => {
   const [ham, setHam] = useState(false);
+  const [user, setUser] = useState('')
   const auth = useAuth()
+
+  useEffect(() => {
+    setUser(auth.user)
+  }, [auth.user])
+
 
   const logout = () => auth.logout()
 

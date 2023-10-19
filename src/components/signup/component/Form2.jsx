@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import InputPassword from "./password";
 import Successdialog from "../Successdialog";
 import Datepicker from "react-tailwindcss-datepicker";
+import axios from "axios";
 
 const Form2 = ({ createUser }) => {
   const [dialogSuccess, setDialogSuccess] = useState(false);
@@ -140,6 +141,8 @@ const Form2 = ({ createUser }) => {
         method: 'POST',
         body: formData,
       });
+
+
       if (result) {
         setIsLoading(false);
       }
