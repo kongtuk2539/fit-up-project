@@ -280,7 +280,7 @@ const Form1 = ({ setIsNext, setData }) => {
         </div>
 
         {/* validate password */}
-        <div className="mb-6 font-roboto-mono text-xs text-black-light">
+        <div className="mb-3 font-roboto-mono text-xs text-black-light">
           <div
             className={`${formData.password.length < 8
               ? "flex items-center gap-2"
