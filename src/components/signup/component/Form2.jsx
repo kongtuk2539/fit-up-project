@@ -5,7 +5,7 @@ import Successdialog from "../Successdialog";
 import Datepicker from "react-tailwindcss-datepicker";
 import axios from "axios";
 
-const Form2 = ({ createUser }) => {
+const Form2 = ({ createUser, handleBack }) => {
   const [dialogSuccess, setDialogSuccess] = useState(false);
   const toggleDialogSuccess = () => {
     setDialogSuccess(!dialogSuccess);
@@ -36,6 +36,10 @@ const Form2 = ({ createUser }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleGoBack = () => {
+    handleBack();
   };
 
   const validateForm = () => {
@@ -347,6 +351,7 @@ const Form2 = ({ createUser }) => {
         <div className="flex gap-4">
           <button
             type="button"
+            onClick={handleGoBack}
             className="h-12 w-12 flex justify-center items-center pl-[8px] secondary-contained-button text-black-dark"
           >
             <span class="clickbutton material-symbols-outlined">
