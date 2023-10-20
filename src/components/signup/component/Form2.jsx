@@ -114,20 +114,8 @@ const Form2 = ({ createUser, handleBack }) => {
   //   setImgUploaded(e.target.files.length > 0);
   // };
 
-  const handleImageChange = (e) => {
-    const reader = new FileReader();
-    const file = e.target.files[0];
 
-    if (file) {
-      reader.onloadend = async () => {
-        setImage(reader.result);
-        setImgUploaded(true);
-        formData.urlimg = await uploadToCloudinary(reader.result);
-        console.log(formData)
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+
 
   const uploadToCloudinary = async (dataURL) => {
     try {
