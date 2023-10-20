@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import Datepicker from "react-tailwindcss-datepicker";
+import './Activity.css'
+import Dropdown from './Dropdown';
 
-const ActivityDialog = ({toggleDialogAct}) => {
+
+
+const ActivityDialog = ({ toggleDialogAct }) => {
     const [desc, setDesc] = useState('');
     const [name, setName] = useState('');
+    const [duration, setDuration] = useState('');
     const maxCharacters = 72;
+
+    console.log("time => ", duration)
+
 
     const [selectedOption, setSelectedOption] = useState(null);
 
@@ -31,6 +39,7 @@ const ActivityDialog = ({toggleDialogAct}) => {
         `;
     };
 
+
     useEffect(() => {
         handleOptionClick('')
     }, [])
@@ -55,12 +64,16 @@ const ActivityDialog = ({toggleDialogAct}) => {
         setDateValue(newDateValue);
     }
 
+    //Time
+
+
+
 
     return (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-op90 flex items-center justify-center">
-            <div className='h-768 w-375 bg-black-medium'>
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-op90 flex items-center justify-center z-50">
+            <div className='h-768 lg:h-[690px] w-375 bg-black-medium'>
                 <div className='h-14 w-375 bg-black-dark flex items-center justify-center text-white'>
-                    <button onClick={()=>toggleDialogAct()} className='absolute left-[780px] top-[110px]'>
+                    <button onClick={() => toggleDialogAct()} className='absolute left-[780px] top-[110px]'>
                         <span className="material-symbols-outlined hover:cursor-pointer">
                             close
                         </span>
@@ -187,7 +200,8 @@ const ActivityDialog = ({toggleDialogAct}) => {
                 </div>
 
                 {/* Date and Duration */}
-                <div className='h-[75px] w-343 mx-4 mt-8'>
+
+                <div className='mx-4 mt-8 flex gap-10 items-center'>
                     <div>
                         <p className='text-white font-roboto-mono text-xs mb-2'>
                             Date
@@ -196,7 +210,7 @@ const ActivityDialog = ({toggleDialogAct}) => {
                             primaryColor={"fuchsia"}
                             placeholder={"Date"}
                             popoverDirection="up"
-                            containerClassName="relative h-12 w-343"
+                            containerClassName="relative h-12 w-[160px]"
                             inputClassName="h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs 
                         bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
                             toggleClassName="absolute rounded-r-lg text-white left-[115px] h-full px-3 
@@ -210,8 +224,24 @@ const ActivityDialog = ({toggleDialogAct}) => {
                             displayFormat={"DD MMM,YYYY"}
                         />
                     </div>
-
+                    <div className=''>
+                        <p className='text-white font-roboto-mono text-xs mb-2'>
+                            Duration
+                        </p>
+                        <Dropdown setDuration={setDuration} duration={duration} />
+                    </div>
                 </div>
+
+                <div className='flex justify-center'>
+                    <button
+                        type="submit"
+                        className="mt-[150px] lg:mt-[75px] h-12 w-343 bg-pink hover:bg-pink-medium active:bg-pink-light font-roboto-mono text-black-dark font-bold rounded"
+                    // onClick={userlogin}
+                    >
+                        Save Activity
+                    </button>
+                </div>
+
 
             </div >
         </div>
