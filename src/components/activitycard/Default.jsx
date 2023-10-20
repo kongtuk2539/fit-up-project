@@ -1,5 +1,12 @@
+import React, { useState } from "react";
+import ActivityDialog from "../activityDialog/ActivityDialog";
 
-const Default = () => {
+const Default = ({ activities }) => {
+  const [dialogAct, setDialogAct] = useState(false);
+  const toggleDialogAct = () => {
+    setDialogAct(!dialogAct);
+  };
+  
 
   return (
     <div className="relative borderdefault w-343 h-444 flex flex-col items-center px-10 pt-55 lg:h-856 lg:justify-center z-10">
@@ -15,11 +22,12 @@ const Default = () => {
         </p>
       </div>
       <div className="z-50 clickbutton">
-        <button className="flex justify-center items-center bg-pink w-263 h-12 text-black-dark font-roboto-mono font-bold rounded">
+        <button onClick={() => toggleDialogAct()} className="flex justify-center items-center bg-pink w-263 h-12 text-black-dark font-roboto-mono font-bold rounded">
           <span class="material-symbols-outlined pr-2.5 ">add_circle</span>
           Create new activity
         </button>
       </div>
+      {dialogAct && <ActivityDialog toggleDialogAct={toggleDialogAct} />}
     </div>
   )
 };

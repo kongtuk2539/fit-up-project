@@ -91,7 +91,7 @@ const Rightsection = () => {
             <Card activities={activities} setActivities={setActivities} reload={reload} setReload={setReload} />
           </>
         ) :
-          <Default />
+          <Default activities={activities} />
         }
       </div >
     </>
