@@ -1,8 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ActivityDialog from "../activityDialog/ActivityDialog";
+import Successdialog from "./Successdialog";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Createmobile = ({ activities }) => {
   const [dialogAct, setDialogAct] = useState(false);
+  const [createSuccess, setCreateSuccess] = useState(false);
+
+  const Success = () => {
+    return toast.success('Successfully created.', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const ErrorCreate = (message) => {
+    return toast.error(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+
+  useEffect(() => {
+
+  }, [createSuccess])
+
+
 
   const toggleDialogAct = () => {
     setDialogAct(!dialogAct);
@@ -58,7 +94,8 @@ const Createmobile = ({ activities }) => {
         </div>
         <div className="font-semibold font-roboto-mono">Add new activity</div>
       </button>
-      {dialogAct && <ActivityDialog toggleDialogAct={toggleDialogAct} />}
+      {dialogAct && <ActivityDialog toggleDialogAct={toggleDialogAct} ErrorCreate={ErrorCreate} Success={Success} setCreateSuccess={setCreateSuccess} createSuccess={createSuccess} />}
+      <ToastContainer />
     </>
   );
 };

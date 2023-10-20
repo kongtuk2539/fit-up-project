@@ -4,10 +4,13 @@ import './Activity.css'
 import Dropdown from './Dropdown';
 import { useAuth } from "../auth/AuthContext";
 import axiosService from "../../service/axiosService";
+import Successdialog from "../signup/Successdialog";
 
 
 
-const ActivityDialog = ({ toggleDialogAct }) => {
+
+
+const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSuccess, createSuccess }) => {
     const auth = useAuth();
     const [desc, setDesc] = useState('');
     const [name, setName] = useState('');
@@ -16,6 +19,7 @@ const ActivityDialog = ({ toggleDialogAct }) => {
     const maxCharacters = 72;
     const [isLoading, setIsLoading] = useState(false);
 
+
     const [formErrors, setFormErrors] = useState({
         nameType: "",
         name: "",
@@ -23,6 +27,8 @@ const ActivityDialog = ({ toggleDialogAct }) => {
         dateValue: "",
         duration: "",
     });
+
+
 
     const validateForm = () => {
         let errors = {};
@@ -59,6 +65,11 @@ const ActivityDialog = ({ toggleDialogAct }) => {
         const [hours, minutes] = timeString.split(":").map(Number);
         const timeInMinutes = hours * 60 + minutes;
 
+        if (!Date) {
+            ErrorCreate('Form inValid!')
+            return
+        }
+
         const formData = {
             "activity_userID": auth.user._id,
             "activity_type": nameType,
@@ -70,10 +81,10 @@ const ActivityDialog = ({ toggleDialogAct }) => {
 
 
         if (!validateForm() || !auth.user._id) {
+            ErrorCreate('Form inValid!')
             return
         }
 
-        console.log(formData)
 
         try {
             const method = 'POST';
@@ -87,13 +98,19 @@ const ActivityDialog = ({ toggleDialogAct }) => {
 
             if (response) {
                 setIsLoading(false)
+                setCreateSuccess(true)
+                Success()
+                toggleDialogAct()
                 return
             }
+
+            ErrorCreate('Error no Response')
 
 
         }
         catch (error) {
             console.error('Error fetching data:', error);
+            ErrorCreate('Server Error')
             setIsLoading(false)
         }
     }
@@ -344,6 +361,7 @@ const ActivityDialog = ({ toggleDialogAct }) => {
             ) : (
                 ""
             )}
+
         </div>
 
     );
