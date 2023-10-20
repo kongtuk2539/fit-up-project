@@ -8,7 +8,8 @@ const HamMyLoader = (props) => (
         height={72}
         viewBox="0 0 222 72"
         backgroundColor="#000000"
-        foregroundColor="#5c5c5c"
+        foregroundColor="#171717"
+        backgroundOpacity="0.5"
         {...props}
     >
         <rect x="0" y="72" rx="3" ry="3" width="380" height="6" />

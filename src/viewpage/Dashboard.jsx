@@ -11,6 +11,7 @@ import { useAuth } from "../components/auth/AuthContext";
 import CircleMyLoader from "../components/circle/CircleMyLoader";
 import CircleMobileMyLoader from "../components/circle/CircleMobileMyLoader";
 import axiosService from "../service/axiosService";
+import { Scrollbar } from 'react-scrollbars-custom';
 
 
 function Dashboard() {
@@ -19,6 +20,11 @@ function Dashboard() {
   const [coinPercentState, setCoinPercentState] = useState(0)
   const [coinUser, setCoinUser] = useState(0)
   const [balance, setBalance] = useState(0)
+
+  const scrollbarStyle = {
+    width: 380,
+    height: 800,
+  };
 
 
   useEffect(() => {
@@ -72,9 +78,11 @@ function Dashboard() {
           </div>
         </div>
         {/* //Mobile */}
-        <div className="overflow-auto w-[380px] h-[450px] col-start-auto col-end-2 sm:col-end-4 rounded-lg inline lg:hidden">
+        <div className="w-[380px] h-[450px] col-start-auto col-end-2 sm:col-end-4 rounded-lg inline lg:hidden">
           <div className="">
-            <Rightsection />
+            <Scrollbar style={{ width: 380, height: 450 }}>
+              <Rightsection />
+            </Scrollbar>;
           </div>
         </div>
         <div className="w-full h-auto col-start-auto col-end-2 sm:col-end-4 inline lg:hidden">
@@ -98,13 +106,15 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="overflow-auto min-w-auto w-[380px] min-h-auto h-[800px] col-start-9 col-end-13 rounded-lg hidden lg:inline">
+        <div className="min-w-auto w-[380px] min-h-auto h-[800px] col-start-9 col-end-13 rounded-lg hidden lg:inline">
           <div className="">
-            <Rightsection />
+            <Scrollbar style={scrollbarStyle} >
+              <Rightsection />
+            </Scrollbar>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
