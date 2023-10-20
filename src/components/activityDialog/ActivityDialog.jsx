@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 import './Activity.css'
 import Dropdown from './Dropdown';
@@ -100,8 +100,9 @@ const ActivityDialog = ({ toggleDialogAct }) => {
 
 
 
-
     const [selectedOption, setSelectedOption] = useState(null);
+
+
 
     const handleOptionClick = (option) => {
         setSelectedOption(option);
@@ -114,30 +115,33 @@ const ActivityDialog = ({ toggleDialogAct }) => {
             return `
             h-[70px] w-[167.5px] rounded-md border-solid border-2 
             flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
-            ${selectedOption === option ? '' : 'border-white'}
-            ${selectedOption === option ? 'bg-pink-op10 text-pink border-pink' : ''}
+            ${selectedOption === option ? "" : "border-white"}
+            ${selectedOption === option
+                    ? "bg-pink-op10 text-pink border-pink"
+                    : ""
+                }
           `;
         }
         // Apply the original class and additional styles for the selected option
         return `
           h-[70px] w-[109px] rounded-md border-solid border-2 
           flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
-          ${selectedOption === option ? '' : 'border-white'}
-          ${selectedOption === option ? 'bg-pink-op10 text-pink border-pink' : ''}
+          ${selectedOption === option ? "" : "border-white"}
+          ${selectedOption === option
+                ? "bg-pink-op10 text-pink border-pink"
+                : ""
+            }
         `;
     };
 
-
     useEffect(() => {
-        handleOptionClick('')
-    }, [])
-
+        handleOptionClick("");
+    }, []);
 
     const handleNameChange = (e) => {
         const newName = e.target.value;
-        setName(newName)
+        setName(newName);
     };
-
 
     const handleDescChange = (e) => {
         const newDesc = e.target.value;
@@ -150,34 +154,31 @@ const ActivityDialog = ({ toggleDialogAct }) => {
     const handleDateValueChange = (newDateValue) => {
         console.log("newValue:", newDateValue);
         setDateValue(newDateValue);
-    }
+    };
 
     //Time
 
-
-
-
     return (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-op90 flex items-center justify-center z-50">
-            <div className='h-768 lg:h-[690px] w-375 bg-black-medium'>
-                <div className='h-14 w-375 bg-black-dark flex items-center justify-center text-white'>
-                    <button onClick={() => toggleDialogAct()} className='absolute left-[780px] top-[110px]'>
+            <div className="h-768 w-375 bg-black-medium">
+                <div className="h-14 w-375 bg-black-dark flex items-center justify-start text-white">
+                    <button onClick={() => toggleDialogAct()} className="pr-24 ml-4">
                         <span className="material-symbols-outlined hover:cursor-pointer">
                             close
                         </span>
                     </button>
-                    <div className='font-roboto-mono font-bold text-sm'>
-                        My Activity
-                    </div>
+                    <div className="font-roboto-mono font-bold text-sm">My Activity</div>
                 </div>
 
                 {/* Activity Type */}
-                <div className='h-174 w-343 mx-4 mt-6'>
-                    <div className='text-white font-roboto-mono text-xs mb-1'>
+                <div className="h-174 w-343 mx-4 mt-6">
+                    <div className="text-white font-roboto-mono text-xs mb-1">
                         Activity Type
                     </div>
-                    <div className='text-white font-roboto-mono text-xs
-                    flex justify-between'>
+                    <div
+                        className="text-white font-roboto-mono text-xs
+                    flex justify-between"
+                    >
                         {/* <div className={`h-[70px] w-[109px] rounded-md border-solid border-2 border-white
                         flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
                         `}>
@@ -202,29 +203,33 @@ const ActivityDialog = ({ toggleDialogAct }) => {
                         </div> */}
 
                         <div
-                            className={optionClassName('Run')}
-                            onClick={() => handleOptionClick('Run')}
+                            className={optionClassName("Run")}
+                            onClick={() => handleOptionClick("Run")}
                         >
-                            <span className="material-symbols-outlined mb-1">directions_run</span>
+                            <span className="material-symbols-outlined mb-1">
+                                directions_run
+                            </span>
                             Run
                         </div>
                         <div
-                            className={optionClassName('Walk')}
-                            onClick={() => handleOptionClick('Walk')}
+                            className={optionClassName("Walk")}
+                            onClick={() => handleOptionClick("Walk")}
                         >
                             <span className="material-symbols-outlined mb-1">hiking</span>
                             Walk
                         </div>
                         <div
-                            className={optionClassName('Swim')}
-                            onClick={() => handleOptionClick('Swim')}
+                            className={optionClassName("Swim")}
+                            onClick={() => handleOptionClick("Swim")}
                         >
                             <span className="material-symbols-outlined mb-1">pool</span>
                             Swim
                         </div>
                     </div>
-                    <div className='text-white font-roboto-mono text-xs
-                    flex justify-between mt-1'>
+                    <div
+                        className="text-white font-roboto-mono text-xs
+                    flex justify-between mt-1"
+                    >
                         {/* <div className='h-[70px] w-[167.5px] rounded-md border-solid border-2 border-white
                         flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pinks'>
                             <span class="material-symbols-outlined mb-1">
@@ -340,7 +345,8 @@ const ActivityDialog = ({ toggleDialogAct }) => {
                 ""
             )}
         </div>
-    )
-}
 
-export default ActivityDialog
+    );
+};
+
+export default ActivityDialog;
