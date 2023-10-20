@@ -4,10 +4,12 @@ import './Activity.css'
 import Dropdown from './Dropdown';
 import { useAuth } from "../auth/AuthContext";
 import axiosService from "../../service/axiosService";
+import Successdialog from "../signup/Successdialog";
 
 
 
-const ActivityDialog = ({ toggleDialogAct }) => {
+
+const ActivityDialog = ({ toggleDialogAct, setCreateSuccess, createSuccess }) => {
     const auth = useAuth();
     const [desc, setDesc] = useState('');
     const [name, setName] = useState('');
@@ -87,6 +89,7 @@ const ActivityDialog = ({ toggleDialogAct }) => {
 
             if (response) {
                 setIsLoading(false)
+                setCreateSuccess(true)
                 return
             }
 
@@ -344,6 +347,11 @@ const ActivityDialog = ({ toggleDialogAct }) => {
             ) : (
                 ""
             )}
+            {createSuccess ? (<div className="fixed inset-0 h-full w-full z-10">
+                <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
+                    <Successdialog />
+                </div>
+            </div>) : ''}
         </div>
 
     );

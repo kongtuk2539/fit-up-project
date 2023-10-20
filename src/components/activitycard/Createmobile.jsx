@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ActivityDialog from "../activityDialog/ActivityDialog";
+import Successdialog from "./Successdialog";
 
 const Createmobile = ({ activities }) => {
   const [dialogAct, setDialogAct] = useState(false);
+  const [createSuccess, setCreateSuccess] = useState(false);
+
+  useEffect(() => {
+
+  }, [createSuccess])
+
 
   const toggleDialogAct = () => {
     setDialogAct(!dialogAct);
@@ -58,7 +65,7 @@ const Createmobile = ({ activities }) => {
         </div>
         <div className="font-semibold font-roboto-mono">Add new activity</div>
       </button>
-      {dialogAct && <ActivityDialog toggleDialogAct={toggleDialogAct} />}
+      {dialogAct && <ActivityDialog toggleDialogAct={toggleDialogAct} setCreateSuccess={setCreateSuccess} createSuccess={createSuccess} />}
     </>
   );
 };
