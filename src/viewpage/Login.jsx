@@ -113,7 +113,7 @@ const Login = () => {
                 Email
               </label>
               <input
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 value={formData.email}
