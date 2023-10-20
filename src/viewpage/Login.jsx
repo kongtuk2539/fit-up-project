@@ -100,7 +100,7 @@ const Login = () => {
       <div className="hidden lg:block h-screen w-full">
         <WelcomeImage />
       </div>
-      {showSignup ? <Signup1 /> : ""}
+      {showSignup ? <Signup1 toggleSignup={toggleSignup} /> : ""}
       <div className="flex flex-col justify-center items-center mx-auto gap-8 px-4 w-full sm:max-w-[400px] lg:max-w-[400px] lg:mx-20">
         <div className="pt-8 lg:pt-0 ">
           <LogoSVG />

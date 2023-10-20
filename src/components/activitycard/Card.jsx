@@ -83,7 +83,7 @@ const Card = ({ activities, setActivities, reload, setReload }) => {
                           onClick={() => toggleDialogdel(activity._id)}
                           className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"
                         ></div>
-                        <Deletedialog reload={reload} setReload={setReload} toggleDialogdel={() => toggleDialogdel(activity._id)} />
+                        <Deletedialog reload={reload} setReload={setReload} activities={activities} toggleDialogdel={() => toggleDialogdel(activity._id)} />
                       </div>
                     )}
                   </div>
