@@ -4,7 +4,7 @@ import Header from "./component/header";
 import Form2 from "./component/Form2";
 import Successdialog from "./Successdialog";
 
-const Signup2 = ({ createUser }) => {
+const Signup2 = ({ createUser, handleBack, toggleSignup }) => {
   const [dialogSuccess, setDialogSuccess] = useState(false);
 
   const toggleDialogSuccess = () => {
@@ -12,7 +12,7 @@ const Signup2 = ({ createUser }) => {
   };
 
   return (
-    <div className="z-50 flex justify-center items-center h-full bg-gray-op90">
+    <div className="z-50 flex justify-center items-center h-full  bg-gray-op90">
       <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:px-10 lg:pb-10">
       {/* <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:p-10"> */}
         {/* <Header /> */}
@@ -21,7 +21,7 @@ const Signup2 = ({ createUser }) => {
             Create your account
           </div>
           <div className="lg:w-full lg:border-b-half lg:border lg:rounded lg:border-black-light"></div>
-          <button className="absolute left-6 top-4 lg:relative lg:left-0 lg:top-0">
+          <button onClick={toggleSignup} className="absolute left-6 top-4 lg:relative lg:left-0 lg:top-0">
             <span className="clickbutton material-symbols-outlined lg:absolute lg:left-[320px] lg:-top-10 hover:cursor-pointer">
               close
             </span>
@@ -34,7 +34,7 @@ const Signup2 = ({ createUser }) => {
             </p>
           </div>
           <div>
-            <Form2 createUser={createUser} />
+            <Form2 createUser={createUser} handleBack={handleBack} />
             {/* <div className="flex gap-4">
               <button
                 type="button"
