@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import axiosService from "../../service/axiosService";
 
-const Deletedialog = ({ toggleDialogdel, reload, setReload }) => {
+const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
 
   // const deleteActivity = async () => {
   //   try {
@@ -19,10 +19,15 @@ const Deletedialog = ({ toggleDialogdel, reload, setReload }) => {
   //   }
   // };
 
+  const handleCancel = (activityId) => {
+    toggleDialogdel(activityId);
+  };
+
+
   const deleteActivity = async () => {
     try {
       const method = 'DELETE';
-      const url = `https://fit-up-project-backend.onrender.com/activities/6531d4eb91405d2a2ac424ea`;
+      const url = `https://fit-up-project-backend.onrender.com/activities/653206f97cbfea326b12c5c8`;
       const body = {}
 
       const response = await axiosService(method, url, body);
