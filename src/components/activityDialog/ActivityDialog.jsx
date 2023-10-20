@@ -9,7 +9,8 @@ import Successdialog from "../signup/Successdialog";
 
 
 
-const ActivityDialog = ({ toggleDialogAct, setCreateSuccess, createSuccess }) => {
+
+const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSuccess, createSuccess }) => {
     const auth = useAuth();
     const [desc, setDesc] = useState('');
     const [name, setName] = useState('');
@@ -18,6 +19,7 @@ const ActivityDialog = ({ toggleDialogAct, setCreateSuccess, createSuccess }) =>
     const maxCharacters = 72;
     const [isLoading, setIsLoading] = useState(false);
 
+
     const [formErrors, setFormErrors] = useState({
         nameType: "",
         name: "",
@@ -25,6 +27,8 @@ const ActivityDialog = ({ toggleDialogAct, setCreateSuccess, createSuccess }) =>
         dateValue: "",
         duration: "",
     });
+
+
 
     const validateForm = () => {
         let errors = {};
@@ -61,6 +65,11 @@ const ActivityDialog = ({ toggleDialogAct, setCreateSuccess, createSuccess }) =>
         const [hours, minutes] = timeString.split(":").map(Number);
         const timeInMinutes = hours * 60 + minutes;
 
+        if (!Date) {
+            ErrorCreate('Form inValid!')
+            return
+        }
+
         const formData = {
             "activity_userID": auth.user._id,
             "activity_type": nameType,
@@ -72,10 +81,10 @@ const ActivityDialog = ({ toggleDialogAct, setCreateSuccess, createSuccess }) =>
 
 
         if (!validateForm() || !auth.user._id) {
+            ErrorCreate('Form inValid!')
             return
         }
 
-        console.log(formData)
 
         try {
             const method = 'POST';
@@ -90,13 +99,18 @@ const ActivityDialog = ({ toggleDialogAct, setCreateSuccess, createSuccess }) =>
             if (response) {
                 setIsLoading(false)
                 setCreateSuccess(true)
+                Success()
+                toggleDialogAct()
                 return
             }
+
+            ErrorCreate('Error no Response')
 
 
         }
         catch (error) {
             console.error('Error fetching data:', error);
+            ErrorCreate('Server Error')
             setIsLoading(false)
         }
     }
@@ -347,11 +361,7 @@ const ActivityDialog = ({ toggleDialogAct, setCreateSuccess, createSuccess }) =>
             ) : (
                 ""
             )}
-            {createSuccess ? (<div className="fixed inset-0 h-full w-full z-10">
-                <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
-                    <Successdialog />
-                </div>
-            </div>) : ''}
+
         </div>
 
     );
