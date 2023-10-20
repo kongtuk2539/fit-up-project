@@ -2,110 +2,22 @@ import React, { useState, useEffect } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 import './Activity.css'
 import Dropdown from './Dropdown';
-import { useAuth } from "../auth/AuthContext";
-import axiosService from "../../service/axiosService";
 
 
 
 const ActivityDialog = ({ toggleDialogAct }) => {
-    const auth = useAuth();
     const [desc, setDesc] = useState('');
     const [name, setName] = useState('');
-    const [nameType, setNameType] = useState('');
     const [duration, setDuration] = useState('');
     const maxCharacters = 72;
-    const [isLoading, setIsLoading] = useState(false);
 
-    const [formErrors, setFormErrors] = useState({
-        nameType: "",
-        name: "",
-        desc: "",
-        dateValue: "",
-        duration: "",
-    });
-
-    const validateForm = () => {
-        let errors = {};
-        let isValid = true;
-
-        if (!nameType.trim()) {
-            errors.nameType = "Please enter your ActivityType";
-            isValid = false;
-        }
-        if (!name.trim()) {
-            errors.name = "Please enter your name";
-            isValid = false;
-        }
-        if (desc.trim().length > 72) {
-            errors.desc = "Do not enter a description of more than 72 characters";
-            isValid = false;
-        }
-        if (!dateValue) {
-            errors.name = "Please enter your Date";
-            isValid = false;
-        }
-        if (!duration) {
-            errors.name = "Please enter your Duration";
-            isValid = false;
-        }
-
-        setFormErrors(errors);
-        return isValid;
-    };
-
-    const createActivity = async () => {
-        const Date = dateValue;
-        const timeString = duration;
-        const [hours, minutes] = timeString.split(":").map(Number);
-        const timeInMinutes = hours * 60 + minutes;
-
-        const formData = {
-            "activity_userID": auth.user._id,
-            "activity_type": nameType,
-            "activity_name": name,
-            "activity_desc": desc,
-            "activity_date": Date.startDate,
-            "activity_duration": timeInMinutes
-        }
-
-
-        if (!validateForm() || !auth.user._id) {
-            return
-        }
-
-        console.log(formData)
-
-        try {
-            const method = 'POST';
-            const url = `https://fit-up-project-backend.onrender.com/activities`;
-            const body = formData
-
-
-            setIsLoading(true)
-            const response = await axiosService(method, url, body);
-            console.log(response)
-
-            if (response) {
-                setIsLoading(false)
-                return
-            }
-
-
-        }
-        catch (error) {
-            console.error('Error fetching data:', error);
-            setIsLoading(false)
-        }
-    }
-
-
+    console.log("time => ", duration)
 
     const [selectedOption, setSelectedOption] = useState(null);
 
 
     const handleOptionClick = (option) => {
         setSelectedOption(option);
-        setNameType(option)
         setName(option)
     };
 
@@ -328,21 +240,14 @@ const ActivityDialog = ({ toggleDialogAct }) => {
                     <button
                         type="submit"
                         className="mt-[150px] lg:mt-[75px] h-12 w-343 bg-pink hover:bg-pink-medium active:bg-pink-light font-roboto-mono text-black-dark font-bold rounded"
-                        onClick={createActivity}
+                    // onClick={userlogin}
                     >
                         Save Activity
                     </button>
                 </div>
+
+
             </div >
-            {isLoading ? (
-                <div className="fixed inset-0 h-full w-full z-10">
-                    <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
-                        <span className="bg-red loading loading-dots loading-lg"></span>
-                    </div>
-                </div>
-            ) : (
-                ""
-            )}
         </div>
     );
 };

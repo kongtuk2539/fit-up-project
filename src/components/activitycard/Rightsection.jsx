@@ -19,7 +19,7 @@ const Rightsection = () => {
   const getTodayDataById = async () => {
     try {
       const method = 'GET';
-      const url = `https://fit-up-project-backend.onrender.com/activities/getToday/${auth.user._id}`;
+      const url = `https://fit-up-project-backend.onrender.com/activities/getToday/651edfb83fcee8250bbe6df1`;
       const body = {}
 
       const response = await axiosService(method, url, body);
