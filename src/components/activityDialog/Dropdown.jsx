@@ -25,7 +25,7 @@ const Dropdown = ({ setDuration, duration, formErrors }) => {
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         className={`${
-            formErrors.duration === "Please select Duration"
+            formErrors.duration === "Please select duration"
               ? "ring-1 ring-red text-black-light text-xs mb-0 bg-black-dark w-[145px] h-12 px-4 flex items-center justify-between font-roboto-mono text-[16px] rounded tracking-wider border-2 border-transparent active:border-pink duration-200 active:text-[#FD00FE]"
               : "text-black-light text-xs mb-0 bg-black-dark w-[145px] h-12 px-4 flex items-center justify-between font-roboto-mono text-[16px] rounded tracking-wider border-2 border-transparent active:border-pink duration-200 active:text-[#FD00FE]"
           }`}

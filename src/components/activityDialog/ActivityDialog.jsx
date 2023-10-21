@@ -38,7 +38,7 @@ const ActivityDialog = ({
       isValid = false;
     }
     if (!name.trim()) {
-      errors.name = "Please enter your name";
+      errors.name = "Please enter your activity name";
       isValid = false;
     }
     if (desc.trim().length > 72) {
@@ -46,11 +46,11 @@ const ActivityDialog = ({
       isValid = false;
     }
     if (!dateValue) {
-      errors.dateValue = "Please select Date";
+      errors.dateValue = "Please select date";
       isValid = false;
     }
     if (!duration) {
-      errors.duration = "Please select Duration";
+      errors.duration = "Please select duration";
       isValid = false;
     }
 
@@ -75,7 +75,7 @@ const ActivityDialog = ({
     if (!validateForm() || !auth.user._id) {
       console.log("formErrors");
 
-      ErrorCreate("Form inValidgggg!");
+      ErrorCreate("Form Invalid!");
       return;
     }
 
@@ -288,7 +288,7 @@ const ActivityDialog = ({
               value={name}
               onChange={handleNameChange}
               className={`${
-                formErrors.name === "Please enter your name"
+                formErrors.name === "Please enter your activity name"
                   ? "ring-1 ring-red w-full px-4 py-3 mb-1 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
               }`}
@@ -352,7 +352,7 @@ const ActivityDialog = ({
               popoverDirection="up"
               containerClassName="relative h-12 w-[160px]"
               inputClassName={`${
-                formErrors.dateValue === "Please select Date"
+                formErrors.dateValue === "Please select date"
                   ? "ring-1 ring-red h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
                   : "h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
               }`}
