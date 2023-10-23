@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 // import "../App.css";
-import Header from "./component/header";
-import Topsection from "./component/topsection";
-import Divider from "./component/Divider";
 import Form1 from "./component/Form1";
 import Page2 from "./Signup2";
-import GoogleButton from "../signincomponents/GoogleButton";
 import axios from "axios";
 
-const Signup1 = ({toggleSignup}) => {
+const Signup1 = ({ toggleSignup }) => {
   const [data, setData] = useState({});
   const [isNext, setIsNext] = useState(false);
   // const [isBack, setIsBack] = useState(false);
@@ -83,9 +79,9 @@ const Signup1 = ({toggleSignup}) => {
                   >
                     <span>
                       <img
-                        src="/svg/GoogleLogo.svg" 
+                        src="/svg/GoogleLogo.svg"
                         alt="Google Logo"
-                        className=" mr-2" 
+                        className=" mr-2"
                       />
                     </span>
                     <div>
