@@ -1,56 +1,68 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './circls-style.css'
 import HorizonBar from './HorizonBar.jsx'
-import CircleMyLoader from './CircleMyLoader';
+import { GetUser } from '../../crud/GetUser'
+import { useAuth } from "../auth/AuthContext";
 
-const Circle = ({ coinPercentState, coinUser, balance }) => {
+const Circle = ({ user, createSuccess }) => {
     const circleRef = useRef(null);
+    const auth = useAuth()
     const [coinState, setCoinState] = useState(0)
+    const [coinPercentState, setCoinPercentState] = useState(0)
+    const [balance, setBalance] = useState(0)
+
+
+
 
     useEffect(() => {
+        const GetdataUser = (user) => {
+            if (user) {
+                GetUser(user._id).then((res) => {
+                    console.log("res => ", res)
+                    setCoinState(res.user_coin)
+                    setBalance(res.balance)
 
-        if (!coinPercentState && !coinUser && !balance) {
-            return
+                    const coinPercent2 = (100 * res.user_coin) / 30000
+                    setCoinPercentState(coinPercent2)
+
+                    // (100 * x) / 30000 
+                    const circle = circleRef.current;
+
+                    const coinPercent = coinPercent2 / 100;
+                    const valueStroke = 551 - 551 * coinPercent;
+
+                    if (circle) {
+                        const animation = circle.animate(
+                            [
+                                { strokeDashoffset: 551 },
+                                { strokeDashoffset: valueStroke },
+                            ],
+                            {
+                                duration: 2000, // 2 seconds
+                                easing: 'linear',
+                                fill: 'forwards',
+                            }
+                        );
+                    }
+
+                })
+
+            }
+
         }
 
-        console.log('coinPercentState => ', coinPercentState)
-        // (100 * x) / 30000 
-        const circle = circleRef.current;
+        GetdataUser(user)
 
-        const coinPercent = coinPercentState / 100;
-        const valueStroke = 551 - 551 * coinPercent;
-
-        if (circle) {
-            const animation = circle.animate(
-                [
-                    { strokeDashoffset: 551 },
-                    { strokeDashoffset: valueStroke },
-                ],
-                {
-                    duration: 2000, // 2 seconds
-                    easing: 'linear',
-                    fill: 'forwards',
-                }
-            );
+        if (createSuccess) {
+            GetdataUser(user)
         }
 
-        console.log(coinPercent);
 
-        // over re-render
-        // setInterval(() => {
-        //     // console.log('in setInterval => ', counter, coin)
-        //     if (counter === coin) {
-        //         clearInterval();
-        //     } else {
-        //         counter += 1;
-        //         setCoinState(counter)
-        //         // console.log('in setInterval and if => ', counter, coin)
-        //     }
-        // }, 20);
-
-    }, []);
+    }, [createSuccess, coinState, coinPercentState, balance]);
 
 
+
+    console.log("circle checked", createSuccess);
 
 
     // (100 * x) / 30000  
@@ -71,7 +83,7 @@ const Circle = ({ coinPercentState, coinUser, balance }) => {
                     <div className="inner w-full h-full bg-[#020005] bg-opacity-70  rounded-full flex items-center justify-center">
                         <div className="info-circle flex flex-col justify-start gap-1">
                             <h3 className="text-blue font-orbitron font-bold text-2xl">
-                                +{coinUser}
+                                +{coinState}
                             </h3>
                             <p className='text-black-light font-roboto-mono text-sm text-center'>FitCoin</p>
                         </div>
@@ -81,15 +93,15 @@ const Circle = ({ coinPercentState, coinUser, balance }) => {
                     </svg>
                 </div>
                 <div className="footer-circle w-full h-auto m-3 lg:m-0 lg:mt-2 text-white font-roboto-mono text-sm ml-0
-                "><p className='flex items-center gap-1'><span className='material-symbols-outlined text-2xl'> monetization_on </span>Total Balance: {coinUser}</p>
+            "><p className='flex items-center gap-1'><span className='material-symbols-outlined text-2xl'> monetization_on </span>Total Balance: {coinState}</p>
                 </div>
             </div>
             <div className='relative w-311 lg:w-419 md:w-311 top-0 hidden lg:inline-block'>
-                < HorizonBar coinPercentState={coinPercentState} coinUser={coinUser} balance={balance} />
+                < HorizonBar coinPercentState={coinPercentState} coinUser={coinState} balance={balance} />
             </div>
 
             <div className='relative top-[140px] inline-block lg:hidden'>
-                < HorizonBar coinPercentState={coinPercentState} coinUser={coinUser} balance={balance} />
+                < HorizonBar coinPercentState={coinPercentState} coinUser={coinState} balance={balance} />
             </div>
         </div >
     )

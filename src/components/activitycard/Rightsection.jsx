@@ -3,36 +3,18 @@ import Card from "./Card";
 import Createmobile from "./Createmobile";
 import Default from "./Default";
 import axiosService from "../../service/axiosService";
+import { GetActivityTodayDataById } from '../../crud/GetActivityTodayDataById'
 import { useAuth } from "../auth/AuthContext";
 import MyLoader from "./MyLoader";
 
-const Rightsection = () => {
-  const [haveCard, setHaveCard] = useState(false);
-  const [activities, setActivities] = useState([]);
-  const [reload, setReload] = useState(false);
+const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, createSuccess }) => {
   const auth = useAuth();
 
   //https://fit-up-project-backend.onrender.com/activities/getWithDate/651edfb83fcee8250bbe6df1
 
   //
 
-  const getTodayDataById = async () => {
-    try {
-      const method = 'GET';
-      const url = `https://fit-up-project-backend.onrender.com/activities/getToday/${auth.user._id}`;
-      const body = {}
 
-      const response = await axiosService(method, url, body);
-      setActivities(response);
-
-      if (response.length > 0) {
-        setHaveCard(true);
-      }
-
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
 
   // const getTodayDataById = async () => {
   //   try {
@@ -76,10 +58,31 @@ const Rightsection = () => {
   // };
 
   useEffect(() => {
-    getTodayDataById();
-  }, [reload, auth.user]);
+    // const getTodayDataById = async () => {
+    //   try {
+    //     const method = 'GET';
+    //     const url = `https://fit-up-project-backend.onrender.com/activities/getToday/${auth.user._id}`;
+    //     const body = {}
 
-  console.log(haveCard)
+    //     const response = await axiosService(method, url, body);
+
+
+    //     let sortData = [...response].reverse();
+    //     console.log("sortData => ", sortData)
+
+    //     setActivities(sortData);
+
+    //     if (response.length > 0) {
+    //       setHaveCard(true);
+    //     }
+
+    //   } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //   }
+    // };
+
+    // getTodayDataById();
+  }, [createSuccess]);
 
   return (
     <>
@@ -87,11 +90,11 @@ const Rightsection = () => {
         {/* <Card/> */}
         {haveCard ? (
           <>
-            <Createmobile activities={activities} />
-            <Card activities={activities} setActivities={setActivities} reload={reload} setReload={setReload} />
+            <Createmobile toggleDialogAct={toggleDialogAct} />
+            <Card handleEdit={handleEdit} activities={activities} />
           </>
         ) :
-          <Default activities={activities} />
+          <Default toggleDialogAct={toggleDialogAct} />
         }
       </div >
     </>
