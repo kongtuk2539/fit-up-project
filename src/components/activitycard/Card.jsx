@@ -26,6 +26,18 @@ const Card = ({ activities, setActivities, reload, setReload }) => {
     return date.toLocaleDateString('en-US', options);
   };
 
+  const formatDurationForDisplay = (durationInMinutes) => {
+    const hours = Math.floor(durationInMinutes / 60);
+    const minutes = durationInMinutes % 60;
+    if (hours === 0) {
+      return `${minutes} mins`;
+    } else if (minutes === 0) {
+      return `${hours} hr`;
+    } else {
+      return `${hours} hr ${minutes} mins`;
+    }
+  };
+
   return (
     <>
       {activities.map((activity) => (
@@ -98,7 +110,7 @@ const Card = ({ activities, setActivities, reload, setReload }) => {
               </h2>
               <p className="font-roboto-mono">{activity.activity_desc}</p>
               <p className="mt-4 text-sm font-roboto-mono text-white-op70">
-              {formatDateForDisplay(activity.activity_date)} ({activity.activity_duration})
+              {formatDateForDisplay(activity.activity_date)} ({formatDurationForDisplay(activity.activity_duration)})
               </p>
             </div>
           </div>

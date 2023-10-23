@@ -34,7 +34,7 @@ const ActivityDialog = ({
     let isValid = true;
 
     if (!nameType.trim()) {
-      errors.nameType = "Please enter your ActivityType";
+      errors.nameType = "Please select activity type";
       isValid = false;
     }
     if (!name.trim()) {
@@ -122,6 +122,39 @@ const ActivityDialog = ({
   };
 
   const optionClassName = (option) => {
+    // if (formErrors.nameType === "Please select activity type") {
+    //   return `
+    //   h-[70px] w-[109px] rounded-md border-solid border-2 border-red 
+    //   flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
+    // `;
+    // }
+    if (formErrors.nameType === "Please select activity type") {
+        if (option === "Gym workout" || option === "Road Cycling") {
+            return `
+            h-[70px] w-[167.5px] rounded-md border-solid border-2 
+            flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
+            ${selectedOption === option ? "" : "border-red"}
+            ${
+              selectedOption === option
+                ? "bg-pink-op10 text-pink border-pink"
+                : ""
+            }
+          `;
+        }
+        return `
+          h-[70px] w-[109px] rounded-md border-solid border-2 
+          flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
+          ${selectedOption === option ? "" : "border-red"}
+          ${
+            selectedOption === option
+              ? "bg-pink-op10 text-pink border-pink"
+              : ""
+          }
+        `;
+
+    }
+
+
     if (option === "Gym workout" || option === "Road Cycling") {
       return `
             h-[70px] w-[167.5px] rounded-md border-solid border-2 
@@ -188,10 +221,7 @@ const ActivityDialog = ({
           <div className="text-white font-roboto-mono text-xs mb-1">
             Activity Type
           </div>
-          <div
-            className="text-white font-roboto-mono text-xs
-                    flex justify-between"
-          >
+          <div className="text-white font-roboto-mono text-xs flex justify-between">
             {/* <div className={`h-[70px] w-[109px] rounded-md border-solid border-2 border-white
                         flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
                         `}>
@@ -241,7 +271,7 @@ const ActivityDialog = ({
           </div>
           <div
             className="text-white font-roboto-mono text-xs
-                    flex justify-between mt-1"
+                    flex justify-between mt-1 mb-1"
           >
             {/* <div className='h-[70px] w-[167.5px] rounded-md border-solid border-2 border-white
                         flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pinks'>
@@ -277,10 +307,15 @@ const ActivityDialog = ({
               Road Cycling
             </div>
           </div>
+          {formErrors.nameType && (
+            <span className="my-2 pb-4 text-red text-xs font-roboto-mono font-bold">
+              {formErrors.nameType}
+            </span>
+          )}
         </div>
 
         {/* Name */}
-        <div className="h-[75px] w-343 mx-4 mt-4">
+        <div className="h-[75px] w-343 mx-4 mt-5">
           <p className="text-white font-roboto-mono text-xs mb-2">Name</p>
           <div className="">
             <input
@@ -289,8 +324,8 @@ const ActivityDialog = ({
               onChange={handleNameChange}
               className={`${
                 formErrors.name === "Please enter your activity name"
-                  ? "ring-1 ring-red w-full px-4 py-3 mb-1 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                  : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                  ? "ring-1 ring-red h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
+                  : "h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
               }`}
               //   className="h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
             />
@@ -377,7 +412,11 @@ const ActivityDialog = ({
 
           <div className="">
             <p className="text-white font-roboto-mono text-xs mb-2">Duration</p>
-            <Dropdown setDuration={setDuration} duration={duration} formErrors={formErrors} />
+            <Dropdown
+              setDuration={setDuration}
+              duration={duration}
+              formErrors={formErrors}
+            />
             {formErrors.duration && (
               <span className="my-2 pb-4 text-red text-xs font-roboto-mono font-bold">
                 {formErrors.duration}
