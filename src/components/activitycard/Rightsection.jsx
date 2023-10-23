@@ -9,6 +9,7 @@ import MyLoader from "./MyLoader";
 
 const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, createSuccess }) => {
   const auth = useAuth();
+  const [reload, setReload] = useState(false);
 
   //https://fit-up-project-backend.onrender.com/activities/getWithDate/651edfb83fcee8250bbe6df1
 
@@ -91,7 +92,7 @@ const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, creat
         {haveCard ? (
           <>
             <Createmobile toggleDialogAct={toggleDialogAct} />
-            <Card handleEdit={handleEdit} activities={activities} />
+            <Card handleEdit={handleEdit} activities={activities} reload={reload} setReload={setReload} />
           </>
         ) :
           <Default toggleDialogAct={toggleDialogAct} />
