@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 // import InputPassword from './Password';
-import InputPassword from "./password";
 import Successdialog from "../Successdialog";
 import Datepicker from "react-tailwindcss-datepicker";
-import axios from "axios";
 
 const Form2 = ({ createUser, handleBack }) => {
   const [dialogSuccess, setDialogSuccess] = useState(false);

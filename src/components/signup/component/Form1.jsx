@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import validator from "validator";
-import { Link } from 'react-router-dom';
 
 const Form1 = ({ setIsNext, setData }) => {
   const [showPassword, setShowPassword] = useState(false);
