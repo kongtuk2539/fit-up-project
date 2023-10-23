@@ -2,16 +2,11 @@ import React, { useState, useContext } from "react";
 import "../App.css";
 import LogoSVG from "../components/signincomponents/LogoSVG";
 import WelcomeWord from "../components/signincomponents/WelcomeWord";
-import InputEmail from "../components/signincomponents/Inputemail";
-import InputPassword from "../components/signincomponents/InputPassword";
 import RememberMeCheckbox from "../components/signincomponents/RememberMeCheckbox";
 import ForgotPassword from "../components/signincomponents/ForgotPassword";
-import LoginButton from "../components/signincomponents/LoginButton";
 import Divider from "../components/signincomponents/Divider";
 import GoogleButton from "../components/signincomponents/GoogleButton";
-import SignupButton from "../components/signincomponents/SignupButton";
 import WelcomeImage from "../components/signincomponents/WelcomeImage";
-import WelcomeVideo from "../components/signincomponents/WelcomeVideo";
 import { useAuth } from "../components/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Signup1 from "../components/signup/Signup1";
@@ -119,14 +114,13 @@ const Login = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Enter your email"
-                className={`${
-                  formErrors.email === "Please enter your email" ||
-                  formErrors.email === "Please enter a valid email" ||
-                  formErrors.password === "Incorrect email or password. Try again"
+                className={`${formErrors.email === "Please enter your email" ||
+                    formErrors.email === "Please enter a valid email" ||
+                    formErrors.password === "Incorrect email or password. Try again"
                     ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                     : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                }`}
-                // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                  }`}
+              // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
               />
               <span className="my-2 text-red text-xs font-roboto-mono font-bold">
                 {formErrors.email}
@@ -148,14 +142,13 @@ const Login = () => {
                     value={formData.password}
                     onChange={handleInputChange}
                     placeholder="Enter your password"
-                    className={`${
-                      formErrors.password === "Please enter your password" ||
-                      formErrors.password ===
+                    className={`${formErrors.password === "Please enter your password" ||
+                        formErrors.password ===
                         "Incorrect email or password. Try again"
                         ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                         : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                    }`}
-                    // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                      }`}
+                  // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   />
                   <span
                     onClick={togglePasswordVisibility}
@@ -176,7 +169,7 @@ const Login = () => {
                   {formErrors.password}
                 </span>
               </div>
-            </div>  
+            </div>
             <div className="flex justify-between items-center w-full">
               <RememberMeCheckbox />
               <ForgotPassword />
