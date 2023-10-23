@@ -224,10 +224,7 @@ const ActivityDialog = ({
           <div className="text-white font-roboto-mono text-xs mb-1">
             Activity Type
           </div>
-          <div
-            className="text-white font-roboto-mono text-xs
-                    flex justify-between"
-          >
+          <div className="text-white font-roboto-mono text-xs flex justify-between">
             {/* <div className={`h-[70px] w-[109px] rounded-md border-solid border-2 border-white
                         flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pink
                         `}>
@@ -277,7 +274,7 @@ const ActivityDialog = ({
           </div>
           <div
             className="text-white font-roboto-mono text-xs
-                    flex justify-between mt-1"
+                    flex justify-between mt-1 mb-1"
           >
             {/* <div className='h-[70px] w-[167.5px] rounded-md border-solid border-2 border-white
                         flex flex-col p-2 hover:bg-pink-op10 hover:cursor-pointer hover:text-pink hover:border-pinks'>
@@ -313,29 +310,46 @@ const ActivityDialog = ({
               Road Cycling
             </div>
           </div>
+          {formErrors.nameType && (
+            <span className="my-2 pb-4 text-red text-xs font-roboto-mono font-bold">
+              {formErrors.nameType}
+            </span>
+          )}
         </div>
 
         {/* Name */}
-        <div className="h-[75px] w-343 mx-4 mt-4">
+        <div className="h-[75px] w-343 mx-4 mt-5">
           <p className="text-white font-roboto-mono text-xs mb-2">Name</p>
           <div className="">
             <input
               type="text"
               value={name}
               onChange={handleNameChange}
-              className="h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
+              className={`${
+                formErrors.name === "Please enter your activity name"
+                  ? "ring-1 ring-red h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
+                  : "h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
+              }`}
+              //   className="h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
             />
+            {/* <span className="my-2 mb-4 text-red text-xs font-roboto-mono font-bold">
+              {formErrors.name}
+            </span> */}
+            {formErrors.name && (
+              <span className="my-2 pb-4 text-red text-xs font-roboto-mono font-bold">
+                {formErrors.name}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Description */}
-        <div className="h-[75px] w-343 mx-4 mt-4">
+        <div className="h-[75px] w-343 mx-4 mt-7">
           <div className="flex justify-between">
             <p className="text-white font-roboto-mono text-xs mb-2">
               Description (optional)
             </p>
             <p className="text-black-light font-roboto-mono text-xs mb-2">
-              {/* {0}/{maxCharacters} */}
               {desc.length}/{maxCharacters}
             </p>
           </div>
@@ -343,7 +357,12 @@ const ActivityDialog = ({
             <textarea
               id="message"
               rows="4"
-              className="block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
+              className={`${
+                formErrors.desc === "Description exceeding 72 characters"
+                  ? "ring-1 ring-red block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
+                  : "block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
+              }`}
+              //   className="block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
               placeholder={
                 selectedOption
                   ? `How was your ${selectedOption} ?`
@@ -353,11 +372,16 @@ const ActivityDialog = ({
               onChange={handleDescChange}
             ></textarea>
           </div>
+          {formErrors.desc && (
+            <span className="my-2 pb-4 text-red text-xs font-roboto-mono font-bold">
+              {formErrors.desc}
+            </span>
+          )}
         </div>
 
         {/* Date and Duration */}
 
-        <div className="mx-4 mt-8 flex gap-10 items-center">
+        <div className="mx-4 mt-11 flex gap-6 items-center">
           <div>
             <p className="text-white font-roboto-mono text-xs mb-2">Date</p>
             <Datepicker
@@ -365,8 +389,13 @@ const ActivityDialog = ({
               placeholder={"Date"}
               popoverDirection="up"
               containerClassName="relative h-12 w-[160px]"
-              inputClassName="h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs 
-                        bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
+              inputClassName={`${
+                formErrors.dateValue === "Please select date"
+                  ? "ring-1 ring-red h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
+                  : "h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
+              }`}
+              //   inputClassName="h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs
+              //             bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
               toggleClassName="absolute rounded-r-lg text-white left-[115px] h-full px-3 
                             focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
               value={dateValue}
@@ -377,12 +406,25 @@ const ActivityDialog = ({
               minDate={new Date()}
               displayFormat={"DD MMM,YYYY"}
             />
+            {formErrors.dateValue && (
+              <span className="my-2 pb-4 text-red text-xs font-roboto-mono font-bold">
+                {formErrors.dateValue}
+              </span>
+            )}
           </div>
+
           <div className="">
-            <p className="text-white font-roboto-mono text-xs mb-2">
-              Duration (minute)
-            </p>
-            <Dropdown setDuration={setDuration} duration={duration} />
+            <p className="text-white font-roboto-mono text-xs mb-2">Duration</p>
+            <Dropdown
+              setDuration={setDuration}
+              duration={duration}
+              formErrors={formErrors}
+            />
+            {formErrors.duration && (
+              <span className="my-2 pb-4 text-red text-xs font-roboto-mono font-bold">
+                {formErrors.duration}
+              </span>
+            )}
           </div>
         </div>
 
