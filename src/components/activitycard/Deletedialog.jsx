@@ -62,7 +62,7 @@ const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
         </div>
         <div className="z-50 flex gap-4">
           <button
-            onClick={() => toggleDialogdel(activity._id)}
+            onClick={() => handleCancel(activities._id)}
             className="secondary-contained-button clickbutton flex justify-center items-center bg-white w-150 p-3 rounded text-gray-op90 font-roboto-mono font-bold"
           >
             Cancel
