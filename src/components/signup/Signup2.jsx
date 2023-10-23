@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 // import "../App.css";
-import Header from "./component/header";
 import Form2 from "./component/Form2";
-import Successdialog from "./Successdialog";
 
 const Signup2 = ({ createUser, handleBack, toggleSignup }) => {
   const [dialogSuccess, setDialogSuccess] = useState(false);
@@ -14,7 +12,7 @@ const Signup2 = ({ createUser, handleBack, toggleSignup }) => {
   return (
     <div className="z-50 flex justify-center items-center h-full  bg-gray-op90">
       <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:px-10 lg:pb-10">
-      {/* <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:p-10"> */}
+        {/* <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:p-10"> */}
         {/* <Header /> */}
         <div className="h-14 bg-black-dark flex items-center justify-center text-white lg:pt-0 lg:flex lg:flex-col lg:items-start lg:justify-center lg:bg-transparent">
           <div className="font-roboto-mono font-bold text-sm lg:font-orbitron lg:text-xl lg:pb-2">
