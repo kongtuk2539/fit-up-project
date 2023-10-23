@@ -32,7 +32,9 @@ const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload }) => {
 
       const response = await axiosService(method, url, body);
       console.log(response.data);
-      // setReload(!reload);
+      console.log('yyy',response);
+      console.log("tttt",activityId);
+      setReload(!reload);
 
     } catch (error) {
       console.error('Error fetching data:', error);

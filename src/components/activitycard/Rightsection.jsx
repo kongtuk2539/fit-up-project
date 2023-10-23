@@ -15,8 +15,6 @@ const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, creat
 
   //
 
-
-
   // const getTodayDataById = async () => {
   //   try {
   //     const response = await axios.get(
@@ -83,7 +81,7 @@ const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, creat
     // };
 
     // getTodayDataById();
-  }, [createSuccess]);
+  }, [reload, createSuccess]);
 
   return (
     <>
@@ -91,11 +89,11 @@ const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, creat
         {/* <Card/> */}
         {haveCard ? (
           <>
-            <Createmobile toggleDialogAct={toggleDialogAct} />
-            <Card handleEdit={handleEdit} activities={activities} reload={reload} setReload={setReload} />
+            <Createmobile activities={activities} toggleDialogAct={toggleDialogAct} />
+            <Card handleEdit={handleEdit} activities={activities} setReload={setReload} reload={reload} />
           </>
         ) :
-          <Default toggleDialogAct={toggleDialogAct} />
+          <Default activities={activities} toggleDialogAct={toggleDialogAct} />
         }
       </div >
     </>
