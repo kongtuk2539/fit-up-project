@@ -107,8 +107,8 @@ export default {
         32: '32px',
       },
       backgroundImage: {
-        run: "url('/src/assets/image/Activity/Run.png')",
-        weight: "url('/src/assets/Weight-Training.png')",
+        Run: "url('/src/assets/image/Activity/Run.png')",
+        Gymworkout: "url('/src/assets/Weight-Training.png')",
         delete: "url('/src/assets/bgdelete.png')",
         bgdesktop: "url('/src/assets/image/BG/Bg-Desktop.png')",
         bgipad: "url('/src/assets/image/BG/Bg-Ipad.png')",

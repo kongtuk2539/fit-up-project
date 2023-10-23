@@ -59,6 +59,9 @@ const Rightsection = () => {
 
   useEffect(() => {
     getTodayDataById();
+    if (reload) {
+      getTodayDataById()
+    }
   }, [reload, auth.user]);
 
   console.log(haveCard)
