@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ActivityDialog from "../activityDialog/ActivityDialog";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
-const Default = ({ activities }) => {
-  const [dialogAct, setDialogAct] = useState(false);
-  const [createSuccess, setCreateSuccess] = useState(false);
 
-  useEffect(() => {
-
-  }, [createSuccess])
-
-  const toggleDialogAct = () => {
-    setDialogAct(!dialogAct);
-  };
-
+const Default = ({ toggleDialogAct }) => {
 
   return (
     <div className="relative borderdefault w-343 h-444 flex flex-col items-center px-10 pt-55 lg:h-856 lg:justify-center z-10">
@@ -33,7 +25,6 @@ const Default = ({ activities }) => {
           Create new activity
         </button>
       </div>
-      {dialogAct && <ActivityDialog toggleDialogAct={toggleDialogAct} setCreateSuccess={setCreateSuccess} createSuccess={createSuccess} />}
     </div>
   )
 };

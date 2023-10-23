@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Deletedialog from "./Deletedialog";
+import { GetActivityById } from "../../crud/GetActivityById";
+import ActivityDialog from "../activityDialog/ActivityDialog";
 
-const Card = ({ activities, setActivities, reload, setReload }) => {
+const Card = ({ handleEdit, activities }) => {
   const [dropdownOpen, setDropdownOpen] = useState({});
   const [dialogdel, setDialogdel] = useState({});
+  const [dialogEdit, setDialogEdit] = useState(false);
+  const [activityEdit, setActivityEdit] = useState(null)
 
   const toggleDropdown = (activityId) => {
+    console.log(activityId)
     setDropdownOpen((prev) => ({
       ...prev,
       [activityId]: !prev[activityId]
@@ -20,11 +25,28 @@ const Card = ({ activities, setActivities, reload, setReload }) => {
     }));
   };
 
+
   const formatDateForDisplay = (dateString) => {
     const options = { weekday: 'short', day: 'numeric', month: 'short' };
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', options);
   };
+
+  // const toggleEdit = () => {
+  //   setDialogEdit((p) => setDialogEdit(!p))
+  // }
+
+  // const handleEdit = (id) => {
+  //   toggleEdit()
+  //   console.log("handleEdit => ", id)
+
+  //   GetActivityById(id).then(async (res) => {
+  //     const data = await res
+  //     setActivityEdit(...data)
+  //   })
+  // }
+
+
 
   return (
     <>
@@ -64,7 +86,7 @@ const Card = ({ activities, setActivities, reload, setReload }) => {
 
                   <div className="animate-in zoom-in absolute border border-white w-32 h-24 flex flex-col justify-center right-0 mt-2 bg-black-medium rounded shadow-box z-20">
                     {/* <div className="absolute border border-white w-32 h-24 px-2 right-0 mt-2 bg-black-medium rounded shadow-xl z-20"> */}
-                    <button className="clickbutton w-full flex items-center rounded px-4 py-2 text-white font-roboto-mono">
+                    <button onClick={() => handleEdit(activity._id)} className="clickbutton w-full flex items-center rounded px-4 py-2 text-white font-roboto-mono">
                       <span className="material-symbols-outlined pr-2">
                         edit
                       </span>
@@ -98,7 +120,7 @@ const Card = ({ activities, setActivities, reload, setReload }) => {
               </h2>
               <p className="font-roboto-mono">{activity.activity_desc}</p>
               <p className="mt-4 text-sm font-roboto-mono text-white-op70">
-              {formatDateForDisplay(activity.activity_date)} ({activity.activity_duration})
+                {formatDateForDisplay(activity.activity_date)} ({activity.activity_duration})
               </p>
             </div>
           </div>

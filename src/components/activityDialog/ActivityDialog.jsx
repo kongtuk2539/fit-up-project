@@ -3,14 +3,13 @@ import Datepicker from "react-tailwindcss-datepicker";
 import './Activity.css'
 import Dropdown from './Dropdown';
 import { useAuth } from "../auth/AuthContext";
-import axiosService from "../../service/axiosService";
-import Successdialog from "../signup/Successdialog";
+import { CreateActivity } from "../../crud/CreateActivity";
+import { UpdateCoin } from "../../crud/UpdateCoin";
 
 
 
 
-
-const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSuccess, createSuccess }) => {
+const ActivityDialog = ({ activityEdit, ErrorCreate, Success, toggleDialogAct, setCreateSuccess }) => {
     const auth = useAuth();
     const [desc, setDesc] = useState('');
     const [name, setName] = useState('');
@@ -18,6 +17,8 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
     const [duration, setDuration] = useState('');
     const maxCharacters = 72;
     const [isLoading, setIsLoading] = useState(false);
+    const [edit, setEdit] = useState(false)
+
 
 
     const [formErrors, setFormErrors] = useState({
@@ -27,7 +28,6 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
         dateValue: "",
         duration: "",
     });
-
 
 
     const validateForm = () => {
@@ -59,11 +59,15 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
         return isValid;
     };
 
+    console.log("chacked duration => ", duration)
+
     const createActivity = async () => {
         const Date = dateValue;
-        const timeString = duration;
-        const [hours, minutes] = timeString.split(":").map(Number);
-        const timeInMinutes = hours * 60 + minutes;
+
+        if (!Date) {
+            ErrorCreate('Form inValid!')
+            return
+        }
 
         if (!Date) {
             ErrorCreate('Form inValid!')
@@ -76,7 +80,7 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
             "activity_name": name,
             "activity_desc": desc,
             "activity_date": Date.startDate,
-            "activity_duration": timeInMinutes
+            "activity_duration": duration
         }
 
 
@@ -85,39 +89,17 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
             return
         }
 
-
-        try {
-            const method = 'POST';
-            const url = `https://fit-up-project-backend.onrender.com/activities`;
-            const body = formData
-
-
-            setIsLoading(true)
-            const response = await axiosService(method, url, body);
-            console.log(response)
-
-            if (response) {
-                setIsLoading(false)
-                setCreateSuccess(true)
-                Success()
-                toggleDialogAct()
-                return
-            }
-
-            ErrorCreate('Error no Response')
-
-
+        if (!edit) {
+            setCreateSuccess(CreateActivity(formData, setIsLoading, Success, toggleDialogAct, ErrorCreate, UpdateCoin, edit))
         }
-        catch (error) {
-            console.error('Error fetching data:', error);
-            ErrorCreate('Server Error')
-            setIsLoading(false)
-        }
+
+        setCreateSuccess(CreateActivity(formData, setIsLoading, Success, toggleDialogAct, ErrorCreate, UpdateCoin, edit, activityEdit._id))
     }
 
 
 
     const [selectedOption, setSelectedOption] = useState(null);
+
 
 
 
@@ -153,7 +135,17 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
 
     useEffect(() => {
         handleOptionClick("");
-    }, []);
+
+        if (activityEdit) {
+            setName(activityEdit.activity_name);
+            setDesc(activityEdit.activity_desc);
+            setDateValue({ "startDate": activityEdit.activity_date, "endDate": activityEdit.activity_date })
+            handleOptionClick(activityEdit.activity_type)
+            setDuration(activityEdit.activity_duration)
+            setEdit(true)
+        }
+
+    }, [activityEdit]);
 
     const handleNameChange = (e) => {
         const newName = e.target.value;
@@ -162,6 +154,7 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
 
     const handleDescChange = (e) => {
         const newDesc = e.target.value;
+
         setDesc(newDesc);
     };
 
@@ -174,6 +167,7 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
     };
 
     //Time
+    console.log(activityEdit, edit)
 
     return (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-op90 flex items-center justify-center z-50">
@@ -297,6 +291,7 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
                             Description (optional)
                         </p>
                         <p className='text-black-light font-roboto-mono text-xs mb-2'>
+                            {/* {0}/{maxCharacters} */}
                             {desc.length}/{maxCharacters}
                         </p>
                     </div>
@@ -336,7 +331,7 @@ const ActivityDialog = ({ ErrorCreate, Success, toggleDialogAct, setCreateSucces
                     </div>
                     <div className=''>
                         <p className='text-white font-roboto-mono text-xs mb-2'>
-                            Duration
+                            Duration (minute)
                         </p>
                         <Dropdown setDuration={setDuration} duration={duration} />
                     </div>

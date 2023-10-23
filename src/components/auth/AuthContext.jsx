@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
                 'https://fit-up-project-backend.onrender.com/users/login',
                 reqBody
             )
-            console.log('55 => ', response)
+
             if (response.status !== 200)
                 throw new Error('Login failed')
 
@@ -65,6 +65,7 @@ export const AuthProvider = ({ children }) => {
             }
 
             const payload = readPayload(authorization)
+
             setUser(payload)
 
             return response

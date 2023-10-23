@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import './circls-style.css'
 
 const HorizonBar = ({ coinPercentState, coinUser, balance }) => {
-    const [fitcoinBar, setFitCoinBar] = useState(50);
+    const [fitcoinBar, setFitCoinBar] = useState(null);
     const barRef = useRef(null)
 
     useEffect(() => {
@@ -15,9 +15,14 @@ const HorizonBar = ({ coinPercentState, coinUser, balance }) => {
 
         // (100 * x) / 30000 
         if (barEnergy) {
+            console.log("horizon coinPercentState => ", coinPercentState)
+            console.log("horizon coinUser => ", coinUser)
+            console.log("horizon balance => ", coinUser)
+            setFitCoinBar(coinPercentState)
+            console.log(fitcoinBar)
             const animation = barEnergy.animate(
                 [
-                    { width: `${coinPercentState}%` }
+                    { width: `${fitcoinBar}%` }
                 ],
                 {
                     duration: 2000, // 2 seconds
@@ -27,9 +32,7 @@ const HorizonBar = ({ coinPercentState, coinUser, balance }) => {
             );
         }
 
-    }, [])
-
-    console.log(fitcoinBar)
+    }, [coinPercentState, coinUser, balance, fitcoinBar])
 
     return (
         <div className="box-barw-full">
