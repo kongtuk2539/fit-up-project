@@ -2,32 +2,15 @@ import React from "react";
 import axios from "axios";
 import axiosService from "../../service/axiosService";
 
-const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
-
-  // const deleteActivity = async () => {
-  //   try {
-  //     const response = await axios.delete(
-  //       "https://fit-up-project-backend.onrender.com/activities/6531d4eb91405d2a2ac424ec"
-  //     );
-  //     console.log(response.data);
-  //     setReload(!reload);
-  //   } catch (error) {
-  //     console.error("Error fetching data: ", error);
-  //   } finally {
-  //     // Any cleanup or final tasks can be done here
-  //     // This block will be executed regardless of whether the request was successful or failed
-  //   }
-  // };
-
-  const handleCancel = (activityId) => {
+const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload }) => {
+  const handleCancel = () => {
     toggleDialogdel(activityId);
   };
-
 
   const deleteActivity = async () => {
     try {
       const method = 'DELETE';
-      const url = `https://fit-up-project-backend.onrender.com/activities/653206f97cbfea326b12c5c8`;
+      const url = `https://fit-up-project-backend.onrender.com/activities/${activityId}`;
       const body = {}
 
       const response = await axiosService(method, url, body);
@@ -38,6 +21,21 @@ const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
       console.error('Error fetching data:', error);
     }
   };
+
+  // const deleteActivity = async () => {
+  //   try {
+  //     const method = 'DELETE';
+  //     const url = `https://fit-up-project-backend.onrender.com/activities/6535fcd6570c27518ba5e0f1`;
+  //     const body = {}
+
+  //     const response = await axiosService(method, url, body);
+  //     console.log(response.data);
+  //     setReload(!reload);
+
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // };
 
   return (
     <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
@@ -62,7 +60,7 @@ const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
         </div>
         <div className="z-50 flex gap-4">
           <button
-            onClick={() => handleCancel(activities._id)}
+            onClick={() => handleCancel()}
             className="secondary-contained-button clickbutton flex justify-center items-center bg-white w-150 p-3 rounded text-gray-op90 font-roboto-mono font-bold"
           >
             Cancel
