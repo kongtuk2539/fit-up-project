@@ -20,6 +20,7 @@ const ActivityDialog = ({ activityEdit, ErrorCreate, Success, toggleDialogAct, s
     const [edit, setEdit] = useState(false)
 
 
+
     const [formErrors, setFormErrors] = useState({
         nameType: "",
         name: "",
@@ -62,6 +63,11 @@ const ActivityDialog = ({ activityEdit, ErrorCreate, Success, toggleDialogAct, s
 
     const createActivity = async () => {
         const Date = dateValue;
+
+        if (!Date) {
+            ErrorCreate('Form inValid!')
+            return
+        }
 
         if (!Date) {
             ErrorCreate('Form inValid!')

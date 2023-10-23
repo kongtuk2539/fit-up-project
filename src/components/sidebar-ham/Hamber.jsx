@@ -46,22 +46,22 @@ const Hamber = () => {
           <nav>
             <ul className="flex flex-col items-center pl-0 pr-4 mt-10 pt-3 ">
               <li className="">
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
+                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black flex items-center gap-6 rounded-lg">
                   <span class="material-symbols-outlined">account_circle</span> Proflie
                 </button>
               </li>
               <li>
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
+                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black flex items-center gap-6 rounded-lg">
                   <span class="material-symbols-outlined">info</span> Help & Support
                 </button>
               </li>
               <li>
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
+                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black flex items-center gap-6 rounded-lg">
                   <span class="material-symbols-outlined">settings</span> Setting
                 </button>
               </li>
               <li>
-                <button onClick={logout} className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black-slid flex items-center gap-6 rounded-lg">
+                <button onClick={logout} className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-red hover:text-black flex items-center gap-6 rounded-lg">
                   <span class="material-symbols-outlined">logout</span> Sign Out
                 </button>
               </li>
@@ -89,20 +89,20 @@ const Hamber = () => {
               </label>
               <ul
                 tabIndex={0}
-                className=" dropdown-content z-[20] menu p-2 shadow text-base w-52 bg-black-medium text-white rounded border border-white"
+                className=" dropdown-content z-[20] menu p-2 shadow text-base w-52 bg-black-medium text-white rounded border border-white "
               >
                 <li>
-                  <a> <span class="material-symbols-outlined">account_circle</span> Proflie</a>
+                  <a className='hover:text-pink'> <span class="material-symbols-outlined">account_circle</span> Proflie</a>
                 </li>
                 <li>
-                  <a> <span class="material-symbols-outlined">info</span> Help & Support</a>
+                  <a className='hover:text-pink'> <span class="material-symbols-outlined">info</span> Help & Support</a>
                 </li>
                 <li>
-                  <a> <span class="material-symbols-outlined">settings</span> Setting</a>
+                  <a className='hover:text-pink'> <span class="material-symbols-outlined">settings</span> Setting</a>
                 </li>
                 <div className="border-b-2 border-black-light"></div>
                 <li>
-                  <a className='text-red' onClick={logout}> <span class="material-symbols-outlined ">logout</span> Sign Out</a>
+                  <a className='text-red hover:text-red' onClick={logout}> <span class="material-symbols-outlined ">logout</span> Sign Out</a>
                 </li>
               </ul>
             </div>
