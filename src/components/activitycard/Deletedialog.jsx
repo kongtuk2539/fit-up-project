@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import axiosService from "../../service/axiosService";
 
-const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload }) => {
+const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
 
   // const deleteActivity = async () => {
   //   try {
@@ -34,6 +34,10 @@ const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload }) => {
       console.log(response.data);
       console.log('yyy',response);
       console.log("tttt",activityId);
+      toggleDialogdel()
+      deleteSuccess('testtt!');
+      console.log('test1234');
+      setCreateSuccess(true);
       setReload(!reload);
 
     } catch (error) {
