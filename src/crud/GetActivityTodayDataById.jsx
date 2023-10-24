@@ -18,7 +18,10 @@ export const GetActivityTodayDataById = async (id, setActivities, setHaveCard) =
 
         if (response.length > 0) {
             setHaveCard(true);
+        } else if (response.length <= 0) {
+            setHaveCard(false);
         }
+
 
     } catch (error) {
         console.error('Error fetching data:', error);
