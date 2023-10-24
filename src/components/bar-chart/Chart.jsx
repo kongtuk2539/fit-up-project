@@ -97,7 +97,7 @@ const Chart = () => {
   return (
     <>
       {/* mt-24 mr-24 ml-56 mb-40 */}
-      <container className="bg-[#2C2C2E] bg-opacity-60 bg-blur-xl flex lg:flex-row flex-col w-[343px] lg:w-[735px] h-[505px] lg:h-508 font-roboto-mono rounded-lg ">
+      <container className="bg-[#2C2C2E] bg-opacity-60 bg-blur-xl flex lg:flex-row flex-col w-[343px] lg:w-[785px] h-[505px] lg:h-508 font-roboto-mono rounded-lg ">
         <div className="flex flex-col mt-[24px] w-512 h-400 lg:h-430">
           <heading className="w-156 h-41 mt-0 ml-[16px] lg:ml-[24px] absolute">
             <p className="text-white ">Weekly Performance</p>
