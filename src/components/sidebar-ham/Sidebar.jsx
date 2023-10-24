@@ -24,7 +24,7 @@ const Sidebar = () => {
             />
           </div>
           </div>
-          <div className="lg:hidden">
+          <div className="lg:hidden mr-[34px]">
           <Hamber/>
           </div>
 
