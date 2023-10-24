@@ -3,8 +3,9 @@ import axios from "axios";
 import axiosService from "../../service/axiosService";
 import bgDel from "../../assets/image/Activity/bgdelete.png";
 import Del from "../../assets/image/Activity/delete.png"
+import { GetActivityTodayDataById } from "../../crud/GetActivityTodayDataById";
 
-const Deletedialog = ({ activityUserId, toggleDialogdel, activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
+const Deletedialog = ({ setActivities, setHaveCard, activityUserId, toggleDialogdel, activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
 
   // const deleteActivity = async () => {
   //   try {
@@ -39,6 +40,7 @@ const Deletedialog = ({ activityUserId, toggleDialogdel, activityId, reload, set
       const body2 = { "coinDelete": 1000 }
 
       const response2 = await axiosService(method2, url2, body2);
+      GetActivityTodayDataById(activityUserId, setActivities, setHaveCard)
 
       console.log(response.data);
       console.log('yyy', response);
