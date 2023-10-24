@@ -9,6 +9,7 @@ import MyLoader from "./MyLoader";
 
 const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, createSuccess }) => {
   const auth = useAuth();
+  const [reload, setReload] = useState(false);
 
   //https://fit-up-project-backend.onrender.com/activities/getWithDate/651edfb83fcee8250bbe6df1
 

@@ -4,10 +4,11 @@ import Deletedialog from "./Deletedialog";
 import { GetActivityById } from "../../crud/GetActivityById";
 import ActivityDialog from "../activityDialog/ActivityDialog";
 
-const Card = ({ handleEdit, activities }) => {
+const Card = ({ handleEdit, activities, setActivities, setReload, reload, setCreateSuccess, deleteSuccess }) => {
   const [dropdownOpen, setDropdownOpen] = useState({});
   const [dialogdel, setDialogdel] = useState({});
   const [dialogEdit, setDialogEdit] = useState(false);
+  // const [reload, setReload] = useState(false);
   const [activityEdit, setActivityEdit] = useState(null)
 
   const toggleDropdown = (activityId) => {
@@ -105,7 +106,7 @@ const Card = ({ handleEdit, activities }) => {
                           onClick={() => toggleDialogdel(activity._id)}
                           className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"
                         ></div>
-                        <Deletedialog reload={reload} setReload={setReload} activities={activities} toggleDialogdel={() => toggleDialogdel(activity._id)} />
+                        <Deletedialog reload={reload} setReload={setReload} activityId={activity._id} toggleDialogdel={() => toggleDialogdel(activity._id)} setCreateSuccess={setCreateSuccess} deleteSuccess={deleteSuccess} />
                       </div>
                     )}
                   </div>
@@ -120,7 +121,7 @@ const Card = ({ handleEdit, activities }) => {
               </h2>
               <p className="font-roboto-mono">{activity.activity_desc}</p>
               <p className="mt-4 text-sm font-roboto-mono text-white-op70">
-                {formatDateForDisplay(activity.activity_date)} ({activity.activity_duration})
+                {formatDateForDisplay(activity.activity_date)} ({formatDurationForDisplay(activity.activity_duration)})
               </p>
             </div>
           </div>

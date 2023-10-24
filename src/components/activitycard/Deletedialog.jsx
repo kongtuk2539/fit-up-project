@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
 import axiosService from "../../service/axiosService";
+import bgDel from "../../assets/image/Activity/bgdelete.png";
+import Del from "../../assets/image/Activity/delete.png"
 
-const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
+const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
 
   // const deleteActivity = async () => {
   //   try {
@@ -19,7 +21,7 @@ const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
   //   }
   // };
 
-  const handleCancel = (activityId) => {
+  const handleCancel = () => {
     toggleDialogdel(activityId);
   };
 
@@ -27,11 +29,17 @@ const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
   const deleteActivity = async () => {
     try {
       const method = 'DELETE';
-      const url = `https://fit-up-project-backend.onrender.com/activities/653206f97cbfea326b12c5c8`;
+      const url = `https://fit-up-project-backend.onrender.com/activities/${activityId}`;
       const body = {}
 
       const response = await axiosService(method, url, body);
       console.log(response.data);
+      console.log('yyy',response);
+      console.log("tttt",activityId);
+      toggleDialogdel()
+      deleteSuccess('testtt!');
+      console.log('test1234');
+      setCreateSuccess(true);
       setReload(!reload);
 
     } catch (error) {
@@ -43,12 +51,12 @@ const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
     <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
       <div className="relative w-343 h-488 bg-black-medium rounded-lg my-6 flex flex-col items-center px-10 pt-55 lg:w-396 lg:justify-center">
         <img
-          src="./src/assets/image/Activity/bgdelete.png"
+          src={bgDel}
           className="absolute h-full w-full bottom-6 lg:top-0 lg:h-auto"
           alt="bgWarning"
         />
         <img
-          src="./src/assets/image/Activity/delete.png"
+          src={Del}
           className="z-50"
           alt="Warning"
         />
@@ -62,7 +70,7 @@ const Deletedialog = ({ toggleDialogdel,activities, reload, setReload }) => {
         </div>
         <div className="z-50 flex gap-4">
           <button
-            onClick={() => toggleDialogdel(activity._id)}
+            onClick={() => handleCancel()}
             className="secondary-contained-button clickbutton flex justify-center items-center bg-white w-150 p-3 rounded text-gray-op90 font-roboto-mono font-bold"
           >
             Cancel

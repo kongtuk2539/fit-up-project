@@ -1,15 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import Hamber from "./Hamber";
+import logonav from "../../assets/image/Logo/Logo.png"
 // import logo from '.../assets/image/Logo/Logo.png'
 const Sidebar = () => {
   const [nav, setNav] = useState(false);
   return (
     <div className="">
       {/* Mobile */}
-      <div className=" px-4 w-full  items-center z-40 fixed left-0  lg:hidden bg-black-dark bg-opacity-70 bg-blur-xl sm:pt-5 ">
+      <div className=" px-4 w-screen  items-center z-40 fixed left-0  lg:hidden bg-black-dark bg-opacity-70 bg-blur-xl sm:pt-5 ">
         
-        <div className="w-full md:bg-transparent">
+        <div className="w-screen md:bg-transparent">
           
           <div className="flex justify-between items-center">
 
@@ -17,7 +18,7 @@ const Sidebar = () => {
             <span class="material-symbols-outlined">menu</span>
             <div className=" w-[58px] h-[25.053px] ml-2 justify-center text-center  inline sm:hidden ">
             <img
-              src="/src/assets/image/Logo/Logo.png"
+              src={logonav}
               alt="is missing"
               className=""
             />
@@ -126,7 +127,7 @@ const Sidebar = () => {
         <div className=" bg-black-medium bg-opacity-70 bg-blur-xl top-0 left-0 h-full text-white pt-10">
           <div className="flex justify-center text-center pb-10">
             <img
-              src="/src/assets/image/Logo/Logo.png"
+              src={logonav}
               alt="is missing"
               className=""
             />

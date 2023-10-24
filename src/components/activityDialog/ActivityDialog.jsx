@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
-import './Activity.css'
-import Dropdown from './Dropdown';
+import "./Activity.css";
+import Dropdown from "./Dropdown";
 import { useAuth } from "../auth/AuthContext";
 import { CreateActivity } from "../../crud/CreateActivity";
 import { UpdateCoin } from "../../crud/UpdateCoin";
@@ -331,7 +331,7 @@ const ActivityDialog = ({ activityEdit, ErrorCreate, Success, toggleDialogAct, s
                     </div>
                     <div className=''>
                         <p className='text-white font-roboto-mono text-xs mb-2'>
-                            Duration (minute)
+                            Duration
                         </p>
                         <Dropdown setDuration={setDuration} duration={duration} />
                     </div>

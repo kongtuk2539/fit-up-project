@@ -1,16 +1,18 @@
 import React from "react";
+import bgSuc from "../../assets/image/Activity/bgsuccess.png";
+import suc from "../../assets/image/Activity/success.png";
 
 const Successdialog = ({ toggleDialogSuccess }) => {
   return (
     <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
       <div className="relative w-343 h-488 bg-black-medium rounded-lg my-6 flex flex-col items-center px-10 pt-55 lg:justify-center">
         <img
-          src="./src/assets/image/Activity/bgsuccess.png"
+          src={bgSuc}
           className="absolute h-full w-full bottom-2 lg:bottom-20 lg:h-auto"
           alt="bgSuccess"
         />
         <img
-          src="./src/assets/image/Activity/success.png"
+          src={suc}
           className="z-50"
           alt="Success"
         />
