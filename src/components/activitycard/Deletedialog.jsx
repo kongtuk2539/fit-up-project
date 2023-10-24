@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import axiosService from "../../service/axiosService";
+import bgDel from "../../assets/image/Activity/bgdelete.png";
+import Del from "../../assets/image/Activity/delete.png"
 
 const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload }) => {
 
@@ -45,12 +47,12 @@ const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload }) => {
     <div className="z-50 flex justify-center items-center h-screen animate-in zoom-in-50 bg-gray-op90">
       <div className="relative w-343 h-488 bg-black-medium rounded-lg my-6 flex flex-col items-center px-10 pt-55 lg:w-396 lg:justify-center">
         <img
-          src="./src/assets/image/Activity/bgdelete.png"
+          src={bgDel}
           className="absolute h-full w-full bottom-6 lg:top-0 lg:h-auto"
           alt="bgWarning"
         />
         <img
-          src="./src/assets/image/Activity/delete.png"
+          src={Del}
           className="z-50"
           alt="Warning"
         />
