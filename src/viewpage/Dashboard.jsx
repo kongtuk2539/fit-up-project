@@ -139,7 +139,7 @@ function Dashboard() {
         <div className="w-[380px] h-[600px] col-start-auto col-end-2 sm:col-end-4 rounded-lg inline lg:hidden">
           <div className="">
             <Scrollbar style={{ width: 380, height: 600 }}>
-              <Rightsection setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
+              <Rightsection Success={Success} setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
             </Scrollbar>;
           </div>
         </div>
@@ -169,12 +169,13 @@ function Dashboard() {
         <div className="min-w-auto w-[380px] min-h-auto h-[800px] col-start-9 col-end-13 rounded-lg hidden lg:inline">
           <div className="">
             <Scrollbar style={scrollbarStyle} >
-              <Rightsection setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
+              <Rightsection Success={Success} setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
             </Scrollbar>
           </div>
         </div>
       </div>
       {dialogAct && <ActivityDialog activityEdit={activityEdit} toggleDialogAct={toggleDialogAct} ErrorCreate={ErrorCreate} Success={Success} setCreateSuccess={setCreateSuccess} />}
+      <ToastContainer />
     </div >
   );
 }

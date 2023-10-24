@@ -5,7 +5,7 @@ import bgDel from "../../assets/image/Activity/bgdelete.png";
 import Del from "../../assets/image/Activity/delete.png"
 import { GetActivityTodayDataById } from "../../crud/GetActivityTodayDataById";
 
-const Deletedialog = ({ setActivities, setHaveCard, activityUserId, toggleDialogdel, activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
+const Deletedialog = ({ Success, setActivities, setHaveCard, activityUserId, toggleDialogdel, activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
 
   // const deleteActivity = async () => {
   //   try {
@@ -41,6 +41,7 @@ const Deletedialog = ({ setActivities, setHaveCard, activityUserId, toggleDialog
 
       const response2 = await axiosService(method2, url2, body2);
       GetActivityTodayDataById(activityUserId, setActivities, setHaveCard)
+      Success("Successfully Deleted.")
 
       console.log(response.data);
       console.log('yyy', response);

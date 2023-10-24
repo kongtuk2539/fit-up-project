@@ -7,7 +7,7 @@ import { GetActivityTodayDataById } from '../../crud/GetActivityTodayDataById'
 import { useAuth } from "../auth/AuthContext";
 import MyLoader from "./MyLoader";
 
-const Rightsection = ({ setActivities, setHaveCard, handleEdit, haveCard, activities, toggleDialogAct, createSuccess }) => {
+const Rightsection = ({ Success, setActivities, setHaveCard, handleEdit, haveCard, activities, toggleDialogAct, createSuccess }) => {
   const auth = useAuth();
   const [reload, setReload] = useState(false);
 
@@ -92,7 +92,7 @@ const Rightsection = ({ setActivities, setHaveCard, handleEdit, haveCard, activi
         {haveCard ? (
           <>
             <Createmobile toggleDialogAct={toggleDialogAct} />
-            <Card setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} activities={activities} />
+            <Card Success={Success} setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} activities={activities} />
           </>
         ) :
           <Default toggleDialogAct={toggleDialogAct} />
