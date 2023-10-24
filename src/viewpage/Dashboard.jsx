@@ -146,7 +146,7 @@ function Dashboard() {
         <div className="w-full h-auto col-start-auto col-end-2 sm:col-end-4 inline lg:hidden">
           <div className="flex flex-col gap-6">
             {user ? (<div className=" w-343 lg:w-full h-537 lg:h-324 rounded-lg bg-black-medium bg-opacity-60 bg-blur-xl py-6 px-4 lg:px-0 lg:flex">
-              <Circle user={user} createSuccess={createSuccess} />
+              <Circle activities={activities} user={user} createSuccess={createSuccess} />
             </div>) : <CircleMobileMyLoader />}
             <div className="w-721 h-508 mb-8">
               <Chart />
@@ -159,7 +159,7 @@ function Dashboard() {
         {/* //desktop */}
         <div className="w-full h-856 col-start-1 col-end-7 lg:col-end-9 hidden lg:inline">
           <div className="flex flex-col gap-6">
-            {user ? <div className="w-343 lg:w-full h-537 lg:h-324 rounded-lg bg-black-medium bg-opacity-60 bg-blur-xl py-6 px-4 lg:px-0 lg:flex"><Circle user={user} createSuccess={createSuccess} /></div> : <CircleMyLoader />}
+            {user ? <div className="w-343 lg:w-full h-537 lg:h-324 rounded-lg bg-black-medium bg-opacity-60 bg-blur-xl py-6 px-4 lg:px-0 lg:flex"><Circle activities={activities} user={user} createSuccess={createSuccess} /></div> : <CircleMyLoader />}
             <div className=" w-721 h-508">
               <Chart />
             </div>

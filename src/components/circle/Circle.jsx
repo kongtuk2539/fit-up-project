@@ -4,7 +4,7 @@ import HorizonBar from './HorizonBar.jsx'
 import { GetUser } from '../../crud/GetUser'
 import { useAuth } from "../auth/AuthContext";
 
-const Circle = ({ user, createSuccess }) => {
+const Circle = ({ activities, user, createSuccess }) => {
     const circleRef = useRef(null);
     const auth = useAuth()
     const [coinState, setCoinState] = useState(0)
@@ -58,7 +58,7 @@ const Circle = ({ user, createSuccess }) => {
         }
 
 
-    }, [createSuccess, coinState, coinPercentState, balance]);
+    }, [createSuccess, coinState, coinPercentState, balance, activities]);
 
 
 
