@@ -33,6 +33,18 @@ const Card = ({ handleEdit, activities, setActivities, setReload, reload, setCre
     return date.toLocaleDateString('en-US', options);
   };
 
+  const formatDurationForDisplay = (durationInMinutes) => {
+    const hours = Math.floor(durationInMinutes / 60);
+    const minutes = durationInMinutes % 60;
+    if (hours === 0) {
+      return `${minutes} mins`;
+    } else if (minutes === 0) {
+      return `${hours} hr`;
+    } else {
+      return `${hours} hr ${minutes} mins`;
+    }
+  };
+
   // const toggleEdit = () => {
   //   setDialogEdit((p) => setDialogEdit(!p))
   // }
