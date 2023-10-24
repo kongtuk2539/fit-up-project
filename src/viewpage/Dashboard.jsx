@@ -49,8 +49,8 @@ function Dashboard() {
     }
   };
 
-  const Success = () => {
-    return toast.success('Successfully created.', {
+  const Success = (message) => {
+    return toast.success(message || 'Successfully.', {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -94,8 +94,6 @@ function Dashboard() {
       GetActivityTodayDataById(auth.user._id, setActivities, setHaveCard)
       setUser(auth.user)
     }
-
-
 
   }, [auth.user, createSuccess])
 
@@ -176,6 +174,7 @@ function Dashboard() {
         </div>
       </div>
       {dialogAct && <ActivityDialog activityEdit={activityEdit} toggleDialogAct={toggleDialogAct} ErrorCreate={ErrorCreate} Success={Success} setCreateSuccess={setCreateSuccess} />}
+      <ToastContainer />
     </div >
   );
 }

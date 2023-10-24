@@ -324,8 +324,8 @@ const ActivityDialog = ({
                             value={name}
                             onChange={handleNameChange}
                             className={`${formErrors.name === "Please enter your activity name"
-                                    ? "ring-1 ring-red h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
-                                    : "h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
+                                ? "ring-1 ring-red h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
+                                : "h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
                                 }`}
                         //   className="h-12 w-343 bg-black-dark rounded pl-3 text-white font-roboto-mono text-xs mb-2"
                         />
@@ -355,8 +355,8 @@ const ActivityDialog = ({
                             id="message"
                             rows="4"
                             className={`${formErrors.desc === "Description exceeding 72 characters"
-                                    ? "ring-1 ring-red block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
-                                    : "block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
+                                ? "ring-1 ring-red block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
+                                : "block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
                                 }`}
                             //   className="block p-3 h-[70px] w-343 bg-black-dark rounded font-roboto-mono text-sm text-white"
                             placeholder={
@@ -386,8 +386,8 @@ const ActivityDialog = ({
                             popoverDirection="up"
                             containerClassName="relative h-12 w-[160px]"
                             inputClassName={`${formErrors.dateValue === "Please select date"
-                                    ? "ring-1 ring-red h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
-                                    : "h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
+                                ? "ring-1 ring-red h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
+                                : "h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
                                 }`}
                             //   inputClassName="h-12 w-[160px] rounded focus:ring-0 text-white font-roboto-mono text-xs
                             //             bg-black-dark p-3 dark:bg-green-900 dark:placeholder:text-green-100"
@@ -409,7 +409,7 @@ const ActivityDialog = ({
                     </div>
 
                     <div className="">
-                        <p className="text-white font-roboto-mono text-xs mb-2">Duration</p>
+                        <p className="text-white font-roboto-mono text-xs mb-2">Duration (minute)</p>
                         <Dropdown
                             setDuration={setDuration}
                             duration={duration}
