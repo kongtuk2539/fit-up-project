@@ -39,7 +39,7 @@ const Signup1 = ({ toggleSignup }) => {
         })
         .catch((error) => {
           console.error('Error fetching user data:', error.response.data.message);
-          reject(false);
+          reject(error.response.data.message);
         })
         .finally(() => {
         });
@@ -52,7 +52,7 @@ const Signup1 = ({ toggleSignup }) => {
     <div className="dialog-container  z-50 flex justify-center items-center h-full w-screen animate-in zoom-in-50 bg-gray-op90">
       <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:p-10 lg:pt-1">
         {
-          isNext ? (<Page2 createUser={createUser} handleBack={handleBack} toggleSignup={toggleSignup} />) :
+          isNext ? (<Page2 toggleSignup={toggleSignup} createUser={createUser} handleBack={handleBack} toggleSignup={toggleSignup} />) :
             <div>
               {/* <Header /> */}
               <div className="h-14 bg-black-dark flex items-center justify-center text-white lg:pt-0 lg:flex lg:flex-col lg:items-start lg:justify-center lg:bg-transparent">

@@ -137,9 +137,9 @@ function Dashboard() {
           </div>
         </div>
         {/* //Mobile */}
-        <div className="w-[380px] h-[450px] col-start-auto col-end-2 sm:col-end-4 rounded-lg inline lg:hidden">
+        <div className="w-[380px] h-[600px] col-start-auto col-end-2 sm:col-end-4 rounded-lg inline lg:hidden">
           <div className="">
-            <Scrollbar style={{ width: 380, height: 450 }}>
+            <Scrollbar style={{ width: 380, height: 600 }}>
               <Rightsection handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
             </Scrollbar>;
           </div>
@@ -176,7 +176,7 @@ function Dashboard() {
         </div>
       </div>
       {dialogAct && <ActivityDialog activityEdit={activityEdit} toggleDialogAct={toggleDialogAct} ErrorCreate={ErrorCreate} Success={Success} setCreateSuccess={setCreateSuccess} />}
-      <ToastContainer />
+
     </div >
   );
 }

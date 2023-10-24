@@ -32,7 +32,7 @@ const Signup2 = ({ createUser, handleBack, toggleSignup }) => {
             </p>
           </div>
           <div>
-            <Form2 createUser={createUser} handleBack={handleBack} />
+            <Form2 createUser={createUser} toggleSignup={toggleSignup} handleBack={handleBack} />
             {/* <div className="flex gap-4">
               <button
                 type="button"
