@@ -174,7 +174,6 @@ function Dashboard() {
         </div>
       </div>
       {dialogAct && <ActivityDialog activityEdit={activityEdit} toggleDialogAct={toggleDialogAct} ErrorCreate={ErrorCreate} Success={Success} setCreateSuccess={setCreateSuccess} />}
-      <ToastContainer />
     </div >
   );
 }
