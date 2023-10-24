@@ -4,7 +4,7 @@ import Deletedialog from "./Deletedialog";
 import { GetActivityById } from "../../crud/GetActivityById";
 import ActivityDialog from "../activityDialog/ActivityDialog";
 
-const Card = ({ setActivities, setHaveCard, handleEdit, activities, setReload, reload, setCreateSuccess, deleteSuccess }) => {
+const Card = ({ Success, setActivities, setHaveCard, handleEdit, activities, setReload, reload, setCreateSuccess, deleteSuccess }) => {
   const [dropdownOpen, setDropdownOpen] = useState({});
   const [dialogdel, setDialogdel] = useState({});
   const [dialogEdit, setDialogEdit] = useState(false);
@@ -118,7 +118,7 @@ const Card = ({ setActivities, setHaveCard, handleEdit, activities, setReload, r
                           onClick={() => toggleDialogdel(activity._id)}
                           className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"
                         ></div>
-                        <Deletedialog setActivities={setActivities} setHaveCard={setHaveCard} reload={reload} setReload={setReload} activityId={activity._id} activityUserId={activity.activity_userID} toggleDialogdel={() => toggleDialogdel(activity._id)} setCreateSuccess={setCreateSuccess} deleteSuccess={deleteSuccess} />
+                        <Deletedialog Success={Success} setActivities={setActivities} setHaveCard={setHaveCard} reload={reload} setReload={setReload} activityId={activity._id} activityUserId={activity.activity_userID} toggleDialogdel={() => toggleDialogdel(activity._id)} setCreateSuccess={setCreateSuccess} deleteSuccess={deleteSuccess} />
                       </div>
                     )}
                   </div>

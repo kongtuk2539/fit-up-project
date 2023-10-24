@@ -139,14 +139,14 @@ function Dashboard() {
         <div className="w-[380px] h-[600px] col-start-auto col-end-2 sm:col-end-4 rounded-lg inline lg:hidden">
           <div className="">
             <Scrollbar style={{ width: 380, height: 600 }}>
-              <Rightsection setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
+              <Rightsection Success={Success} setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
             </Scrollbar>;
           </div>
         </div>
         <div className="w-full h-auto col-start-auto col-end-2 sm:col-end-4 inline lg:hidden">
           <div className="flex flex-col gap-6">
             {user ? (<div className=" w-343 lg:w-full h-537 lg:h-324 rounded-lg bg-black-medium bg-opacity-60 bg-blur-xl py-6 px-4 lg:px-0 lg:flex">
-              <Circle user={user} createSuccess={createSuccess} />
+              <Circle activities={activities} user={user} createSuccess={createSuccess} />
             </div>) : <CircleMobileMyLoader />}
             <div className="w-721 h-508 mb-8">
               <Chart />
@@ -159,7 +159,7 @@ function Dashboard() {
         {/* //desktop */}
         <div className="w-full h-856 col-start-1 col-end-7 lg:col-end-9 hidden lg:inline">
           <div className="flex flex-col gap-6">
-            {user ? <div className="w-343 lg:w-full h-537 lg:h-324 rounded-lg bg-black-medium bg-opacity-60 bg-blur-xl py-6 px-4 lg:px-0 lg:flex"><Circle user={user} createSuccess={createSuccess} /></div> : <CircleMyLoader />}
+            {user ? <div className="w-343 lg:w-full h-537 lg:h-324 rounded-lg bg-black-medium bg-opacity-60 bg-blur-xl py-6 px-4 lg:px-0 lg:flex"><Circle activities={activities} user={user} createSuccess={createSuccess} /></div> : <CircleMyLoader />}
             <div className=" w-721 h-508">
               <Chart />
             </div>
@@ -169,12 +169,13 @@ function Dashboard() {
         <div className="min-w-auto w-[380px] min-h-auto h-[800px] col-start-9 col-end-13 rounded-lg hidden lg:inline">
           <div className="">
             <Scrollbar style={scrollbarStyle} >
-              <Rightsection setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
+              <Rightsection Success={Success} setActivities={setActivities} setHaveCard={setHaveCard} handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
             </Scrollbar>
           </div>
         </div>
       </div>
       {dialogAct && <ActivityDialog activityEdit={activityEdit} toggleDialogAct={toggleDialogAct} ErrorCreate={ErrorCreate} Success={Success} setCreateSuccess={setCreateSuccess} />}
+      <ToastContainer />
     </div >
   );
 }
