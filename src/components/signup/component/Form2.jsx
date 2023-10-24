@@ -2,11 +2,15 @@ import React, { useState } from "react";
 // import InputPassword from './Password';
 import Successdialog from "../Successdialog";
 import Datepicker from "react-tailwindcss-datepicker";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Form2 = ({ createUser, handleBack }) => {
+const Form2 = ({ createUser, handleBack, toggleSignup }) => {
   const [dialogSuccess, setDialogSuccess] = useState(false);
+
   const toggleDialogSuccess = () => {
     setDialogSuccess(!dialogSuccess);
+    toggleSignup();
   };
 
   const [formData, setFormData] = useState({
@@ -39,6 +43,19 @@ const Form2 = ({ createUser, handleBack }) => {
   const handleGoBack = () => {
     handleBack();
   };
+
+  const ErrorCreate = (message) => {
+    return toast.error(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
 
   const validateForm = () => {
     let errors = {};
@@ -94,6 +111,7 @@ const Form2 = ({ createUser, handleBack }) => {
         }
       } catch (error) {
         // Handle the error here
+        ErrorCreate(error)
         console.error("Error creating user:", error);
         setIsLoading(false);
       }
@@ -395,6 +413,7 @@ const Form2 = ({ createUser, handleBack }) => {
       ) : (
         ""
       )}
+      <ToastContainer />
     </>
   );
 };

@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Signup1 from "../components/signup/Signup1";
 import validator from "validator";
 
+
 const Login = () => {
   const [showSignup, setShowSignup] = useState(false);
   const auth = useAuth();
@@ -38,6 +39,8 @@ const Login = () => {
     const result = await auth.login(formData.email, formData.password);
     console.log(result);
   };
+
+
 
   const validateForm = () => {
     let errors = {};
@@ -70,7 +73,15 @@ const Login = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      await userlogin();
+      const resultLogin = await userlogin();
+      if (!resultLogin) {
+        let errors = {};
+        errors.email = "Incorrect email or password. Try again";
+        errors.password = "Incorrect email or password. Try again";
+        setFormErrors(errors);
+        setIsLoading(false)
+      }
+
       setIsLoading(false)
       if (localStorage.getItem('token')) {
         navigate("/dashboard");
@@ -115,10 +126,10 @@ const Login = () => {
                 onChange={handleInputChange}
                 placeholder="Enter your email"
                 className={`${formErrors.email === "Please enter your email" ||
-                    formErrors.email === "Please enter a valid email" ||
-                    formErrors.password === "Incorrect email or password. Try again"
-                    ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                    : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                  formErrors.email === "Please enter a valid email" ||
+                  formErrors.password === "Incorrect email or password. Try again"
+                  ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                  : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   }`}
               // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
               />
@@ -143,10 +154,10 @@ const Login = () => {
                     onChange={handleInputChange}
                     placeholder="Enter your password"
                     className={`${formErrors.password === "Please enter your password" ||
-                        formErrors.password ===
-                        "Incorrect email or password. Try again"
-                        ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
-                        : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                      formErrors.password ===
+                      "Incorrect email or password. Try again"
+                      ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
+                      : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                       }`}
                   // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   />

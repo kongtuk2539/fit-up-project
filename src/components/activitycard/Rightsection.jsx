@@ -7,13 +7,15 @@ import { GetActivityTodayDataById } from '../../crud/GetActivityTodayDataById'
 import { useAuth } from "../auth/AuthContext";
 import MyLoader from "./MyLoader";
 
-const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, createSuccess, setCreateSuccess, deleteSuccess }) => {
+const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, createSuccess }) => {
   const auth = useAuth();
   const [reload, setReload] = useState(false);
 
   //https://fit-up-project-backend.onrender.com/activities/getWithDate/651edfb83fcee8250bbe6df1
 
   //
+
+
 
   // const getTodayDataById = async () => {
   //   try {
@@ -81,8 +83,7 @@ const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, creat
     // };
 
     // getTodayDataById();
-  // }, [reload]);
-  }, [reload, createSuccess]);
+  }, [createSuccess]);
 
   return (
     <>
@@ -90,11 +91,11 @@ const Rightsection = ({ handleEdit, haveCard, activities, toggleDialogAct, creat
         {/* <Card/> */}
         {haveCard ? (
           <>
-            <Createmobile activities={activities} toggleDialogAct={toggleDialogAct} />
-            <Card handleEdit={handleEdit} activities={activities} setReload={setReload} reload={reload} setCreateSuccess={setCreateSuccess} deleteSuccess={deleteSuccess} />
+            <Createmobile toggleDialogAct={toggleDialogAct} />
+            <Card handleEdit={handleEdit} activities={activities} />
           </>
         ) :
-          <Default activities={activities} toggleDialogAct={toggleDialogAct} />
+          <Default toggleDialogAct={toggleDialogAct} />
         }
       </div >
     </>

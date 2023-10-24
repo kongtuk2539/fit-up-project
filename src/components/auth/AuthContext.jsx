@@ -72,6 +72,7 @@ export const AuthProvider = ({ children }) => {
 
         } catch (error) {
             console.error('login auth context error :: ', error)
+            return false
         }
     }
 

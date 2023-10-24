@@ -62,19 +62,6 @@ function Dashboard() {
     });
   };
 
-  const deleteSuccess = () => {
-    return toast.success('Successfully deleted.', {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
-
   const ErrorCreate = (message) => {
     return toast.error(message, {
       position: "top-center",
@@ -150,11 +137,10 @@ function Dashboard() {
           </div>
         </div>
         {/* //Mobile */}
-        <div className="w-[380px] h-[450px] col-start-auto col-end-2 sm:col-end-4 rounded-lg inline lg:hidden">
+        <div className="w-[380px] h-[600px] col-start-auto col-end-2 sm:col-end-4 rounded-lg inline lg:hidden">
           <div className="">
-            <Scrollbar style={{ width: 380, height: 450 }}>
-              <Rightsection handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} setCreateSuccess={setCreateSuccess} deleteSuccess={deleteSuccess} />
-              <ToastContainer />
+            <Scrollbar style={{ width: 380, height: 600 }}>
+              <Rightsection handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
             </Scrollbar>;
           </div>
         </div>
@@ -184,13 +170,12 @@ function Dashboard() {
         <div className="min-w-auto w-[380px] min-h-auto h-[800px] col-start-9 col-end-13 rounded-lg hidden lg:inline">
           <div className="">
             <Scrollbar style={scrollbarStyle} >
-              <Rightsection handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} setCreateSuccess={setCreateSuccess} />
+              <Rightsection handleEdit={handleEdit} haveCard={haveCard} activities={activities} toggleDialogAct={toggleDialogAct} createSuccess={createSuccess} />
             </Scrollbar>
           </div>
         </div>
       </div>
       {dialogAct && <ActivityDialog activityEdit={activityEdit} toggleDialogAct={toggleDialogAct} ErrorCreate={ErrorCreate} Success={Success} setCreateSuccess={setCreateSuccess} />}
-      <ToastContainer />
     </div >
   );
 }
