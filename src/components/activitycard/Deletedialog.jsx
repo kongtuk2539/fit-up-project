@@ -4,7 +4,7 @@ import axiosService from "../../service/axiosService";
 import bgDel from "../../assets/image/Activity/bgdelete.png";
 import Del from "../../assets/image/Activity/delete.png"
 
-const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload }) => {
+const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
 
   // const deleteActivity = async () => {
   //   try {
@@ -36,6 +36,10 @@ const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload }) => {
       console.log(response.data);
       console.log('yyy',response);
       console.log("tttt",activityId);
+      toggleDialogdel()
+      deleteSuccess('testtt!');
+      console.log('test1234');
+      setCreateSuccess(true);
       setReload(!reload);
 
     } catch (error) {
