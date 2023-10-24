@@ -118,7 +118,7 @@ const Card = ({ handleEdit, activities, setActivities, setReload, reload, setCre
                           onClick={() => toggleDialogdel(activity._id)}
                           className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"
                         ></div>
-                        <Deletedialog reload={reload} setReload={setReload} activityId={activity._id} toggleDialogdel={() => toggleDialogdel(activity._id)} setCreateSuccess={setCreateSuccess} deleteSuccess={deleteSuccess} />
+                        <Deletedialog reload={reload} setReload={setReload} activityId={activity._id} activityUserId={activity.activity_userID} toggleDialogdel={() => toggleDialogdel(activity._id)} setCreateSuccess={setCreateSuccess} deleteSuccess={deleteSuccess} />
                       </div>
                     )}
                   </div>

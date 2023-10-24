@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import list from './list.json'
 import { Scrollbar } from 'react-scrollbars-custom';
 
-const Dropdown = ({ setDuration, duration }) => {
+const Dropdown = ({ setDuration, duration, formErrors }) => {
     const [IsOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const error = 'ring-1 ring-red'
 
     useEffect(() => {
         const handleOutsideClick = (event) => {
@@ -24,8 +25,8 @@ const Dropdown = ({ setDuration, duration }) => {
     return (
         <div ref={dropdownRef} className="">
 
-            <button onClick={() => setIsOpen((prev) => !prev)} className="bg-black-dark w-[145px] h-12 px-4 flex items-center justify-between font-roboto-mono text-[16px] rounded 
-            tracking-wider border-2 border-transparent active:border-pink duration-200 text-white active:text-[#FD00FE]"> {duration || "Duration"}
+            <button onClick={() => setIsOpen((prev) => !prev)} className={`${formErrors.duration ? error : ""} bg-black-dark w-[145px] h-12 px-4 flex items-center justify-between font-roboto-mono text-[16px] rounded 
+            tracking-wider border-2 border-transparent active:border-pink duration-200 text-white active:text-[#FD00FE]`}> {duration || "Duration"}
                 {!IsOpen ? <span className="material-symbols-outlined">stat_1</span> : <span className="material-symbols-outlined">stat_minus_1</span>}
             </button>
 

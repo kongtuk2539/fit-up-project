@@ -4,7 +4,7 @@ import axiosService from "../../service/axiosService";
 import bgDel from "../../assets/image/Activity/bgdelete.png";
 import Del from "../../assets/image/Activity/delete.png"
 
-const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
+const Deletedialog = ({ activityUserId, toggleDialogdel, activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
 
   // const deleteActivity = async () => {
   //   try {
@@ -33,9 +33,16 @@ const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload, setCreate
       const body = {}
 
       const response = await axiosService(method, url, body);
+
+      const method2 = 'POST';
+      const url2 = `https://fit-up-project-backend.onrender.com/users/delete-coin/${activityUserId}`;
+      const body2 = { "coinDelete": 1000 }
+
+      const response2 = await axiosService(method2, url2, body2);
+
       console.log(response.data);
-      console.log('yyy',response);
-      console.log("tttt",activityId);
+      console.log('yyy', response);
+      console.log("tttt", activityId);
       toggleDialogdel()
       deleteSuccess('testtt!');
       console.log('test1234');
@@ -79,7 +86,7 @@ const Deletedialog = ({ toggleDialogdel,activityId, reload, setReload, setCreate
             // onClick={() => {
             //   deleteData(id);
             // }}
-            onClick={()=>{deleteActivity()}}
+            onClick={() => { deleteActivity() }}
             className="primary-contained-button clickbutton flex justify-center items-center w-150 p-3 rounded font-roboto-mono font-bold"
           >
             Delete

@@ -17,7 +17,7 @@ export const CreateActivity = async (formData, setIsLoading, Success, toggleDial
 
             if (response && update) {
                 setIsLoading(false);
-                Success();
+                Success('Successfully created.');
                 toggleDialogAct();
                 return true;
             }
@@ -41,7 +41,7 @@ export const CreateActivity = async (formData, setIsLoading, Success, toggleDial
 
             if (response) {
                 setIsLoading(false);
-                Success();
+                Success('Successfully edited.');
                 toggleDialogAct();
                 return true;
             }
