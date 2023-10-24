@@ -35,27 +35,28 @@ const ActivityDialog = ({ activityEdit, ErrorCreate, Success, toggleDialogAct, s
         let isValid = true;
 
         if (!nameType.trim()) {
-            errors.nameType = "Please enter your ActivityType";
+            errors.nameType = "Please select activity type";
             isValid = false;
         }
         if (!name.trim()) {
-            errors.name = "Please enter your name";
+            errors.name = "Please enter your activity name";
             isValid = false;
         }
         if (desc.trim().length > 72) {
-            errors.desc = "Do not enter a description of more than 72 characters";
+            errors.desc = "Description exceeding 72 characters";
             isValid = false;
         }
         if (!dateValue) {
-            errors.name = "Please enter your Date";
+            errors.dateValue = "Please select date";
             isValid = false;
         }
         if (!duration) {
-            errors.name = "Please enter your Duration";
+            errors.duration = "Please select duration";
             isValid = false;
         }
 
         setFormErrors(errors);
+        console.log("name", formErrors.name);
         return isValid;
     };
 
@@ -63,11 +64,6 @@ const ActivityDialog = ({ activityEdit, ErrorCreate, Success, toggleDialogAct, s
 
     const createActivity = async () => {
         const Date = dateValue;
-
-        if (!Date) {
-            ErrorCreate('Form inValid!')
-            return
-        }
 
         if (!Date) {
             ErrorCreate('Form inValid!')
