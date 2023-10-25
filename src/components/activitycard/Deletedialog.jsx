@@ -1,26 +1,10 @@
 import React from "react";
-import axios from "axios";
 import axiosService from "../../service/axiosService";
 import bgDel from "../../assets/image/Activity/bgdelete.png";
 import Del from "../../assets/image/Activity/delete.png"
 import { GetActivityTodayDataById } from "../../crud/GetActivityTodayDataById";
 
 const Deletedialog = ({ Success, setActivities, setHaveCard, activityUserId, toggleDialogdel, activityId, reload, setReload, setCreateSuccess, deleteSuccess }) => {
-
-  // const deleteActivity = async () => {
-  //   try {
-  //     const response = await axios.delete(
-  //       "https://fit-up-project-backend.onrender.com/activities/6531d4eb91405d2a2ac424ec"
-  //     );
-  //     console.log(response.data);
-  //     setReload(!reload);
-  //   } catch (error) {
-  //     console.error("Error fetching data: ", error);
-  //   } finally {
-  //     // Any cleanup or final tasks can be done here
-  //     // This block will be executed regardless of whether the request was successful or failed
-  //   }
-  // };
 
   const handleCancel = () => {
     toggleDialogdel(activityId);
@@ -43,12 +27,8 @@ const Deletedialog = ({ Success, setActivities, setHaveCard, activityUserId, tog
       GetActivityTodayDataById(activityUserId, setActivities, setHaveCard)
       Success("Successfully Deleted.")
 
-      console.log(response.data);
-      console.log('yyy', response);
-      console.log("tttt", activityId);
       toggleDialogdel()
       deleteSuccess('testtt!');
-      console.log('test1234');
       setCreateSuccess(true);
       setReload(!reload);
 
@@ -86,9 +66,6 @@ const Deletedialog = ({ Success, setActivities, setHaveCard, activityUserId, tog
             Cancel
           </button>
           <button
-            // onClick={() => {
-            //   deleteData(id);
-            // }}
             onClick={() => { deleteActivity() }}
             className="primary-contained-button clickbutton flex justify-center items-center w-150 p-3 rounded font-roboto-mono font-bold"
           >

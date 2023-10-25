@@ -1,5 +1,4 @@
-import axiosService from '../service/axiosService'; // Import your axiosService here
-import { useAuth } from "../components/auth/AuthContext";
+import axiosService from '../service/axiosService';
 
 
 export const GetActivityTodayDataById = async (id, setActivities, setHaveCard) => {
@@ -12,7 +11,6 @@ export const GetActivityTodayDataById = async (id, setActivities, setHaveCard) =
 
 
         let sortData = [...response].reverse();
-        console.log("sortData => ", sortData)
 
         setActivities(sortData);
 
@@ -24,6 +22,6 @@ export const GetActivityTodayDataById = async (id, setActivities, setHaveCard) =
 
 
     } catch (error) {
-        console.error('Error fetching data:', error);
+        return error
     }
 };

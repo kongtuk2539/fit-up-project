@@ -37,7 +37,6 @@ const Login = () => {
   const userlogin = async () => {
     setIsLoading(true)
     const result = await auth.login(formData.email, formData.password);
-    console.log(result);
   };
 
 
@@ -87,7 +86,7 @@ const Login = () => {
         navigate("/dashboard");
       }
     } else {
-      console.log("Form submission failed due to validation errors.");
+      return
     }
   };
 
@@ -131,7 +130,6 @@ const Login = () => {
                   ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   }`}
-              // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
               />
               <span className="my-2 text-red text-xs font-roboto-mono font-bold">
                 {formErrors.email}
@@ -159,7 +157,6 @@ const Login = () => {
                       ? "ring-1 ring-red w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                       : "w-full px-4 py-3 mb-0 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                       }`}
-                  // className="w-full px-4 py-3 bg-black-dark rounded font-roboto-mono hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:ring-pink focus:ring-1 input-placeholder-color"
                   />
                   <span
                     onClick={togglePasswordVisibility}
@@ -189,14 +186,12 @@ const Login = () => {
           <button
             type="submit"
             className="h-12 w-full bg-pink hover:bg-pink-medium active:bg-pink-light font-roboto-mono text-black-dark font-bold rounded"
-          // onClick={userlogin}
           >
             Log in
           </button>
         </form>
         <Divider />
         <GoogleButton />
-        {/* <SignupButton /> */}
         <div className="flex justify-between items-center gap-2">
           <div className="label-text font-roboto-mono text-sm text-white">
             Don’t have an account?{" "}

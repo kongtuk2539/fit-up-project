@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 const CustomBar = ({ x, y, width, height, fill }) => {
     const [hovered, setHovered] = useState(false);
-    const borderRadius = 4; // Adjust the radius for the rounded top corners
-    
+    const borderRadius = 4;
+
     return (
         <g>
             <path d={`M${x},${y + height} L${x},${y + borderRadius} Q${x},${y} ${x + borderRadius},${y} L${x + width - borderRadius},${y} 
@@ -17,7 +17,7 @@ const CustomBar = ({ x, y, width, height, fill }) => {
                 onMouseMove={(e) => {
                     e.stopPropagation();
                 }}
-                style={{ cursor: 'pointer' }} // Change the cursor to a pointer on hover
+                style={{ cursor: 'pointer' }}
             />
         </g>
     );

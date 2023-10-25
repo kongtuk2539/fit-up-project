@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-import ActivityDialog from "../activityDialog/ActivityDialog";
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
 import bgBlueC from "../../assets/image/Activity/bgBluecoin.png";
 import DollarC from "../../assets/image/Activity/Dollar.png";
 
@@ -10,7 +7,6 @@ const Default = ({ toggleDialogAct }) => {
   return (
     <div className="relative borderdefault w-343 h-444 flex flex-col items-center px-10 pt-55 lg:h-856 lg:justify-center z-10">
       <img src={bgBlueC} className="absolute h-full w-full bottom-6 lg:top-36 lg:h-auto" alt="Dollar" />
-      {/* <img src="./src/assets/image/Activity/bluecoin.png" className="z-50 w-[142px] h-[158px] border border-white" alt="Dollar" /> */}
       <img src={DollarC} className="z-50" alt="Dollar" />
       <div className="z-50">
         <h3 className="font-orbitron text-xl font-bold w-228 h-30 text-center mt-11 mb-2">

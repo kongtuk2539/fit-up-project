@@ -1,7 +1,3 @@
-import React, { useState, useEffect } from "react";
-import ActivityDialog from "../activityDialog/ActivityDialog";
-import Successdialog from "./Successdialog";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Createmobile = ({ toggleDialogAct }) => {
@@ -35,7 +31,6 @@ const Createmobile = ({ toggleDialogAct }) => {
             />
           </svg>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            {/* <span class="material-symbols-outlined">add</span> */}
 
             <svg
               xmlns="http://www.w3.org/2000/svg"

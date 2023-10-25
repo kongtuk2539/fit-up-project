@@ -3,7 +3,7 @@ import axiosService from "../service/axiosService";
 export const GetUser = async (id) => {
     try {
         const method = 'GET';
-        const url = `https://fit-up-project-backend.onrender.com/users/${id}`; //.env
+        const url = `https://fit-up-project-backend.onrender.com/users/${id}`;
         const body = {}
 
 
@@ -11,6 +11,6 @@ export const GetUser = async (id) => {
         return response
 
     } catch (error) {
-        console.error('Error fetching data:', error);
+        return error
     }
 }

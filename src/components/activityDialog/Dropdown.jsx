@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import list from './list.json'
-import { Scrollbar } from 'react-scrollbars-custom';
 
 const Dropdown = ({ setDuration, duration, formErrors }) => {
     const [IsOpen, setIsOpen] = useState(false);
@@ -24,12 +23,10 @@ const Dropdown = ({ setDuration, duration, formErrors }) => {
 
     return (
         <div ref={dropdownRef} className="">
-
             <button onClick={() => setIsOpen((prev) => !prev)} className={`${formErrors.duration ? error : ""} bg-black-dark w-[145px] h-12 px-4 flex items-center justify-between font-roboto-mono text-[16px] rounded 
             tracking-wider border-2 border-transparent active:border-pink duration-200 text-white active:text-[#FD00FE]`}> {duration || "Duration"}
                 {!IsOpen ? <span className="material-symbols-outlined">stat_1</span> : <span className="material-symbols-outlined">stat_minus_1</span>}
             </button>
-
 
             {IsOpen &&
                 <div className="scrollbar-hide overflow-auto bg-gray-900 h-[160px] w-[145px] absolute

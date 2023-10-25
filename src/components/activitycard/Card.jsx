@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Deletedialog from "./Deletedialog";
 import { GetActivityById } from "../../crud/GetActivityById";
 import ActivityDialog from "../activityDialog/ActivityDialog";
@@ -7,12 +6,8 @@ import ActivityDialog from "../activityDialog/ActivityDialog";
 const Card = ({ Success, setActivities, setHaveCard, handleEdit, activities, setReload, reload, setCreateSuccess, deleteSuccess }) => {
   const [dropdownOpen, setDropdownOpen] = useState({});
   const [dialogdel, setDialogdel] = useState({});
-  const [dialogEdit, setDialogEdit] = useState(false);
-  // const [reload, setReload] = useState(false);
-  const [activityEdit, setActivityEdit] = useState(null)
 
   const toggleDropdown = (activityId) => {
-    console.log(activityId)
     setDropdownOpen((prev) => ({
       ...prev,
       [activityId]: !prev[activityId]
@@ -44,22 +39,6 @@ const Card = ({ Success, setActivities, setHaveCard, handleEdit, activities, set
       return `${hours} hr ${minutes} mins`;
     }
   };
-
-  // const toggleEdit = () => {
-  //   setDialogEdit((p) => setDialogEdit(!p))
-  // }
-
-  // const handleEdit = (id) => {
-  //   toggleEdit()
-  //   console.log("handleEdit => ", id)
-
-  //   GetActivityById(id).then(async (res) => {
-  //     const data = await res
-  //     setActivityEdit(...data)
-  //   })
-  // }
-
-
 
   return (
     <>
@@ -126,13 +105,12 @@ const Card = ({ Success, setActivities, setHaveCard, handleEdit, activities, set
               )}
             </div>
 
-            {/* text */}
             <div className="absolute bottom-0 left-0 py-6 px-4">
               <h2 className="text-2xl font-bold font-orbitron">
                 {activity.activity_name}
               </h2>
               <p className="font-roboto-mono">{activity.activity_desc}</p>
-              <p className="mt-4 text-sm font-roboto-mono text-white-op70">
+              <p className="mt-4 text-sm font-roboto-mono text-white font-bold">
                 {formatDateForDisplay(activity.activity_date)} ({formatDurationForDisplay(activity.activity_duration)})
               </p>
             </div>

@@ -6,7 +6,7 @@ import { useAuth } from "../components/auth/AuthContext";
 const Dashboardpages = () => {
   const auth = useAuth()
   useEffect(() => {
-    console.log(auth.user)
+
   }, [auth.user]);
 
   return (

@@ -1,4 +1,4 @@
-import axiosService from '../service/axiosService'; // Import your axiosService here
+import axiosService from '../service/axiosService';
 
 export const CreateActivity = async (formData, setIsLoading, Success, toggleDialogAct, ErrorCreate, UpdateCoin, edit, id) => {
     if (!edit) {
@@ -24,7 +24,6 @@ export const CreateActivity = async (formData, setIsLoading, Success, toggleDial
 
             ErrorCreate('Error no Response');
         } catch (error) {
-            console.error('Error fetching data:', error);
             ErrorCreate('Server Error');
             setIsLoading(false);
             return false;
@@ -48,7 +47,6 @@ export const CreateActivity = async (formData, setIsLoading, Success, toggleDial
 
             ErrorCreate('Error no Response');
         } catch (error) {
-            console.error('Error fetching data:', error);
             ErrorCreate('Server Error');
             setIsLoading(false);
             return false;

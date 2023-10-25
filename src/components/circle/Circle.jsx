@@ -11,14 +11,10 @@ const Circle = ({ activities, user, createSuccess }) => {
     const [coinPercentState, setCoinPercentState] = useState(0)
     const [balance, setBalance] = useState(0)
 
-
-
-
     useEffect(() => {
         const GetdataUser = (user) => {
             if (user) {
                 GetUser(user._id).then((res) => {
-                    console.log("res => ", res)
                     setCoinState(res.user_coin)
                     setBalance(res.balance)
 
@@ -60,18 +56,9 @@ const Circle = ({ activities, user, createSuccess }) => {
 
     }, [createSuccess, coinState, coinPercentState, balance, activities]);
 
-
-
-    console.log("circle checked", createSuccess);
-
-
     // (100 * x) / 30000  
-
     return (
         <div className="w-343 lg:w-full h-537 lg:h-324 lg:flex " >
-            {/* w-343 lg:w-full h-537 lg:h-324 lg:flex */}
-            {/* w-343 lg:w-721 h-537 lg:h-324 rounded-lg bg-black-medium py-6 px-4 lg:px-0 lg:flex*/}
-            {/* md:w-721 */}
             <div className="title-circle font-roboto-mono font-bold text-white mb-3 lg:hidden">
                 <p>Today Earn</p>
             </div>
