@@ -103,22 +103,18 @@ const Form2 = ({ createUser, handleBack, toggleSignup }) => {
       setIsLoading(true);
       try {
         let isSuccess = await createUser(formData);
-        // setIsLoading(isSuccess)
-        console.log("return create => ", isSuccess);
         if (isSuccess) {
           setDialogSuccess(true);
           setIsLoading(false);
         }
       } catch (error) {
-        // Handle the error here
         ErrorCreate(error)
-        console.error("Error creating user:", error);
         setIsLoading(false);
       }
 
-      console.log("Form data2 submitted:", formData);
+
     } else {
-      console.log("Form submission failed due to validation errors.");
+      return
     }
   };
 
@@ -134,7 +130,6 @@ const Form2 = ({ createUser, handleBack, toggleSignup }) => {
         setImage(reader.result);
         setImgUploaded(true);
         formData.urlimg = await uploadToCloudinary(reader.result);
-        console.log(formData)
       };
       reader.readAsDataURL(file);
     }
@@ -164,11 +159,9 @@ const Form2 = ({ createUser, handleBack, toggleSignup }) => {
         setIsLoading(false);
       }
       const data = await result.json();
-      console.log('Image uploaded to Cloudinary:', data);
       return data.secure_url;
       // Handle the response from Cloudinary here
     } catch (error) {
-      console.error('Error uploading to Cloudinary:', error);
       setIsLoading(false);
       return error;
     }

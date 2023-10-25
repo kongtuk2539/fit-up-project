@@ -8,7 +8,6 @@ const ProtectedRoute = ({ children }) => {
 
     if (!token) {
         return <Navigate to='/' />
-        // You can implement your own logic for redirection here
     }
 
     return children;

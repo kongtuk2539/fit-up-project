@@ -6,42 +6,6 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
-    // const login = (email, password) => {
-    //     return new Promise((resolve, reject) => {
-    //         axios.post('http://localhost:3000/users/login', {
-    //             'user_email': email,
-    //             'user_password': password,
-    //         }).then((response) => {
-
-    //             if (response.status !== 200) {
-    //                 reject(new Error('Login failed'));
-    //             }
-
-    //             const authorization = response.headers['Authorization'];
-
-    //             localStorage.setItem('token', authorization);
-
-    //             // Extract user data from the token (assuming it's a JWT token)
-    //             const authorizationWithoutBearer = authorization.split(' ');
-    //             const token = authorizationWithoutBearer[1];
-    //             const payloadBase64 = token.split('.')[1];
-    //             const decodedPayload = atob(payloadBase64);
-    //             const payload = JSON.parse(decodedPayload);
-
-    //             // Check if payload exists before setting the user
-    //             if (payload && Object.keys(payload).length !== 0) {
-    //                 setUser(payload);
-    //             }
-
-    //             resolve(response.data);
-    //         }).catch((error) => {
-    //             reject(error);
-    //         }).finally(() => {
-    //             let token = localStorage.getItem('token');
-    //             console.log('localStorage => ', token);
-    //         });
-    //     });
-    // };
 
     const login = async (email, password) => {
         try {
@@ -96,7 +60,6 @@ export const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-        // Add a request interceptor
         axios.interceptors.request.use(
             (config) => {
                 const token = localStorage.getItem('token');

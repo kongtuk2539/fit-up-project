@@ -12,8 +12,6 @@ const Signup2 = ({ createUser, handleBack, toggleSignup }) => {
   return (
     <div className="z-50 flex justify-center items-center h-full  bg-gray-op90">
       <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:px-10 lg:pb-10">
-        {/* <div className="bg-black-medium w-[375px] h-full lg:w-[423px] lg:p-10"> */}
-        {/* <Header /> */}
         <div className="h-14 bg-black-dark flex items-center justify-center text-white lg:pt-0 lg:flex lg:flex-col lg:items-start lg:justify-center lg:bg-transparent">
           <div className="font-roboto-mono font-bold text-sm lg:font-orbitron lg:text-xl lg:pb-2">
             Create your account
@@ -33,27 +31,6 @@ const Signup2 = ({ createUser, handleBack, toggleSignup }) => {
           </div>
           <div>
             <Form2 createUser={createUser} toggleSignup={toggleSignup} handleBack={handleBack} />
-            {/* <div className="flex gap-4">
-              <button
-                type="button"
-                className="h-12 w-12 flex justify-center items-center pl-[8px] secondary-contained-button text-black-dark"
-              >
-                <span class="clickbutton material-symbols-outlined">arrow_back_ios</span>
-              </button>
-              <button
-                type="button"
-                onClick={toggleDialogSuccess}
-                className="clickbutton h-12 w-[279px] primary-contained-button font-roboto-mono text-black-dark font-bold rounded"
-              >
-                Sign up
-              </button> */}
-            {/* {dialogSuccess && (
-                <div className="fixed inset-0 h-full w-full z-10">
-                  <div onClick={toggleDialogSuccess} className="bg-black-dark-op80 fixed inset-0 h-full w-full z-10"></div>
-                  <Successdialog toggleDialogSuccess={toggleDialogSuccess} />
-                </div>
-              )} */}
-            {/* </div> */}
           </div>
         </div>
       </div>

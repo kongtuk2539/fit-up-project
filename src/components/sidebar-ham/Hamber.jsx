@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useAuth } from "../auth/AuthContext";
 import HamMyLoader from './HamMyLoader';
 
@@ -46,17 +46,17 @@ const Hamber = () => {
           <nav>
             <ul className="flex flex-col items-center pl-0 pr-4 mt-10 pt-3 ">
               <li className="">
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black flex items-center gap-6 rounded-lg">
+                <button className="text-gray-400 font-roboto-mono pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl flex items-center gap-6 rounded-lg">
                   <span class="material-symbols-outlined">account_circle</span> Proflie
                 </button>
               </li>
               <li>
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black flex items-center gap-6 rounded-lg">
+                <button className="text-gray-400 font-roboto-mono pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl flex items-center gap-6 rounded-lg">
                   <span class="material-symbols-outlined">info</span> Help & Support
                 </button>
               </li>
               <li>
-                <button className="font-roboto-mono hover:font-bold pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl hover:bg-pink hover:text-black flex items-center gap-6 rounded-lg">
+                <button className="text-gray-400 font-roboto-mono pl-4 w-52 h-14 bg-opacity-70 bg-blur-xl flex items-center gap-6 rounded-lg">
                   <span class="material-symbols-outlined">settings</span> Setting
                 </button>
               </li>
@@ -75,10 +75,10 @@ const Hamber = () => {
       {auth.user ? (<div className='hidden sm:inline '>
         <div className="flex  border-solid ">
           <div className="mr-6 m-1 mt-4">
-            <button className="h-10 w-10 mr-6 rounded-full p-0 hover:bg-black-dark text-white clickbutton">
+            <button className="h-10 w-10 mr-6 rounded-full p-0 hover:bg-black-dark text-gray-400 clickbutton">
               <span class="material-symbols-outlined">sms</span>
             </button>
-            <button className="h-10 w-10 rounded-full p-0 hover:bg-black-dark text-white clickbutton">
+            <button className="h-10 w-10 rounded-full p-0 hover:bg-black-dark text-gray-400 clickbutton">
               <span class="material-symbols-outlined">notifications</span>
             </button>
           </div>
@@ -89,20 +89,20 @@ const Hamber = () => {
               </label>
               <ul
                 tabIndex={0}
-                className=" dropdown-content z-[20] menu p-2 shadow text-base w-52 bg-black-medium text-white rounded border border-white "
+                className=" dropdown-content z-[20] menu p-2 shadow text-base w-52 bg-black-medium text-gray-400 rounded border border-white "
               >
                 <li>
-                  <a className='hover:text-pink'> <span class="material-symbols-outlined">account_circle</span> Proflie</a>
+                  <a className='hover:text-gray-400'> <span class="material-symbols-outlined">account_circle</span> Proflie</a>
                 </li>
                 <li>
-                  <a className='hover:text-pink'> <span class="material-symbols-outlined">info</span> Help & Support</a>
+                  <a className='hover:text-gray-400'> <span class="material-symbols-outlined">info</span> Help & Support</a>
                 </li>
                 <li>
-                  <a className='hover:text-pink'> <span class="material-symbols-outlined">settings</span> Setting</a>
+                  <a className='hover:text-gray-400'> <span class="material-symbols-outlined">settings</span> Setting</a>
                 </li>
                 <div className="border-b-2 border-black-light"></div>
                 <li>
-                  <a className='text-red hover:text-red' onClick={logout}> <span class="material-symbols-outlined ">logout</span> Sign Out</a>
+                  <a className='text-red hover:text-red hover:bg-white-op70' onClick={logout}> <span class="material-symbols-outlined ">logout</span> Sign Out</a>
                 </li>
               </ul>
             </div>

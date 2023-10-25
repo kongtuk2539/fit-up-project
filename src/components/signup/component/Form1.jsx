@@ -11,8 +11,6 @@ const Form1 = ({ setIsNext, setData }) => {
     setShowRePassword(!showRePassword);
   };
 
-  // const [userData, setUserData] = useState({});
-
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -33,19 +31,6 @@ const Form1 = ({ setIsNext, setData }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
-  // const createUser = () => {
-  //   axios
-  //     .post('https://fit-up-project-backend.onrender.com/users/', formData)
-  //     .then((response) => {
-  //       console.log('API Response:', response.data); // Check the structure of the response
-  //       setUserData(response.data);
-  //       console.log('create => ', userData)
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching user data:', error.response.data.message);
-  //     });
-  // }
 
 
   const validateForm = () => {
@@ -108,12 +93,11 @@ const Form1 = ({ setIsNext, setData }) => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log("Form data submitted:", formData);
       // window.location.href = "/signup2";
       setData({ ...formData })
       setIsNext(true)
     } else {
-      console.log("Form submission failed due to validation errors.");
+      return
     }
   };
 
@@ -204,7 +188,6 @@ const Form1 = ({ setIsNext, setData }) => {
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
-              // type="text"
               id="password"
               name="password"
               value={formData.password}
@@ -278,7 +261,6 @@ const Form1 = ({ setIsNext, setData }) => {
           </span>
         </div>
 
-        {/* validate password */}
         <div className="mb-3 font-roboto-mono text-xs text-black-light">
           <div
             className={`${formData.password.length < 8
@@ -310,7 +292,6 @@ const Form1 = ({ setIsNext, setData }) => {
               : "text-pink flex items-center gap-2"
               }`}
           >
-            {/* <div className="flex items-center gap-2"> */}
             <span className="text-base material-symbols-outlined">
               task_alt
             </span>

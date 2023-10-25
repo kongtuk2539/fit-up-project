@@ -8,24 +8,14 @@ const HorizonBar = ({ coinPercentState, coinUser, balance }) => {
     useEffect(() => {
         const barEnergy = barRef.current;
 
-        // if (!coinPercentState && !balance && !coinUser) {
-        //     return
-        // }
-
-
-        // (100 * x) / 30000 
         if (barEnergy) {
-            console.log("horizon coinPercentState => ", coinPercentState)
-            console.log("horizon coinUser => ", coinUser)
-            console.log("horizon balance => ", coinUser)
             setFitCoinBar(coinPercentState)
-            console.log(fitcoinBar)
             const animation = barEnergy.animate(
                 [
                     { width: `${fitcoinBar}%` }
                 ],
                 {
-                    duration: 2000, // 2 seconds
+                    duration: 2000,
                     easing: 'linear',
                     fill: 'forwards',
                 }
@@ -40,12 +30,8 @@ const HorizonBar = ({ coinPercentState, coinUser, balance }) => {
             <p className="title-bar font-orbitron font-bold text-xl text-white mb-2">Octobar Move</p>
             <div className="bar-container
             relative bg-white-op40 w-311 lg:w-full md:w-311 h-15 rounded-full">
-                {/* relative bg-black-dark w-311 md:w-419 h-15 rounded-full */}
-                {/* relative bg-black-dark w-311 lg:w-419 md:w-311 h-15 rounded-full */}
                 <div id='fitcoin-bar' className="fitcoin-bar w-0 h-full 
                 bg-blue absolute rounded-full" ref={barRef}>
-                    {/* fitcoin-bar w-0 h-full 
-                bg-blue absolute rounded-full" ref={barRef}> */}
                 </div>
             </div>
             <div className="notation flex mt-5 gap-1 flex-wrap">

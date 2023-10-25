@@ -10,6 +10,6 @@ export const GetChartActivity = async (id) => {
 
         return response;
     } catch (error) {
-        console.error('Error fetching data:', error);
+        return error
     }
 }

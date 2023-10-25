@@ -2,15 +2,11 @@ import React, { useState, useEffect } from "react";
 import Circle from "../components/circle/Circle";
 import Chart from "../components/bar-chart/Chart";
 import Rightsection from "../components/activitycard/Rightsection";
-import Sidebar from "../components/sidebar-ham/Sidebar";
 import Hamber from "../components/sidebar-ham/Hamber";
-import Sideham from "../components/sidebar-ham/Sideham";
-import Layout from "../components/sidebar-ham/Layout";
 import Header from "../components/activitycard/Header";
 import { useAuth } from "../components/auth/AuthContext";
 import CircleMyLoader from "../components/circle/CircleMyLoader";
 import CircleMobileMyLoader from "../components/circle/CircleMobileMyLoader";
-import axiosService from "../service/axiosService";
 import { Scrollbar } from 'react-scrollbars-custom';
 import { GetActivityTodayDataById } from "../crud/GetActivityTodayDataById";
 import { GetChartActivity } from "../crud/GetChartActivity";
@@ -18,7 +14,6 @@ import { GetActivityById } from "../crud/GetActivityById";
 import ActivityDialog from "../components/activityDialog/ActivityDialog";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 
 function Dashboard() {
@@ -34,10 +29,6 @@ function Dashboard() {
     height: 800,
   };
 
-
-
-
-  //activities
   const [haveCard, setHaveCard] = useState(false);
   const [activities, setActivities] = useState([]);
   const [dialogAct, setDialogAct] = useState(false);
@@ -80,7 +71,6 @@ function Dashboard() {
   const [activityEdit, setActivityEdit] = useState(null)
 
   const handleEdit = (id) => {
-    console.log("handleEdit => ", id)
     toggleDialogAct()
     GetActivityById(id).then(async (res) => {
       const data = await res
@@ -88,15 +78,12 @@ function Dashboard() {
     })
   }
 
-  console.log("test infinity loop => ", auth.user)
-
   useEffect(() => {
     const user = auth.user;
     if (user) {
       GetActivityTodayDataById(user._id, setActivities, setHaveCard)
       setUser(user)
       GetChartActivity(user._id).then(async (res) => {
-        console.log("dataChartActivity Res =>", res)
         const result = await res;
         setDataChartActivity(result)
       })
@@ -106,30 +93,11 @@ function Dashboard() {
 
   }, [auth.user, createSuccess])
 
-
-
-  console.log("dataChartActivity =>", dataChartActivity)
-  console.log("dashboard =>", user)
-
-
-
-
-
-
-
-
-
-
   return (
     // <Layout>
     <>
       <div className=" bg-transparent min-h-screen  mx-auto">
-        {/* Sidebar */}
-        {/* <Sidebar setStatus={setStatus} /> */}
-
         <div className="fixed">
-          {/* <Sidebar />
-        <Hamber /> */}
         </div>
         {/* Main Content */}
         <div

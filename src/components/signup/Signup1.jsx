@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import "../App.css";
 import Form1 from "./component/Form1";
 import Page2 from "./Signup2";
 import axios from "axios";
@@ -7,7 +6,7 @@ import axios from "axios";
 const Signup1 = ({ toggleSignup }) => {
   const [data, setData] = useState({});
   const [isNext, setIsNext] = useState(false);
-  // const [isBack, setIsBack] = useState(false);
+
   const handleBack = () => {
     setIsNext(false);
   };
@@ -26,19 +25,14 @@ const Signup1 = ({ toggleSignup }) => {
       user_image: formData2.urlimg || 'https://res.cloudinary.com/depnyvk3i/image/upload/v1697558091/img/gipe5emvoyfgnhvcjg7b.png'
     };
 
-    console.log('create => ', formData);
-
     return new Promise((resolve, reject) => {
       axios
         .post('https://fit-up-project-backend.onrender.com/users/', formData)
         .then(async (response) => {
           let result = await response
-          console.log('API Response:', result.data); // Check the structure of the response
-          console.log('create => ', result.data);
           resolve(true);
         })
         .catch((error) => {
-          console.error('Error fetching user data:', error.response.data.message);
           reject(error.response.data.message);
         })
         .finally(() => {
@@ -46,7 +40,6 @@ const Signup1 = ({ toggleSignup }) => {
     });
   };
 
-  console.log(data)
 
   return (
     <div className="dialog-container  z-50 flex justify-center items-center h-full w-screen animate-in zoom-in-50 bg-gray-op90">
@@ -54,7 +47,6 @@ const Signup1 = ({ toggleSignup }) => {
         {
           isNext ? (<Page2 toggleSignup={toggleSignup} createUser={createUser} handleBack={handleBack} />) :
             <div>
-              {/* <Header /> */}
               <div className="h-14 bg-black-dark flex items-center justify-center text-white lg:pt-0 lg:flex lg:flex-col lg:items-start lg:justify-center lg:bg-transparent">
                 <div className="font-roboto-mono font-bold text-sm lg:font-orbitron lg:text-xl lg:pb-2">
                   Create your account
@@ -67,12 +59,10 @@ const Signup1 = ({ toggleSignup }) => {
                 </button>
               </div>
               <div className="px-4 py-6 lg:px-0 lg:pt-2">
-                {/* <Topsection /> */}
                 <div className='text-black-light font-roboto-mono'>
                   <p><span className='font-bold'>Step 1 </span>of 2</p>
                 </div>
                 <div className="py-6">
-                  {/* <GoogleButton /> */}
                   <button
                     type="button"
                     className="flex items-center justify-center h-12 w-full bg-pink-op10 border border-2 border-pink font-roboto-mono text-white font-bold rounded relative hover:bg-pink-op20 active:bg-pink-op30"
