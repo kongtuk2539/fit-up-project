@@ -118,6 +118,8 @@ const Chart = ({ activities, createSuccess, dataChartActivity }) => {
         const result = await res;
         getCal(result.result)
         setDataDuration(calculateTotalDuration(result.result))
+        let newFilteredCal = []; // Create a new array to store the filtered data
+        let newDateRange = []; // Create a new array to store the date range
         for (let i = 1; i <= 7; i++) {
           let cal = findTotalDuration(i, result.result)
           let isCal13 = calorieCalculator(cal)
@@ -127,11 +129,15 @@ const Chart = ({ activities, createSuccess, dataChartActivity }) => {
             cal: isCal13
           }
           if (i == 1 || i == 7) {
-            setDateRange((p) => [...p, getDay((i - 1))[0] + " " + getDay((i - 1))[1]])
+            // setDateRange((p) => [...p, getDay((i - 1))[0] + " " + getDay((i - 1))[1]])
+            newDateRange.push(getDay(i - 1)[0] + " " + getDay(i - 1)[1]);
           }
-          setFilteredCal((p) => [...p, calObj])
+          // setFilteredCal((p) => [...p, calObj])
+          newFilteredCal.push(calObj);
           // setDateRange({ "start": filteredCal[0].date, end: filteredCal[6].date })
         }
+        setFilteredCal(newFilteredCal); // Set the new filtered data
+        setDateRange(newDateRange); // Set the new date range
       })
     }
 
@@ -140,8 +146,6 @@ const Chart = ({ activities, createSuccess, dataChartActivity }) => {
     // fetchDateRange();
   }, [auth.user, createSuccess, activities]);
 
-  console.log('fi => ', filteredCal)
-  console.log('fi2 => ', dataDuration)
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
