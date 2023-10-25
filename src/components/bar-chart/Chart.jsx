@@ -8,84 +8,145 @@ import {
   Tooltip,
 } from "recharts";
 import CustomBar from "./CustomBar";
+import { useAuth } from "../auth/AuthContext";
+import { GetChartActivity } from "../../crud/GetChartActivity";
 
 
 
-const Chart = () => {
-  const [dateRange, setDateRange] = useState('');
+const Chart = ({ activities, createSuccess, dataChartActivity }) => {
+  const auth = useAuth()
+  const [dateRange, setDateRange] = useState([]);
   const [calories, setCalories] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
+  const [filteredCal, setFilteredCal] = useState([]);
+  const [cal, getCal] = useState(0);
+  const [dataDuration, setDataDuration] = useState(null)
 
-  const data = [
-    {
-      name: "S",
-      date: "Sun, 20 Aug",
-      cal: 500,
-    },
-    {
-      name: "M",
-      date: "Mon, 21 Aug",
-      cal: 750,
-    },
-    {
-      name: "T",
-      date: "Tue, 22 Aug",
-      cal: 600,
-    },
-    {
-      name: "W",
-      date: "Wed, 23 Aug",
-      cal: 650,
-    },
-    {
-      name: "Th",
-      date: "Thu, 24 Aug",
-      cal: 550,
-    },
-    {
-      name: "F",
-      date: "Fri, 25 Aug",
-      cal: 1000,
-    },
-    {
-      name: "S",
-      date: "Sat, 26 Aug",
-      cal: 875,
+  function calorieCalculator(minutes) {
+    return minutes * 13;
+  }
+
+  function calculateTotalDuration(data) {
+    let totalDurationMinutes = 0;
+    data.forEach(item => {
+      totalDurationMinutes += item.totalDuration;
+    });
+
+    const hours = Math.floor(totalDurationMinutes / 60);
+    const minutes = totalDurationMinutes % 60;
+
+    return {
+      totalDuration: totalDurationMinutes,
+      hours: hours,
+      minutes: minutes
+    };
+  }
+
+  function getDay(num) {
+    const today = new Date();
+    const currentDay = today.getDay(); // 0 for Sunday, 1 for Monday, and so on
+    const diff = num - currentDay;
+    today.setDate(today.getDate() + diff);
+
+    const d = ['S', 'M', 'T', 'W', 'Th', 'F', 'S']
+    const nameD = d[num]
+
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dayName = days[num];
+
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('en-US', options);
+
+    return [dayName, formattedDate, nameD];
+  }
+
+  function findTotalDuration(dayValue, data) {
+    if (!Array.isArray(data)) {
+      console.error('The data is not an array.');
+    } else {
+      // Continue with the filter operation
+      const filteredData = data.filter(item => item._id.day === dayValue);
+      if (filteredData.length === 0) {
+        console.log("No data found for the specified day.");
+        return 0
+      } else {
+        console.log(`Total duration for day ${dayValue} is ${filteredData[0].totalDuration}.`);
+        return parseInt(filteredData[0].totalDuration, 10);
+      }
+
     }
-  ];
+    // const filteredData = data.filter(item => item._id.day === dayValue);
+    // if (filteredData.length === 0) {
+    //   return 0;
+    // }
+    // return filteredData[0].totalDuration;
+  }
+
+
 
   useEffect(() => {
-    const fetchDateRange = async () => {
-      try {
-        // Fetch date range from the backend API
-        const response = await fetch("your_backend_date_range_url");
-        const result = await response.json();
+    // const fetchDateRange = async () => {
+    //   try {
+    //     // Fetch date range from the backend API
+    //     const response = await fetch("your_backend_date_range_url");
+    //     const result = await response.json();
 
-        // Assuming the backend returns an object with calories, hours, and minutes
-        setCalories(result.calories);
-        setHours(result.hours);
-        setMinutes(result.minutes);
-        // Set other data as needed...
+    //     // Assuming the backend returns an object with calories, hours, and minutes
+    //     setCalories(result.calories);
+    //     setHours(result.hours);
+    //     setMinutes(result.minutes);
+    //     // Set other data as needed...
 
-        // Fetch date range from the backend API
-        const dateRangeResponse = await fetch("your_backend_date_range_url");
-        const dateRangeResult = await dateRangeResponse.json();
+    //     // Fetch date range from the backend API
+    //     const dateRangeResponse = await fetch("your_backend_date_range_url");
+    //     const dateRangeResult = await dateRangeResponse.json();
 
-        // Assuming the backend returns a single string representing the date range
-        setDateRange(result);
-      } catch (error) {
-        console.error("Error fetching date range:", error);
-      }
-    };
+    //     // Assuming the backend returns a single string representing the date range
+    //     setDateRange(result);
+    //   } catch (error) {
+    //     console.error("Error fetching date range:", error);
+    //   }
+    // };
+    const user = auth.user;
+    setFilteredCal([])
 
-    fetchDateRange();
-  }, []);
+
+    if (user) {
+      GetChartActivity(user._id).then(async (res) => {
+        console.log("dataChartActivity Res =>", res)
+        const result = await res;
+        getCal(result.result)
+        setDataDuration(calculateTotalDuration(result.result))
+        for (let i = 1; i <= 7; i++) {
+          let cal = findTotalDuration(i, result.result)
+          let isCal13 = calorieCalculator(cal)
+          let calObj = {
+            name: getDay((i - 1))[2],
+            date: getDay((i - 1))[0] + " " + getDay((i - 1))[1],
+            cal: isCal13
+          }
+          if (i == 1 || i == 7) {
+            setDateRange((p) => [...p, getDay((i - 1))[0] + " " + getDay((i - 1))[1]])
+          }
+          setFilteredCal((p) => [...p, calObj])
+          // setDateRange({ "start": filteredCal[0].date, end: filteredCal[6].date })
+        }
+      })
+    }
+
+
+
+    // fetchDateRange();
+  }, [auth.user, createSuccess, activities]);
+
+  console.log('fi => ', filteredCal)
+  console.log('fi2 => ', dataDuration)
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip bg-white rounded pb-1 w-[132px] h-[65px]">
+        <div className="custom-tooltip bg-white rounded pb-1 w-[132px] h-[90px]">
           <p className="label font-roboto-mono text-sm px-[16px] pb-0">{`${payload[0].payload.date}`}</p>
           <p className="intro font-roboto-mono font-bold px-[16px] text-xl">{`${payload[0].payload.cal} cal`}</p>
         </div>
@@ -101,7 +162,7 @@ const Chart = () => {
         <div className="flex flex-col mt-[24px] w-512 h-400 lg:h-430">
           <heading className="w-156 h-41 mt-0 ml-[16px] lg:ml-[24px] absolute">
             <p className="text-white ">Weekly Performance</p>
-            <p className="text-black-light ">{dateRange}</p>
+            <p className="text-black-light text-[12px] lg:text-[16px]">{dateRange[0]} - {dateRange[1]}</p>
           </heading>
 
           {/* destop */}
@@ -109,7 +170,7 @@ const Chart = () => {
             <BarChart
               width={555}
               height={300}
-              data={data}
+              data={filteredCal}
               margin={{
                 top: 5,
                 right: 30,
@@ -132,7 +193,7 @@ const Chart = () => {
             <BarChart
               width={353}
               height={300}
-              data={data}
+              data={filteredCal}
               margin={{
                 top: 5,
                 right: 30,
@@ -155,18 +216,19 @@ const Chart = () => {
         </div>
 
         <calculation className="text-white flex flex-row lg:flex-col items-start justify-center gap-8 pr-2">
-          <div>
+          {dataDuration ? (<><div>
             <p>
               Total
             </p>
-            <p className="text-blue font-orbitron font-bold text-xl">4200 cal</p>
+            <p className="text-blue font-orbitron font-bold text-xl">{dataDuration.totalDuration * 13} cal</p>
           </div>
-          <div>
-            <p>
-              Duration
-            </p>
-            <p className="text-blue font-orbitron font-bold text-xl">12 hours <br />40 minutes</p>
-          </div>
+            <div>
+              <p>
+                Duration
+              </p>
+              <p className="text-blue font-orbitron font-bold text-xl">{dataDuration.hours} hours <br />{dataDuration.minutes} minutes</p>
+            </div></>) : ''}
+
         </calculation>
       </container>
     </>
